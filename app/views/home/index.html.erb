@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset = "UTF-8">
+<title>Event Circle - Dashboard</title>
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%= stylesheet_link_tag 'home/main'%>
+</head>
+<body>
+	<header>
+		<div class="container-admin">
+			<div class="row">
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-12">
+
+				<h1 class="tagline">Event Planning. Organizing. and Execution
+					<%= link_to "Sign Out", destroy_user_session_path, class: 'btn btn-default pull-right'%></h1>
+				<img class="logo img-responsive" src="/assets/logo.jpg" alt="Logo"></img>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="container-border-top">
+	</div> 
+	<section>
+	<div class="container-admin">
+	<div class="row">
+		<div class="col-custom-md-3">
+			<div class="left-nav">
+				<ul>
+				<div class="selected"><li><%= link_to "Dash Board", events_path %></li></div>
+				<li><a href="#">The EC</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-custom-md-21">
+			<div class="content-section">
+			<h2 class="title">Dashboard</h2>
+				<div class="row">
+					<div class="col-md-11 col-md-offset-1 test dash_event">
+							<table class="table table-striped box-border">
+							<thead class="box-head">
+								  <tr><td colspan="3"><strong>Events <span style="color:#e06d21;">Registered</span></strong></td></tr>
+								  
+							</thead>
+						
+							<tbody>
+							<tr>
+									<td><strong>Title</strong></td>
+									<td><strong>Venue</strong></td>
+									<td><strong>Start Date</strong></td>
+								</tr>
+								<% @events_attended.each do |event|%>
+								<tr>
+									<td><%= event.title %></td>
+									<td><%= event.venue %></td>
+									<td><%= event.event_start_date %></td>
+								</tr>
+								<% end %>
+							</tbody>
+						 </table>
+					</div>
+					<div class="col-md-11 dash_event">
+						<table class="table table-striped box-border">
+						   <thead class="box-head">
+							  <tr>
+								<tr><td colspan="3"><strong>Events <span style="color:#e06d21;">Running</span></strong></td></tr>
+							  </tr>
+						   </thead>
+						   <tbody>
+							<tr>
+									<td><strong>Title</strong></td>
+									<td><strong>Venue</strong></td>
+									<td><strong>Start Date</strong></td>
+								</tr>
+								<% @events_published.each do |event|%>
+								<tr>
+									<td><%= event.title %></td>
+									<td><%= event.venue %></td>
+									<td><%= event.event_start_date %></td>
+								</tr>
+								<% end %>
+						  </tbody>
+						 </table>
+					</div>
+				</div> <!-- Row closing -->		
+
+							<%if @role == "host"%>
+
+				<div class="row">
+					<div class="col-md-11 col-md-offset-1 dash_event">
+						<table class="table table-striped box-border">
+							<thead class="box-head some" id="button">
+								  <tr><td colspan='3'><strong>Events <span style="color:#e06d21;">Need to Host</span></strong></td></tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><strong>Title</strong></td>
+									<td><strong>Venue</strong></td>
+									<td><strong>Start Date</strong></td>
+								</tr>
+								<% @events_for_publish.each do |event|%>
+								<tr>
+									<td><%= event.title %></td>
+									<td><%= event.venue %></td>
+									<td><%= event.event_start_date %></td>
+								</tr>
+								<% end %>
+							</tbody>
+						 </table>
+					</div>
+					<div class="col-md-11 dash_event">
+						<table class="table table-striped box-border" id ="effect">
+						   <thead class="box-head" >
+							  <tr>
+								<tr><td colspan='3'><strong>Events <span style="color:#e06d21;">Published By You</span></strong></td></tr>
+							  </tr>
+						   </thead>
+						  <tbody>
+								<tr>
+									<td><strong>Title</strong></td>
+									<td><strong>Venue</strong></td>
+									<td><strong>Start Date</strong></td>
+								</tr>
+								<% @events_published_by_you.each do |event|%>
+								<tr>
+									<td><%= event.title %></td>
+									<td><%= event.venue %></td>
+									<td><%= event.event_start_date %></td>
+								</tr>
+								<% end %>
+							</tbody>
+						 </table>
+					</div>
+				</div> <!-- Row closing -->		
+
+							<% end %>
+
+			<div class="clearfix"></div>
+			</div> <!-- Content-section closing -->
+		</div> <!-- Col-custom-21 closing -->
+	</div><!-- Main Row closing -->	
+    </div><!-- Container Admin closing -->	
+	</section>
+	
+	<footer>
+	</footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!--<script src="js/bootstrap.min.js"></script> -->
+
+    <%= javascript_include_tag 'home/main'%>
+ 
+</body>
+
+<script>
+
+</script>
+</html>
