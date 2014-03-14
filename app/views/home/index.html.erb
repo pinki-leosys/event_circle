@@ -6,7 +6,7 @@
 		<div class="col-custom-md-3">
 			<div class="left-nav">
 				<ul>
-				<div class="selected"><li><%= link_to "Dash Board", events_path %></li></div>
+				<div class="selected"><li><%= link_to "Dash Board", root_path %></li></div>
 				<li><a href="#">The EC</a></li>
 				<li><a href="#">About</a></li>
 				<li><a href="#">Contact</a></li>
@@ -15,11 +15,20 @@
 		</div>
 		<div class="col-custom-md-21">
 			<div class="content-section">
-			<h2 class="title">Dashboard</h2>
-				<div class="row">
-					<div class="col-md-11 col-md-offset-1 test dash_event">
-							<table class="table table-striped box-border">
-							<thead class="box-head">
+			<h2 class="title">Dashboard
+				<% if current_user.has_role?(:guest)||current_user.has_role?(:host) %>
+				  <% if !current_user.has_role?(:host) %>
+				    <%= link_to(" Become A Host", host_path, class: "btn btn-mini btn-primary",  style: 'float:right; margin-right:30px') %>
+				  <% end %>
+				  <% if !current_user.has_role?(:guest) %>
+				    <%= link_to(" Become A Guest",guest_path, class: "btn btn-mini btn-primary",  style: 'float:right; margin-right:30px') %>
+				  <% end %>
+				<% end %>
+			</h2>
+				<div class="some">
+				<div class="header1 fixed" style ="float:left;margin:8px">
+						<table class="table table-striped box-border table-dummy">
+						   <thead class="box-head">
 								  <tr><td colspan="3"><strong>Events <span style="color:#e06d21;">Registered</span></strong></td></tr>
 								  
 							</thead>
@@ -30,18 +39,38 @@
 									<td><strong>Venue</strong></td>
 									<td><strong>Start Date</strong></td>
 								</tr>
-								<% @events_attended.each do |event|%>
+								<% @events_attended.to_enum.with_index(1) do |event,i |%>
 								<tr>
 									<td><%= event.title %></td>
 									<td><%= event.venue %></td>
 									<td><%= event.event_start_date %></td>
 								</tr>
+								<% break if i==3 %>
 								<% end %>
-							</tbody>
+						  </tbody>
 						 </table>
+
+				
+
+<table id="events_registered" class="table table-striped box-border table-main display" data-source="<%= events_registered_url(format: "json") %>" style="display:none">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Venue</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+
+
 					</div>
-					<div class="col-md-11 dash_event">
-						<table class="table table-striped box-border">
+					<div class="header1 fixed" style ="float:left;margin:8px">
+						<table class="table table-striped box-border table-dummy">
 						   <thead class="box-head">
 							  <tr>
 								<tr><td colspan="3"><strong>Events <span style="color:#e06d21;">Running</span></strong></td></tr>
@@ -53,68 +82,35 @@
 									<td><strong>Venue</strong></td>
 									<td><strong>Start Date</strong></td>
 								</tr>
-								<% @events_published.each do |event|%>
+								<% @current_events.to_enum.with_index(1) do |event,i |%>
 								<tr>
 									<td><%= event.title %></td>
 									<td><%= event.venue %></td>
 									<td><%= event.event_start_date %></td>
 								</tr>
+								<% break if i==3 %>
 								<% end %>
 						  </tbody>
 						 </table>
+
+
+						<table id="events_running" class="table table-striped box-border table-main display" data-source="<%= current_events_url(format: "json") %>" style="display:none">
+ 									 <thead>
+   										 <tr>
+    									  <th>Title</th>
+      										<th>Venue</th>
+      										<th>Start Date</th>
+      										<th>End Date</th>
+      										<th></th>
+    										</tr>
+  										</thead>
+ 									 <tbody>
+  									</tbody>
+						</table>
+
+
 					</div>
 				</div> <!-- Row closing -->		
-
-							<%if @role == "host"%>
-
-				<div class="row">
-					<div class="col-md-11 col-md-offset-1 dash_event">
-						<table class="table table-striped box-border">
-							<thead class="box-head some" id="button">
-								  <tr><td colspan='3'><strong>Events <span style="color:#e06d21;">Need to Host</span></strong></td></tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><strong>Title</strong></td>
-									<td><strong>Venue</strong></td>
-									<td><strong>Start Date</strong></td>
-								</tr>
-								<% @events_for_publish.each do |event|%>
-								<tr>
-									<td><%= event.title %></td>
-									<td><%= event.venue %></td>
-									<td><%= event.event_start_date %></td>
-								</tr>
-								<% end %>
-							</tbody>
-						 </table>
-					</div>
-					<div class="col-md-11 dash_event">
-						<table class="table table-striped box-border" id ="effect">
-						   <thead class="box-head" >
-							  <tr>
-								<tr><td colspan='3'><strong>Events <span style="color:#e06d21;">Published By You</span></strong></td></tr>
-							  </tr>
-						   </thead>
-						  <tbody>
-								<tr>
-									<td><strong>Title</strong></td>
-									<td><strong>Venue</strong></td>
-									<td><strong>Start Date</strong></td>
-								</tr>
-								<% @events_published_by_you.each do |event|%>
-								<tr>
-									<td><%= event.title %></td>
-									<td><%= event.venue %></td>
-									<td><%= event.event_start_date %></td>
-								</tr>
-								<% end %>
-							</tbody>
-						 </table>
-					</div>
-				</div> <!-- Row closing -->		
-
-							<% end %>
 
 			<div class="clearfix"></div>
 			</div> <!-- Content-section closing -->
@@ -123,3 +119,50 @@
     </div><!-- Container Admin closing -->	
 	</section>
 	
+<style>
+
+.fixed{
+    width:45%;
+
+}
+
+.expand{
+    width: 80%;
+        
+}
+
+</style>
+
+<script>
+$(document).ready(function(){
+var a = 1;
+$(".header1").click(function(){
+	
+	if(false==$(this).hasClass('expand')){
+
+		$(".table-dummy").show();
+	    $(".table-main").hide();
+	    $(".dataTables_wrapper").hide();
+		$(this).children(".table-dummy").hide();
+		$(this).children(".table-main").show();
+		div = $(this).children('.dataTables_wrapper');
+
+		$(div).show().children(".table-main").show();
+
+$(".header1").addClass("fixed")
+$(".header1").removeClass("expand")
+$(this).addClass( "expand");
+
+$(this).children(".table-main").dataTable({
+    sPaginationType: "full_numbers",
+    bJQueryUI: true,
+    bProcessing: true,
+    bServerSide: true,
+    sAjaxSource: $(this).children(".table-main").data('source')
+  });
+
+	}
+		
+});
+});
+</script>

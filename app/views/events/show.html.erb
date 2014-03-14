@@ -1,6 +1,25 @@
-<p id="notice"><%= notice %></p>
 
-<p>
+<%= render partial: "layouts/dash_board/header"%>
+
+
+<section>
+  <div class="container-admin">
+  <div class="row">
+    <div class="col-custom-md-3">
+      <div class="left-nav">
+        <ul>
+        <div class="selected"><li><%= link_to "Dash Board", root_path %></li></div>
+        <li><a href="#">The EC</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-custom-md-21">
+      <div class="content-section">
+      <h2 class="title">Dashboard</h2>
+
+      <p>
   <b>Title:</b>
   <%= @event.title %>
 </p>
@@ -26,6 +45,14 @@
 </p>
 
 <% if can? :edit,@event %>
-<%= link_to 'Edit', edit_event_path(@event) %> 
+<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-primary" %> 
 <% end %>
-<%= link_to 'Back', events_path %>
+       <% if current_user.is_registered?(@event) %>
+          <td><%= link_to 'Registered', '#',class: "btn btn-danger disabled"%></td>
+      <% else %>
+          <td><%= link_to 'Register', register_event_path(@event), class: "btn btn-success"%></td>
+      <% end %>
+      </div>
+    </div>
+    </div>
+

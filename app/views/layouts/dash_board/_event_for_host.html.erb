@@ -1,0 +1,85 @@
+<%if @role == "host"%>  <!-- for HOST -->
+							<div class="some">
+				<div class="header1 fixed" style ="float:left;margin:8px">
+						<table class="table table-striped box-border table-dummy">
+						   <thead class="box-head">
+								  <tr><td colspan="3"><strong>Events <span style="color:#e06d21;">Published By You</span></strong></td></tr>
+								  
+							</thead>
+						
+							<tbody>
+							<tr>
+									<td><strong>Title</strong></td>
+									<td><strong>Venue</strong></td>
+									<td><strong>Start Date</strong></td>
+								</tr>
+							<% @events_published_by_you.to_enum.with_index(1) do |event,i |%>
+								<tr>
+									<td><%= event.title %></td>
+									<td><%= event.venue %></td>
+									<td><%= event.event_start_date %></td>
+								</tr>
+								<% break if i==3 %>
+								<% end %>
+						  </tbody>
+						 </table>
+
+						<table id="events_published_by_you" class="table table-striped box-border table-main display" data-source="<%= events_url(format: "json") %>" style="display:none">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Venue</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+					</div>
+					<div class="header1 fixed" style ="float:left;margin:8px">
+						<table class="table table-striped box-border table-dummy">
+						   <thead class="box-head">
+							  <tr>
+								<tr><td colspan="3"><strong>Events <span style="color:#e06d21;">Need To Publish</span></strong></td></tr>
+							  </tr>
+						   </thead>
+						   <tbody>
+							<tr>
+									<td><strong>Title</strong></td>
+									<td><strong>Venue</strong></td>
+									<td><strong>Start Date</strong></td>
+								</tr>
+							<% @events_for_publish.to_enum.with_index(1) do |event,i |%>
+								<tr>
+									<td><%= event.title %></td>
+									<td><%= event.venue %></td>
+									<td><%= event.event_start_date %></td>
+								</tr>
+								<% break if i==3 %>
+								<% end %>
+						  </tbody>
+						 </table>
+
+
+						<table id="events_need_to_publish" class="table table-striped box-border table-main display" data-source="<%= events_url(format: "json") %>" style="display:none">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Venue</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+					</div>
+				</div> <!-- Row closing -->		
+
+
+
+				
+							<% end %>

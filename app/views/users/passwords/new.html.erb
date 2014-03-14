@@ -1,12 +1,39 @@
-<h2>Forgot your password?</h2>
+<%= render partial: "layouts/header"%>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+
+
+<div class="clearfix"></div>
+	<div class="banner-back">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+							<div class="about-box">
+						<div class="about-box-head">
+							<span class="title-2">Forget <span class="highlight-1">Password</span></span>
+						</div>
+						<div class="about-box-content">
+						<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
+<div>
+
+  <%= recaptcha_tags %>
+
   <div><%= f.submit "Send me reset password instructions" %></div>
 <% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+	
 
-<%= render "users/shared/links" %>
+
+	<%= render partial: "layouts/content"%>
+
+	<%= render partial: "layouts/footer"%>
+
