@@ -9,12 +9,10 @@
 				<div class="col-md-12">
 							<div class="about-box">
 						<div class="about-box-head">
-							<span class="title-2">Forget <span class="highlight-1">Password</span></span>
+							<span class="title-2">Forgot <span class="highlight-1">Password</span></span>
 						</div>
 						<div class="about-box-content">
 						<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 

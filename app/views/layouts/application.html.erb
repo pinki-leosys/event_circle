@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	 <% unless flash[:notice].blank? && flash[:alert].blank? %>
+	 <% unless flash[:notice].blank? && flash[:alert].blank? && flash[:message].blank? %>
 	<% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
     <div class="alert alert-<%= name.to_s == 'notice' ? "success" : "danger" %>">

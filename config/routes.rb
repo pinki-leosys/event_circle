@@ -1,6 +1,6 @@
 EventCircle::Application.routes.draw do
 
-  devise_for :users,:skip => [:sessions], controllers: { sessions: "users/dash_board" }
+  devise_for :users,:skip => [:sessions, :passwords], controllers: { sessions: "users/dash_board", passwords: "users/passwords" }
 
    devise_scope :user do
          get '/home' => "devise/sessions#new", :as => :new_user_session
@@ -12,7 +12,10 @@ EventCircle::Application.routes.draw do
          get '/current_events' => 'users/dash_board#current_events', :as => :current_events
          get '/host' => 'users/dash_board#become_host', :as => :host
          get '/guest' => 'users/dash_board#become_guest', :as => :guest
-
+         post '/users/password' => 'users/passwords#create', as: :user_password
+         get '/users/password/new' => 'devise/passwords#new', as: :new_user_password
+         get '/users/password/edit' => 'devise/passwords#edit', as: :edit_user_password
+         put '/users/password' => 'devise/passwords#update'
 
   end
   match  '/about_us'   => "home#about", as: :about_us
