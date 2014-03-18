@@ -13,4 +13,5 @@
  *= require jquery.ui.theme
  *= require dataTables/src/demo_table_jui
  *= require bootstrap_and_overrides
+ *= require home/bootstrap
  */

@@ -13,10 +13,10 @@
 						</div>
 						<div class="about-box-content">
 						<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-<div>
+ 
+						  <div class="form-group">
+                                 <input type="email" name= 'user[email]'class="form-control" placeholder="Enter email" style= "width:300px">
+						  </div>
   <%= recaptcha_tags %>
   <%= f.submit "Submit", class: "btn-sm new" %>
 

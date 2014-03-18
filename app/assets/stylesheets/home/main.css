@@ -4,6 +4,13 @@ body{
 background-image:url('../body-back.jpg');
 background-repeat:repeat;
 }
+/*-----Custom button---*/
+.new{
+background-color: black;
+color: rgb(224, 160, 94);
+font-weight: bold;
+font-size: 12px;
+border: 4px inset rgb(158, 168, 194)}
 
 /*------------ Header ---------------------*/
 header {
