@@ -1,0 +1,94 @@
+<h2>Sign up</h2>
+<script type="text/javascript">
+$('#user_new').validate({
+    debug: true,
+    rules: {
+        user_username: "required", // should be: "user[username]"
+        user_email: { // should be: "user[email]"
+            required: true,
+            email: true
+        }
+    },
+    messages: {
+        user_username: "Please specify your name", // should be: "user[username]"
+        user_email: { // should be: "user[email]"
+            required: "We need your email address to contact you",
+            email: "Your email address must be in the format of name@domain.com"
+        }
+    }
+});
+</script>
+<style>
+#username_error{
+   //a little something something
+}
+</style>
+<%#= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+
+<%= form_tag(user_registration_path,:method => 'post') %>
+  <%#= devise_error_messages! %>
+<ul>
+  <% @user.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
+<table>
+
+  <tr>
+    <td>First Name : </td>
+    <td><%=text_field_tag "user[first_name]",@user.first_name %></td>
+  </tr>
+
+  <tr>
+    <td>Last Name : </td>
+    <td><%=text_field_tag "user[last_name]",@user.last_name %></td>
+  </tr>
+
+  <tr>
+    <td>Username : </td>
+    <td><%=text_field_tag "user[uname]",@user.uname %></td>
+  </tr>
+  <div id="username_error"></div>
+  <tr>
+    <td>Email : </td>
+    <td><%=email_field_tag "user[email]",@user.email %></td>
+  </tr>
+
+  <tr>
+    <td>Password : </td>
+    <td><%=password_field_tag "user[password]",@user.password %></td>
+  </tr>
+
+  <tr>
+    <td>Retype password : </td>
+    <td><%=password_field_tag "user[password_confirmation]",@user.password_confirmation %></td>
+  </tr>
+
+  <tr>
+    <td>Role : </td>
+    <td>
+    <%= collection_select(:role, :role_id, Role.all, :name, :name) %>
+    </td>
+  </tr>
+  <tr>
+    <td>Address : </td>
+    <td><%=text_area_tag "address[address]",@address.address %></td>
+  </tr>
+  <tr>
+    <td>Zip Code : </td>
+    <td><%=text_field_tag "address[zipcode]",@address.zipcode %></td>
+  </tr>
+  <tr>
+    <td>Phone Number : </td>
+    <td><%=text_field_tag "address[phone_no]",@address.phone_no %></td>
+  </tr>
+  <tr>
+    <td><%= submit_tag nil, :class => "form_submit"%></td>
+  </tr>
+</table>
+<br />
+
+
+<%= render "users/shared/links" %>
+<%= link_to 'Back', root_path %>
+<%#= render :partial => "users/shared/links" %>

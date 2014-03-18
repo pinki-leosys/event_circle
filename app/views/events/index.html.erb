@@ -1,0 +1,49 @@
+<h1>Listing events</h1>
+ <%= link_to t('.new', :default => t("helpers.links.sign_out")),
+            destroy_user_session_path, :method => :delete,
+            :class => 'btn pull-right btn-primary' %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Venue</th>
+    <th>Event start date</th>
+    <th>Event end date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%= event.title %></td>
+    <td><%= event.description %></td>
+    <td><%= event.venue %></td>
+    <td><%= event.event_start_date %></td>
+    <td><%= event.event_end_date %></td>
+    <% if can? :read, event %>
+    <td><%= link_to 'Show', event %></td>
+      <% if current_user.is_registered?(event) %>
+        <td><%= link_to 'Registered', '#',class: "test"%></td>
+      <% else %>
+        <td><%= link_to 'Register', register_event_path(event)%></td>  
+      <% end %>
+    <% end %>
+    <% if can? :edit, event %>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <% end %>
+    <%if can? :delete, event %>
+    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<script>
+ $(".test").click(function(){
+  alert("registered")
+ })
+</script>
+<%= link_to 'New Event', new_event_path %>
+<%= link_to 'Back', root_path %>

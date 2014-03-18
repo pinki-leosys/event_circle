@@ -1,0 +1,65 @@
+.col-custom-sm-1, .col-custom-md-1, .col-custom-lg-1, .col-custom-sm-2, .col-custom-md-2, .col-custom-lg-2, .col-custom-sm-3, .col-custom-md-3, .col-custom-lg-3, .col-custom-sm-4, .col-custom-md-4, .col-custom-lg-4, .col-custom-sm-5, .col-custom-md-5, .col-custom-lg-5, .col-custom-sm-6, .col-custom-md-6, .col-custom-lg-6, .col-custom-sm-7, .col-custom-md-7, .col-custom-lg-7, .col-custom-sm-8, .col-custom-md-8, .col-custom-lg-8, .col-custom-sm-9, .col-custom-md-9, .col-custom-lg-9, .col-custom-sm-10, .col-custom-md-10, .col-custom-lg-10, .col-custom-sm-11, .col-custom-md-11, .col-custom-lg-11, .col-custom-sm-12, .col-custom-md-12, .col-custom-lg-12, .col-custom-sm-13, .col-custom-md-13, .col-custom-lg-13, .col-custom-sm-14, .col-custom-md-14, .col-custom-lg-14, .col-custom-sm-15, .col-custom-md-15, .col-custom-lg-15, .col-custom-sm-16, .col-custom-md-16, .col-custom-lg-16, .col-custom-sm-17, .col-custom-md-17, .col-custom-lg-17, .col-custom-sm-18, .col-custom-md-18, .col-custom-lg-18, .col-custom-sm-19, .col-custom-md-19, .col-custom-lg-19, .col-custom-sm-20, .col-custom-md-20, .col-custom-lg-20, .col-custom-sm-21, .col-custom-md-21, .col-custom-lg-21, .col-custom-sm-22, .col-custom-md-22, .col-custom-lg-22, .col-custom-sm-23, .col-custom-md-23, .col-custom-lg-23, .col-custom-sm-24, .col-custom-md-24, .col-custom-lg-24 {
+  position: relative;
+  min-height: 1px;
+}
+@media (min-width: 992px) {
+  .col-custom-md-1, .col-custom-md-2, .col-custom-md-3, .col-custom-md-4, .col-custom-md-5, .col-custom-md-6, .col-custom-md-7, .col-custom-md-8, .col-custom-md-9, .col-custom-md-10, .col-custom-md-11, .col-custom-md-12, .col-custom-md-13, .col-custom-md-14, .col-custom-md-15, .col-custom-md-16, .col-custom-md-17, .col-custom-md-18, .col-custom-md-19, .col-custom-md-20, .col-custom-md-21, .col-custom-md-22, .col-custom-md-23, .col-custom-md-24 {
+    float: left;
+  }
+.col-custom-md-1 { width: 4.167%  }
+.col-custom-md-2 { width: 8.333%  }
+.col-custom-md-3  { width: 12.5%   }
+.col-custom-md-4  { width: 16.667% }
+.col-custom-md-5  { width: 20.833% }
+.col-custom-md-6  { width: 25%     }
+.col-custom-md-7  { width: 29.167% }
+.col-custom-md-8  { width: 33.333% }
+.col-custom-md-9  { width: 37.5%   }
+.col-custom-md-10 { width: 41.667% }
+.col-custom-md-11 { width: 45.833% }
+.col-custom-md-12 { width: 50%     }
+.col-custom-md-13 { width: 54.167% }
+.col-custom-md-14 { width: 58.333% }
+.col-custom-md-15 { width: 62.5%   }
+.col-custom-md-16 { width: 66.667% }
+.col-custom-md-17 { width: 70.833% }
+.col-custom-md-18 { width: 75%     }
+.col-custom-md-19 { width: 79.167% }
+.col-custom-md-20 { width: 83.333% }
+.col-custom-md-21 { width: 87.5%   }
+.col-custom-md-22 { width: 91.667% }
+.col-custom-md-23 { width: 95.833% }
+.col-custom-md-24 { width: 100% }
+}
+
+@media (min-width: 768px) {
+  .col-custom-sm-1, .col-custom-sm-2, .col-custom-sm-3, .col-custom-sm-4, .col-custom-sm-5, .col-custom-sm-6, .col-custom-sm-7, .col-custom-sm-8, .col-custom-sm-9, .col-custom-sm-10, .col-custom-sm-11, .col-custom-sm-12, .col-custom-sm-13, .col-custom-sm-14, .col-custom-sm-15, .col-custom-sm-16, .col-custom-sm-17, .col-custom-sm-18, .col-custom-sm-19, .col-custom-sm-20, .col-custom-sm-21, .col-custom-sm-22, .col-custom-sm-23, .col-custom-sm-24  {
+    float: left;
+  }
+  
+.col-custom-sm-1 { width: 4.167%  }
+.col-custom-sm-2 { width: 8.333%  }
+.col-custom-sm-3  { width: 12.5%   }
+.col-custom-sm-4  { width: 16.667% }
+.col-custom-sm-5  { width: 20.833% }
+.col-custom-sm-6  { width: 25%     }
+.col-custom-sm-7  { width: 29.167% }
+.col-custom-sm-8  { width: 33.333% }
+.col-custom-sm-9  { width: 37.5%   }
+.col-custom-sm-10 { width: 41.667% }
+.col-custom-sm-11 { width: 45.833% }
+.col-custom-sm-12 { width: 50%     }
+.col-custom-sm-13 { width: 54.167% }
+.col-custom-sm-14 { width: 58.333% }
+.col-custom-sm-15 { width: 62.5%   }
+.col-custom-sm-16 { width: 66.667% }
+.col-custom-sm-17 { width: 70.833% }
+.col-custom-sm-18 { width: 75%     }
+.col-custom-sm-19 { width: 79.167% }
+.col-custom-sm-20 { width: 83.333% }
+.col-custom-sm-21 { width: 87.5%   }
+.col-custom-sm-22 { width: 91.667% }
+.col-custom-sm-23 { width: 95.833% }
+.col-custom-sm-24 { width: 100% }
+
+}
