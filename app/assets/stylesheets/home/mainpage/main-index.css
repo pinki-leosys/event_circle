@@ -3,6 +3,14 @@ body{
 background-image:url('/assets/body-back.jpg');
 background-repeat:repeat;
 }
+/*-----Custom button---*/
+.new{
+background-color: black;
+color: rgb(224, 160, 94);
+font-weight: bold;
+font-size: 12px;
+border: 4px inset rgb(158, 168, 194)}
+
 /*------------ Header ---------------------*/
 header {
 background-image:url('/assets/header-back.jpg');
@@ -26,7 +34,7 @@ float:right;
 
 /*------------ Top Nav ---------------------*/
 .main-nav{
-margin:20px 0 0 0;
+margin:5px 0 0 0;
 float:right;
  }
 .main-nav ul{
@@ -130,7 +138,7 @@ min-height:288px;
 }
 .banner{
 min-height:288px;
-background:#a1a7bf;
+/* background:#a1a7bf; */
 }
 .middle-bar{
 background-image:url('/assets/middle-bar.png');
@@ -398,6 +406,15 @@ text-decoration:none;
 }
 .main-nav ul li a.selected{
 color:#fff;
+}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    /*border-radius: 4px;
+    color: #555555;
+    display: inline-block;
+    font-size: 14px;*/
+    height: 30px;
+
 }
 
 /*------------ Middle Nav ---------------------*/

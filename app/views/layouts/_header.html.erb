@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
 <meta charset = "UTF-8">
 <title>Event Circle - Dashboard</title>
@@ -19,7 +18,7 @@
 				
 				<div class="col-md-7">
 					<div class="signup martop2">
-						<form action="/dash_board" method="post" class="form-inline new_user" role="form" accept-charset="UTF-8"  id="new_user"  >
+						<form action="/dash_board" method="post" class="form-inline" role="form" accept-charset="UTF-8"    >
 
 <div>
 								<input name="utf8" type="hidden" value="&#x2713;" />
@@ -27,18 +26,18 @@
 							</div>
 
 						  <div class="form-group">
-                                                     <input type="email" name= 'user[email]'class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+                                                     <input type="email" name= 'user[email]'class="form-control input-sm" placeholder="Enter email" style="height:30px">
 						  </div>
 						  <div class="form-group">
-							<input type="password" name='user[password]' class="form-control" id="exampleInputPassword2" placeholder="Password">
+							<input type="password" name='user[password]' class="form-control input-sm" placeholder="Password" style="height:30px">
 						  </div>
-						<select class="form-control" name ="role">
+						<select class="form-control input-sm" name ="role">
 						  <option value="">Select</option>
 						  <option value="guest">Guest</option>
 						  <option value="host">Host</option>	
 					          <option value="admin">Admin</option>
 						</select>
-						  <button type="submit" class="btn btn-default">Sign in</button>
+						  <button type="submit" class="btn btn-default input-sm">Sign in</button>
 						  						<%= link_to "Forgot Password", new_user_password_path %>
 
 						</form>

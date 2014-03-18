@@ -17,12 +17,12 @@
   <%= f.email_field :email, :autofocus => true %></div>
 
 <div>
-
   <%= recaptcha_tags %>
+  <%= f.submit "Submit", class: "btn-sm new" %>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
+</div>
 <% end %>
-						</div>
+						
 					</div>
 				</div>
 			</div>

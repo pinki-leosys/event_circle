@@ -19,40 +19,42 @@
       <div class="content-section">
       <h2 class="title">Dashboard</h2>
 
-      <p>
-  <b>Title:</b>
-  <%= @event.title %>
-</p>
 
-<p>
-  <b>Description:</b>
-  <%= @event.description %>
-</p>
 
-<p>
-  <b>Venue:</b>
-  <%= @event.venue %>
-</p>
-
-<p>
-  <b>Event start date:</b>
-  <%= @event.event_start_date %>
-</p>
-
-<p>
-  <b>Event end date:</b>
-  <%= @event.event_end_date %>
-</p>
-
-<% if can? :edit,@event %>
-<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-primary" %> 
-<% end %>
+      <div class="row">
+          <div class="col-md-16 col-md-offset-1">
+            <table class="table table-striped box-border">
+              <thead class="box-head" >
+                  <tr><td colspan="2"><p><strong>Purposeful Parenting 101 &trade; Workshop</strong></p></tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="2"><strong>Description:</strong></td></tr>
+                <tr><td colspan="2">  <%= @event.description %></td></tr>
+                <tr><td><strong>Start Date:</strong><span>  <%= @event.event_start_date %>
+</span></td>
+                                <td><strong>End Date:</strong><span>  <%= @event.event_end_date %>
+</span>
+                                </tr>
+                <tr><td><strong>Start Time</strong><span> <%= @event.event_start_date %></span></td><td><strong>End Time</strong><span> <%= @event.event_end_date %></span></td></tr>
+                <tr><td colspan="2"><strong>Location:</strong></td></tr>
+                <tr><td colspan="2">  <%= @event.venue %>
+</td></tr>
+                <tr><td colspan="2"><strong>Host Name:</strong></td></tr>
+                <tr><td colspan="2">  <%= @event.user.uname %> <%= @event.user.last_name %>
+</td></tr>
+                <tr><td colspan="2">
+<tr>
        <% if current_user.is_registered?(@event) %>
-          <td><%= link_to 'Registered', '#',class: "btn btn-danger disabled"%></td>
+         <td colspan="2"><%= link_to 'Registered','#',class: "disabled btn-sm new "%></td>
       <% else %>
-          <td><%= link_to 'Register', register_event_path(@event), class: "btn btn-success"%></td>
+         <td colspan="2"><%= link_to 'Register', register_event_path(@event), class: "btn-sm new"%></td>
       <% end %>
-      </div>
-    </div>
-    </div>
+              </tbody>
+             </table>
+          </div>
+      </tr>
+          
+        </div> <!-- Row closing -->   
+        <div class="clearfix"></div>
 
+     
