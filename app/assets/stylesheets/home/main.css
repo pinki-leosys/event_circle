@@ -79,7 +79,7 @@ padding:1px 0 0 5px;
 /* border-top:10px solid #9fa3b9; */
 }
 table thead:hover {
-    background-color: #ff0;
+    background-color: grey;
 }
 .title{
 font-size: 26px;
