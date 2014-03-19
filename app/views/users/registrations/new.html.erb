@@ -1,31 +1,210 @@
-<h2>Sign up</h2>
+<%= render partial: "layouts/header"%>
+    
+<div class="clearfix"></div>
+  <div class="banner-back">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="about-box">
+            <div class="about-box-head">
+              <span class="title-2">Guest <span class="highlight-1">Registration</span></span>
+            </div>
+            <div class="col-md-4 martop3  form-horizontal">
+            <%= form_tag(user_registration_path,:method => 'post') %>
+           <div style="margin:0;padding:0;display:inline">
+             <input name="utf8" type="hidden" value="&#x2713;" />
+             <input name="authenticity_token" type="hidden" value="9aLTHtDkO7cZfKG8y703NtuEDb3Xg5UuVz+KvUK3au0=" />
+            </div>                
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+            <div class="control-group">
+              <label for="inputpagetitle" class="control-label">First Name :</label>
+              <div class="controls">
+                <input type="text" class="form-control-1" id="user[first_name]" name="user[first_name]">
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="inputlogo" class="control-label">Password :</label>
+              <div class="controls">
+                <input type="password" class="form-control-1" id="user[password]" name="user[password]">
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="inputlogo" class="control-label">Street Address :</label>
+              <div class="controls">
+                <input type="text" class="form-control-1" id="address[address]" name="address[address]">
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="inputlogo" class="control-label">Zip Code :</label>
+              <div class="controls">
+                <input type="text" class="form-control-1" id="address[zipcode]" name="address[zipcode]">
+              </div>
+            </div>
+                
+              <!--  <div class="control-group">
+                <div class="controls">
+                <img src="../img/captcha.png">
+                </div>
+                </div> -->           
+           <!--    </form> -->
+            </div>
+            
+          <div class="col-md-3 martop3  form-horizontal">
+  <!--         <form class="form-horizontal" accept-charset="UTF-8" action="/users/sign_up" method="post"> -->
+            <div style="margin:0;padding:0;display:inline">
+              <input name="utf8" type="hidden" value="&#x2713;" />
+              <input name="authenticity_token" type="hidden" value="9aLTHtDkO7cZfKG8y703NtuEDb3Xg5UuVz+KvUK3au0=" />
+            </div>                
+            <div class="control-group">
+              <label for="inputpagetitle" class="control-label">Last Name :</label>
+              <div class="controls">
+                <input type="text" class="form-control-1" id="user[last_name]" name="user[last_name]">
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="inputlogo" class="control-label">Verify Password :</label>
+                <div class="controls">
+                  <input type="password" class="form-control-1" id="user[password_confirmation]" name="user[password_confirmation]">
+                </div>
+            </div>
+            <div class="control-group">
+              <label for="inputlogo" class="control-label">City :</label>
+              <div class="controls">
+                <input type="text" class="form-control-1" id="address[city]" name="address[city]">
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="inputlogo" class="control-label">phone :</label>
+                <div class="controls">
+                  <input type="text" class="form-control-1" id="address[phone_no]" name="address[phone_no]">
+                </div>
+            </div>
+              <!--  <div class="control-group">
+                <label for="inputlogo" class="control-label">
+                Enter the words to the left
+                </label>
+                <div class="controls">
+                <input type="text" class="form-control-1" id="">
+                </div>
+                </div> -->
+              
+          
+      <!--         </form> -->
+            </div>
+          
+            <div class="col-md-3 martop3  form-horizontal">
+    <!--           <form class="form-horizontal" accept-charset="UTF-8" action="/users/sign_up" method="post"> -->
+                <div style="margin:0;padding:0;display:inline">
+                  <input name="utf8" type="hidden" value="&#x2713;" />
+                  <input name="authenticity_token" type="hidden" value="9aLTHtDkO7cZfKG8y703NtuEDb3Xg5UuVz+KvUK3au0=" />
+                </div>                
+                <div class="control-group">
+                  <label for="inputpagetitle" class="control-label">Email :</label>
+                  <div class="controls">
+                    <input type="text" class="form-control-1" id="user[email]" name="user[email]">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label for="inputlogo" class="control-label">Role:</label>
+                  <div class="controls">
+                    <select class="form-control-1" name="role[role_id]">
+                      <option value="">Select</option>
+                      <option value="host">Host</option>
+                      <option value="guest">Guest</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label for="inputlogo" class="control-label">State :</label>
+                  <div class="controls">
+                    <select class="form-control-1" name="address[state]">
+                      <option value="">Select</option>
+                      <option value="Alabama">Alabama</option>
+                      <option value="Alaska">Alaska</option>
+                      <option value="Arizona">Arizona</option>
+                      <option value="Arkansas">Arkansas</option>
+                      <option value="California">California</option>
+                      <option value="Colorado">Colorado</option>
+                      <option value="Connecticut">Connecticut</option>
+                      <option value="Delaware">Delaware</option>
+                      <option value="Florida">Florida</option>
+                      <option value="Georgia">Georgia</option>
+                      <option value="Hawaii">Hawaii</option>
+                      <option value="Idaho">Idaho</option>
+                       <option value="Illinois">Illinois</option>
+                      <option value="Indiana">Indiana</option>
+                      <option value="Iowa">Iowa</option>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+                      <option value="Kansas">Kansas</option>
+                      <option value="Kentucky[C]">Kentucky[C]</option>
+                      <option value="Louisiana">Louisiana</option>
 
-   <div><%= f.label :uname %><br />
-  <%= f.text_field :uname %></div>
-
-   <div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></div>
-
- <div><%= f.label :last_name %><br />
-  <%= f.text_field :uname %></div>
-
- <div><%= f.label :last_name %><br />
-  <%= f.text_field :uname %></div>
+                      <option value="Maine">Maine</option>
+                      <option value="Maryland">Maryland</option>
+                      <option value="Massachusetts[D]">Massachusetts[D]</option>
 
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+                      <option value="Michigan">Michigan</option>
+                      <option value="Minnesota">Minnesota</option>
+                      <option value="Mississippi">Mississippi</option>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+                      <option value="Missouri">Missouri</option>
+                      <option value="Montana">Montana</option>
+                      <option value="Nebraska">Nebraska</option>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+                      <option value="Nevada">Nevada</option>
+                      <option value="New Hampshire">New Hampshire</option>
+                      <option value="New Jersey">New Jersey</option>
 
-<%= render "users/shared/links" %>
+                    <option value="New Mexico">New Mexico</option>
+                      <option value="New York">New York</option>
+                      <option value="North Carolina">North Carolina</option>
+
+                      <option value="North Dakota">North Dakota</option>
+                      <option value="Ohio">Ohio</option>
+                      <option value="Oklahoma">Oklahoma</option>
+                      <option value="Oregon">Oregon</option>
+                      <option value="Pennsylvania[E]">Pennsylvania[E]</option>
+                      <option value="Rhode Island[F]">Rhode Island[F]</option>
+                      <option value="South Carolina">South Carolina</option>
+                      <option value="South Dakota">South Dakota</option>
+                      <option value="Tennessee">Tennessee</option>
+                      <option value="Texas">Texas</option>
+                      <option value="Utah">Utah</option>
+                      <option value="Vermont">Vermont</option>
+                      <option value="Virginia[G]">Virginia[G]</option>
+                      <option value="Washington">Washington</option>
+                      <option value="West Virginia">West Virginia</option>
+                      <option value="Wisconsin">Wisconsin</option>
+                      <option value="Wyoming">Wyoming</option>
+                    </select>
+                  </div>
+                </div>
+                
+     <!--          </form> -->
+            </div>
+            
+            <div class="clearfix"></div>
+            
+            <div class="col-md-12 martop1" style="background:#f1f4f9;">
+              <div class="signup pull-left form-inline">
+               <!--  <form class="form-inline" role="form"> -->
+              <div class="form-group">
+         <%= recaptcha_tags :public_key => '6LcjSPASAAAAALaO83IC9IX7TfvdYGN2vGs6sjIZ' %>
+              </div>            
+              <button type="submit" class="btn btn-sm new">Submit</button>
+         <!--    </form> -->
+          </div>
+          
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+    
+  <%= render partial: "layouts/content"%>
+
+  
+  <%= render partial: "layouts/footer"%>
