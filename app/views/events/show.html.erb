@@ -30,12 +30,12 @@
               <tbody>
                 <tr><td colspan="2"><strong>Description:</strong></td></tr>
                 <tr><td colspan="2">  <%= @event.description %></td></tr>
-                <tr><td><strong>Start Date:</strong><span>  <%= @event.event_start_date %>
+                <tr><td><strong>Start Date:</strong><span>  <%= @event.event_start_date.to_date %>
 </span></td>
-                                <td><strong>End Date:</strong><span>  <%= @event.event_end_date %>
+                                <td><strong>End Date:</strong><span>  <%= @event.event_end_date.to_date %>
 </span>
                                 </tr>
-                <tr><td><strong>Start Time</strong><span> <%= @event.event_start_date %></span></td><td><strong>End Time</strong><span> <%= @event.event_end_date %></span></td></tr>
+                <tr><td><strong>Start Time</strong><span> <%= @event.event_start_date.strftime("%I:%M%p") %></span></td><td><strong>End Time</strong><span> <%= @event.event_end_date.strftime("%I:%M%p") %></span></td></tr>
                 <tr><td colspan="2"><strong>Location:</strong></td></tr>
                 <tr><td colspan="2">  <%= @event.venue %>
 </td></tr>
