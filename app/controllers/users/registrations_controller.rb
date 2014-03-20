@@ -5,23 +5,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
   include BCrypt
 
   def new    
-    @user= User.new
+   
     @address = Address.new
     super
   end
 
   def create
-      @user = User.new(params[:user])
+      build_resource(sign_up_params)
       @address = Address.new(params[:address])
       respond_to do |format|
-        if @user.save
-          @user.add_role params[:role][:role_id]
-          @address.user = @user
+        if resource.save
+          resource.add_role params[:role][:role_id]
+          @address.user = resource
           @address.save
-          UserMailer.admin_user_pending_mail(@user).deliver if params[:role][:role_id]=="host"
+          UserMailer.admin_user_pending_mail(resource).deliver if params[:role][:role_id]=="host"
           #UserMailer.confirm_account_activation(@user).deliver
-          format.html { redirect_to root_url, notice: 'You are registered successfully. Please check your email to login.' }
-          format.json { head :no_content }
+            set_flash_message :notice, :signed_up if is_flashing_format?
+          sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
         else
           format.html { render action: "new" }
           format.json { render json: @user.errors, status: :unprocessable_entity }

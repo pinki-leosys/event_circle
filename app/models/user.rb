@@ -13,12 +13,6 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :uname,:email, :password, :password_confirmation, :remember_me, :mobile_no
   # attr_accessible :title, :body
 
-  validates :first_name, :presence => { :message => "Please enter first name" }
-  validates :last_name, presence: true
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniqueness_of :email
 
   def is_registered?(event)
     registered_events.exists?(event)
