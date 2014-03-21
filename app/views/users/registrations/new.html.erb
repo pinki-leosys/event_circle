@@ -1,45 +1,44 @@
 <%= render partial: "layouts/header"%>
-    
 <div class="clearfix"></div>
   <div class="banner-back">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-            <div class="about-box">
+          <div class="about-box">
             <div class="about-box-head">
-              <span class="title-2">Guest <span class="highlight-1">Registration</span></span>
-            </div>
-            <div class="col-md-4 martop3  form-horizontal">
-            <%= form_tag(user_registration_path,:method => 'post') %>
-           <div style="margin:0;padding:0;display:inline">
-             <input name="utf8" type="hidden" value="&#x2713;" />
-             <input name="authenticity_token" type="hidden" value="9aLTHtDkO7cZfKG8y703NtuEDb3Xg5UuVz+KvUK3au0=" />
-            </div>                
+              <span class="title-2">Guest <span class="highlight-1">Registration</span>
+            </div>          
+              <form accept-charset="UTF-8" action="/users" method="post" validate="true" id="user_new">
+                <div class="col-md-4 martop3  form-horizontal">
+                <div style="margin:0;padding:0;display:inline">
+                  <input name="utf8" type="hidden" value="&#x2713;" />
+                  <input name="authenticity_token" type="hidden" value="9aLTHtDkO7cZfKG8y703NtuEDb3Xg5UuVz+KvUK3au0=" />
+                </div>                
 
-            <div class="control-group">
-              <label for="inputpagetitle" class="control-label">First Name :</label>
-              <div class="controls">
-                <input type="text" class="form-control-1" id="user[first_name]" name="user[first_name]">
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="inputlogo" class="control-label">Password :</label>
-              <div class="controls">
-                <input type="password" class="form-control-1" id="user[password]" name="user[password]">
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="inputlogo" class="control-label">Street Address :</label>
-              <div class="controls">
-                <input type="text" class="form-control-1" id="address[address]" name="address[address]">
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="inputlogo" class="control-label">Zip Code :</label>
-              <div class="controls">
-                <input type="text" class="form-control-1" id="address[zipcode]" name="address[zipcode]">
-              </div>
-            </div>
+                <div class="control-group">
+                  <label for="inputpagetitle" class="control-label">First Name :</label>
+                  <div class="controls">
+                    <input type="text" class="form-control-1" id="user[first_name]" name="user[first_name]">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label for="inputlogo" class="control-label">Password :</label>
+                  <div class="controls">
+                    <input type="password" class="form-control-1" id="user[password]" name="user[password]">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label for="inputlogo" class="control-label">Street Address :</label>
+                  <div class="controls">
+                    <input type="text" class="form-control-1" id="address[address]" name="address[address]">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label for="inputlogo" class="control-label">Zip Code :</label>
+                  <div class="controls">
+                    <input type="text" class="form-control-1" id="address[zipcode]" name="address[zipcode]">
+                  </div>
+                </div>
                 
               <!--  <div class="control-group">
                 <div class="controls">
@@ -97,13 +96,16 @@
                 <div style="margin:0;padding:0;display:inline">
                   <input name="utf8" type="hidden" value="&#x2713;" />
                   <input name="authenticity_token" type="hidden" value="9aLTHtDkO7cZfKG8y703NtuEDb3Xg5UuVz+KvUK3au0=" />
-                </div>                
+                </div>  
+                <div class="field">              
                 <div class="control-group">
-                  <label for="inputpagetitle" class="control-label">Email :</label>
+                    
+                    <label for="inputpagetitle" class="control-label">Email :</label>
                   <div class="controls">
-                    <input type="text" class="form-control-1" id="user[email]" name="user[email]">
+                        <input type="text" class="form-control-1" id="user[email]" name="user[email]" validate="true">
                   </div>
                 </div>
+              </div>
                 <div class="control-group">
                   <label for="inputlogo" class="control-label">Role:</label>
                   <div class="controls">
@@ -190,14 +192,15 @@
               <div class="signup pull-left form-inline">
                <!--  <form class="form-inline" role="form"> -->
               <div class="form-group">
-         <%= recaptcha_tags :public_key => '6LcjSPASAAAAALaO83IC9IX7TfvdYGN2vGs6sjIZ' %>
+         <%= recaptcha_tags %>
               </div>            
               <button type="submit" class="btn btn-sm new">Submit</button>
          <!--    </form> -->
+
           </div>
           
           </div>
-          
+          </form>
           </div>
         </div>
       </div>
