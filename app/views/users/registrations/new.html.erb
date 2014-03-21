@@ -5,105 +5,85 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-            <div class="about-box">
+            <div class="registration-box">
             <div class="about-box-head">
               <span class="title-2">Guest <span class="highlight-1">Registration</span></span>
             </div>
+          <form method="post" action="/users" accept-charset="UTF-8">
             <div class="col-md-4 martop3  form-horizontal">
-            <%= form_tag(user_registration_path,:method => 'post') %>
-           <div style="margin:0;padding:0;display:inline">
-             <input name="utf8" type="hidden" value="&#x2713;" />
-             <input name="authenticity_token" type="hidden" value="9aLTHtDkO7cZfKG8y703NtuEDb3Xg5UuVz+KvUK3au0=" />
-            </div>                
+              <div class="control-group">
+                <label class="control-label" for="inputpagetitle">First Name :</label>
+              <div class="controls">
+                <input id="user[first_name]" class="form-control-1" type="text" name="user[first_name]">
+             </div>
+           </div>
+          <div class="control-group">
+           <label class="control-label" for="inputlogo">Password :</label>
+           <div class="controls">
+            <input id="user[password]" class="form-control-1" type="password" name="user[password]">
+          </div>
+       </div>
+       <div class="control-group">
+        <label class="control-label" for="inputlogo">Street Address :</label>
+<div class="controls">
+<input id="address[address]" class="form-control-1" type="text" name="address[address]">
+</div>
+</div>
+<div class="control-group">
+<label class="control-label" for="inputlogo">Zip Code :</label>
+<div class="controls">
+<input id="address[zipcode]" class="form-control-1" type="text" name="address[zipcode]">
+</div>
+</div>
 
+<div class="clearfix"> </div>
+            <div class="signup text-center form-inline">
+              <%= recaptcha_tags %>     
+            </div>
+</div>
+<div class="col-md-4 martop3  form-horizontal">                 
             <div class="control-group">
-              <label for="inputpagetitle" class="control-label">First Name :</label>
+              <label class="control-label" for="inputpagetitle">Last Name :</label>
               <div class="controls">
-                <input type="text" class="form-control-1" id="user[first_name]" name="user[first_name]">
+                <input type="text" name="user[last_name]" id="user[last_name]" class="form-control-1">
               </div>
             </div>
             <div class="control-group">
-              <label for="inputlogo" class="control-label">Password :</label>
-              <div class="controls">
-                <input type="password" class="form-control-1" id="user[password]" name="user[password]">
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="inputlogo" class="control-label">Street Address :</label>
-              <div class="controls">
-                <input type="text" class="form-control-1" id="address[address]" name="address[address]">
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="inputlogo" class="control-label">Zip Code :</label>
-              <div class="controls">
-                <input type="text" class="form-control-1" id="address[zipcode]" name="address[zipcode]">
-              </div>
-            </div>
-                
-              <!--  <div class="control-group">
+              <label class="control-label" for="inputlogo">Verify Password :</label>
                 <div class="controls">
-                <img src="../img/captcha.png">
+                  <input type="password" name="user[password_confirmation]" id="user[password_confirmation]" class="form-control-1">
                 </div>
-                </div> -->           
-           <!--    </form> -->
             </div>
-            
-          <div class="col-md-3 martop3  form-horizontal">
-  <!--         <form class="form-horizontal" accept-charset="UTF-8" action="/users/sign_up" method="post"> -->
-            <div style="margin:0;padding:0;display:inline">
-              <input name="utf8" type="hidden" value="&#x2713;" />
-              <input name="authenticity_token" type="hidden" value="9aLTHtDkO7cZfKG8y703NtuEDb3Xg5UuVz+KvUK3au0=" />
+            <div class="control-group">
+              <label class="control-label" for="inputlogo">City :</label>
+              <div class="controls">
+                <input type="text" name="address[city]" id="address[city]" class="form-control-1">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputlogo">Phone No :</label>
+              <div class="controls">
+                <input type="text" name="address[phone_no]" id="address[phone_no]" class="form-control-1">
+              </div>
+            </div>
+            <br/>
+            <br/>
+            <button class="btn-sm new" type="submit">Submit</button>
+
+</div>
+<div class="col-md-4 martop3  form-horizontal">
+
+           <div style="margin:0;padding:0;display:inline">
+             <input type="hidden" name="utf8" value="✓">
+             <input type="hidden" name="authenticity_token" value="h4iN59LTLP1qbHozw++iJ5x16lv+W1A5uw0TQmRPhBc=">
             </div>                
             <div class="control-group">
-              <label for="inputpagetitle" class="control-label">Last Name :</label>
+              <label class="control-label" for="inputlogo">Email :</label>
               <div class="controls">
-                <input type="text" class="form-control-1" id="user[last_name]" name="user[last_name]">
+                <input type="text" name="user[email]" id="user[email]" class="form-control-1">
               </div>
             </div>
-            <div class="control-group">
-              <label for="inputlogo" class="control-label">Verify Password :</label>
-                <div class="controls">
-                  <input type="password" class="form-control-1" id="user[password_confirmation]" name="user[password_confirmation]">
-                </div>
-            </div>
-            <div class="control-group">
-              <label for="inputlogo" class="control-label">City :</label>
-              <div class="controls">
-                <input type="text" class="form-control-1" id="address[city]" name="address[city]">
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="inputlogo" class="control-label">phone :</label>
-                <div class="controls">
-                  <input type="text" class="form-control-1" id="address[phone_no]" name="address[phone_no]">
-                </div>
-            </div>
-              <!--  <div class="control-group">
-                <label for="inputlogo" class="control-label">
-                Enter the words to the left
-                </label>
-                <div class="controls">
-                <input type="text" class="form-control-1" id="">
-                </div>
-                </div> -->
-              
-          
-      <!--         </form> -->
-            </div>
-          
-            <div class="col-md-3 martop3  form-horizontal">
-    <!--           <form class="form-horizontal" accept-charset="UTF-8" action="/users/sign_up" method="post"> -->
-                <div style="margin:0;padding:0;display:inline">
-                  <input name="utf8" type="hidden" value="&#x2713;" />
-                  <input name="authenticity_token" type="hidden" value="9aLTHtDkO7cZfKG8y703NtuEDb3Xg5UuVz+KvUK3au0=" />
-                </div>                
-                <div class="control-group">
-                  <label for="inputpagetitle" class="control-label">Email :</label>
-                  <div class="controls">
-                    <input type="text" class="form-control-1" id="user[email]" name="user[email]">
-                  </div>
-                </div>
+   
                 <div class="control-group">
                   <label for="inputlogo" class="control-label">Role:</label>
                   <div class="controls">
@@ -181,23 +161,19 @@
                   </div>
                 </div>
                 
-     <!--          </form> -->
-            </div>
-            
-            <div class="clearfix"></div>
-            
+    
             <div class="col-md-12 martop1" style="background:#f1f4f9;">
-              <div class="signup pull-left form-inline">
-               <!--  <form class="form-inline" role="form"> -->
-              <div class="form-group">
-         <%= recaptcha_tags :public_key => '6LcjSPASAAAAALaO83IC9IX7TfvdYGN2vGs6sjIZ' %>
-              </div>            
-              <button type="submit" class="btn btn-sm new">Submit</button>
-         <!--    </form> -->
+              
+
+         
+
           </div>
-          
           </div>
+        </form>
+
           
+
+          </div>
           </div>
         </div>
       </div>
@@ -208,3 +184,19 @@
 
   
   <%= render partial: "layouts/footer"%>
+<style>
+.form-horizontal .control-group{
+margin-bottom:12px;
+}
+
+.form-horizontal .control-label {
+    float: left;
+    padding-top: 5px;
+    text-align: right;
+    width: 135px;
+}
+
+.form-horizontal .controls {
+    margin-left: 145px;
+}
+</style>
