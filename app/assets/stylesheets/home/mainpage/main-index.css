@@ -34,7 +34,7 @@ float:right;
 
 /*------------ Top Nav ---------------------*/
 .main-nav{
-margin:30px 0 0 0;
+margin:4px 0 0 0;
 float:right;
  }
 .main-nav ul{
@@ -254,6 +254,34 @@ border: 2px solid #ededf3;
 .about-box-content{
 padding:10px;
 }
+/*------------ Registration ---------------------*/
+
+.registration-box{
+width:100%;
+min-height:355px;
+background:#fff;
+border: 2px solid #ededf3;
+}
+.registration-box-content{
+padding:10px;
+}
+
+.form-horizontal .control-group{
+margin-bottom:12px;
+}
+
+.form-horizontal .control-label {
+    float: left;
+    padding-top: 5px;
+    text-align: right;
+    width: 135px;
+}
+
+.form-horizontal .controls {
+    margin-left: 145px;
+}
+
+
 
 @media (min-width: 768px) and (max-width:1024px)  {
 .logo{
