@@ -1,9 +1,8 @@
-<%if @role == "host"%>  <!-- for HOST -->
-							<div class="some">
+	<div class="some">
 				<div class="header1 fixed" style ="float:left;margin:8px">
 						<table class="table table-striped box-border table-dummy">
 						   <thead class="box-head">
-								  <tr><td colspan="3"><strong>Events <span style="color:#e06d21;">Published By You</span></strong></td></tr>
+								  <tr><td colspan="3"><strong>Upcoming Hosted <span style="color:#e06d21;">Events</span></strong></td></tr>
 								  
 							</thead>
 						
@@ -13,36 +12,41 @@
 									<td><strong>Venue</strong></td>
 									<td><strong>Start Date</strong></td>
 								</tr>
-							<% @events_published_by_you.to_enum.with_index(1) do |event,i |%>
+								<% @current_host_events.to_enum.with_index(1) do |event,i |%>
 								<tr>
 									<td><%= event.title %></td>
 									<td><%= event.venue %></td>
-									<td><%= event.event_start_date %></td>
+									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
 								</tr>
 								<% break if i==3 %>
 								<% end %>
 						  </tbody>
 						 </table>
 
-						<table id="events_published_by_you" class="table table-striped box-border table-main display" data-source="<%= events_url(format: "json") %>" style="display:none">
+				
+
+<table id="events_registered" class="table table-striped box-border table-main display" data-source="/current_host_events.json" style="display:none">
   <thead>
     <tr>
       <th>Title</th>
       <th>Venue</th>
       <th>Start Date</th>
       <th>End Date</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
   </tbody>
 </table>
 
+
+
 					</div>
 					<div class="header1 fixed" style ="float:left;margin:8px">
 						<table class="table table-striped box-border table-dummy">
 						   <thead class="box-head">
 							  <tr>
-								<tr><td colspan="3"><strong>Events <span style="color:#e06d21;">Need To Publish</span></strong></td></tr>
+								<tr><td colspan="3"><strong>Hosted <span style="color:#e06d21;">Events</span></strong></td></tr>
 							  </tr>
 						   </thead>
 						   <tbody>
@@ -51,11 +55,11 @@
 									<td><strong>Venue</strong></td>
 									<td><strong>Start Date</strong></td>
 								</tr>
-							<% @events_for_publish.to_enum.with_index(1) do |event,i |%>
+								<% @events_hosted.to_enum.with_index(1) do |event,i |%>
 								<tr>
 									<td><%= event.title %></td>
 									<td><%= event.venue %></td>
-									<td><%= event.event_start_date %></td>
+									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
 								</tr>
 								<% break if i==3 %>
 								<% end %>
@@ -63,23 +67,20 @@
 						 </table>
 
 
-						<table id="events_need_to_publish" class="table table-striped box-border table-main display" data-source="<%= events_url(format: "json") %>" style="display:none">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Venue</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+						<table id="events_running" class="table table-striped box-border table-main display" data-source="/events_hosted.json" style="display:none">
+ 									 <thead>
+   										 <tr>
+    									  <th>Title</th>
+      										<th>Venue</th>
+      										<th>Start Date</th>
+      										<th>End Date</th>
+      										<th></th>
+    										</tr>
+  										</thead>
+ 									 <tbody>
+  									</tbody>
+						</table>
+
 
 					</div>
 				</div> <!-- Row closing -->		
-
-
-
-				
-							<% end %>

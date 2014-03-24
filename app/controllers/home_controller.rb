@@ -3,12 +3,11 @@ class HomeController < ApplicationController
  
   def index
     @role = session[:role]
-  	@events_attended = current_user.registered_events     
-  	@current_events = Event.where(published: true)
-      # if @role =="host"
-  	   #  @events_for_publish = current_user.events.where(published: false)
-      #   @events_published_by_you = current_user.events.where(published: true)
-      # end
+  	@events_attended = current_user.registered_events.where("event_start_date < ?", Time.now)    
+  	@current_events = Event.where("event_start_date > ?", Time.now)
+    @events_hosted = current_user.events.where("event_start_date < ?", Time.now)
+    @current_host_events = current_user.events.where("event_start_date > ?", Time.now)
+
   end
   
   def about
