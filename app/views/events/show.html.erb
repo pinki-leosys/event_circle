@@ -8,7 +8,7 @@
     <div class="col-custom-md-3">
       <div class="left-nav">
         <ul>
-        <div class="selected"><li><%= link_to "Dash Board", root_path %></li></div>
+        <div class="selected"><li><%= link_to "Dashboard", root_path, style:"margin:-14px" %></li></div>
         <li><a href="#">The EC</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
@@ -30,9 +30,9 @@
               <tbody>
                 <tr><td colspan="2"><strong>Description:</strong></td></tr>
                 <tr><td colspan="2">  <%= @event.description %></td></tr>
-                <tr><td><strong>Start Date:</strong><span>  <%= @event.event_start_date.to_date %>
+                <tr><td><strong>Start Date:</strong><span>  <%= @event.event_start_date.strftime("%b %d,%Y") %>
 </span></td>
-                                <td><strong>End Date:</strong><span>  <%= @event.event_end_date.to_date %>
+                                <td><strong>End Date:</strong><span>  <%= @event.event_end_date.strftime("%b %d,%Y") %>
 </span>
                                 </tr>
                 <tr><td><strong>Start Time</strong><span> <%= @event.event_start_date.strftime("%I:%M%p") %></span></td><td><strong>End Time</strong><span> <%= @event.event_end_date.strftime("%I:%M%p") %></span></td></tr>

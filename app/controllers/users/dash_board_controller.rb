@@ -21,12 +21,12 @@ class Users::DashBoardController < Devise::SessionsController
         format.json { render json: ::EventsDatatable.new(view_context, current_user) }
       end
 	end
-	def events_published
+	def events_hosted
 	  respond_to do |format|
         format.json { render json: ::EventsDatatable.new(view_context, current_user) }
       end
 	end
-	def events_need_to_publish
+	def current_host_events
 	  respond_to do |format|
         format.html # index.html.erb
         format.json { render json: ::EventsDatatable.new(view_context, current_user) }

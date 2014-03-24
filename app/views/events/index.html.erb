@@ -1,7 +1,34 @@
-<h1>Listing events</h1>
- <%= link_to t('.new', :default => t("helpers.links.sign_out")),
-            destroy_user_session_path, :method => :delete,
-            :class => 'btn pull-right btn-primary' %>
+
+<%= render partial: "layouts/dash_board/header"%>
+
+
+
+<section>
+  <div class="container-admin">
+  <div class="row">
+    <div class="col-custom-md-3">
+      <div class="left-nav">
+        <ul>
+        <div class="selected"><li  ><%= link_to "Dashboard", root_path, style:"margin:-14px" %></li></div>
+        <li><a href="#">The EC</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-custom-md-21">
+      <div class="content-section">
+      <h2 class="title">Dashboard
+        <% if current_user.has_role?(:guest)||current_user.has_role?(:host) %>
+          <% if !current_user.has_role?(:host) %>
+            <%= link_to(" Become A Host", host_path, class: "btn btn-mini btn-primary",  style: 'float:right; margin-right:30px') %>
+          <% end %>
+          <% if !current_user.has_role?(:guest) %>
+            <%= link_to(" Become A Guest",guest_path, class: "btn btn-mini btn-primary",  style: 'float:right; margin-right:30px') %>
+          <% end %>
+        <% end %>
+      </h2>
+
 <table>
   <tr>
     <th>Title</th>
@@ -40,10 +67,18 @@
 </table>
 
 <br />
-<script>
- $(".test").click(function(){
-  alert("registered")
- })
-</script>
+
 <%= link_to 'New Event', new_event_path %>
 <%= link_to 'Back', root_path %>
+
+      <div class="clearfix"></div>
+      </div> <!-- Content-section closing -->
+    </div> <!-- Col-custom-21 closing -->
+  </div><!-- Main Row closing --> 
+    </div><!-- Container Admin closing -->  
+  </section>
+
+
+
+
+

@@ -22,8 +22,8 @@ private
       [
         h(event.title),
         h(event.venue),
-        h(event.event_start_date),
-        h(event.event_end_date),
+        h(event.event_start_date.strftime("%b %d,%Y")),
+        h(event.event_end_date.strftime("%b %d,%Y")),
         link_to("SHOW", event)
       ]
     end
@@ -41,20 +41,25 @@ private
   end
 
   def fetch_events
+    events= get_events
+    events = events.page(page).per_page(per_page)
+    @count=events.count
+      if params[:sSearch].present?
+        events = events.where("title like :search or venue like :search", search: "%#{params[:sSearch]}%")
+      end   
+      events
+  end
+
+  def get_events   
     if params[:action] == "events_attended"
-      events = @user.registered_events.order("#{sort_column} #{sort_direction}")
-      @count=events.count
-      events = events.page(page).per_page(per_page)
-      if params[:sSearch].present?
-        events = events.where("title like :search or venue like :search", search: "%#{params[:sSearch]}%")
-      end
-    else
-      events = Event.where(published: true).order("#{sort_column} #{sort_direction}")
-      events = events.page(page).per_page(per_page)
-      if params[:sSearch].present?
-        events = events.where("title like :search or venue like :search", search: "%#{params[:sSearch]}%")
-        @count=events.count
-      end
+      events = @user.registered_events.where("event_start_date < ?", Time.now).order("#{sort_column} #{sort_direction}")
+    elsif params[:action] == "current_events"
+      events = Event.where("event_start_date > ?", Time.now).order("#{sort_column} #{sort_direction}")
+    elsif params[:action] == "events_hosted"
+      events = @user.events.where("event_start_date < ?", Time.now)
+    else 
+      events = @user.events.where("event_start_date > ?", Time.now)
+      #params[:action] == "current_host_events"
     end
       events
   end
