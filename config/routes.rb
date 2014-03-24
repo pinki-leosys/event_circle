@@ -6,10 +6,10 @@ EventCircle::Application.routes.draw do
          get '/home' => "devise/sessions#new", :as => :new_user_session
          post '/dash_board' => 'users/dash_board#create', :as => :user_session
          get '/sign_out' => 'devise/sessions#destroy', :as => :destroy_user_session
-	 get '/user' => "users/registrations#new", :as => :sign_up
-         get '/events_registered' => 'users/dash_board#events_attended', :as => :events_registered
-         get '/events_published' => 'users/dash_board#events_published', :as => :events_published
-         get '/events_for_publish' => 'users/dash_board#events_need_to_publish', :as => :events_for_publish
+	       get '/user' => "users/registrations#new", :as => :sign_up
+         get '/events_attended' => 'users/dash_board#events_attended', :as => :events_registered
+         get '/events_hosted' => 'users/dash_board#events_hosted', :as => :events_published
+         get '/current_host_events' => 'users/dash_board#current_host_events', :as => :events_for_publish
          get '/current_events' => 'users/dash_board#current_events', :as => :current_events
          get '/host' => 'users/dash_board#become_host', :as => :host
          get '/guest' => 'users/dash_board#become_guest', :as => :guest
@@ -21,7 +21,7 @@ EventCircle::Application.routes.draw do
   end
   match  '/about_us'   => "home#about", as: :about_us
   match "home/:id/activate_user" => "home#activate_user", :as => "activate_user"
-  resources :events do
+  resources :events, only: :show do
     member do
       get 'register'
       get 'publish'
