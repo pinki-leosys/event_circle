@@ -19,7 +19,7 @@ EventCircle::Application.routes.draw do
          put '/users/password' => 'devise/passwords#update'
          get  '/about_us_dashbord'     => "users/dash_board#about_us_dashbord", as: :about_us_dashbord
          get  '/ec'     => "users/dash_board#the_ec", as: :ec
-         get  '/user_contact' => "users/dash_board#user_contact", as: :user_contact
+         get  '/user_contact' => "users/dash_board#user_contact", as: :contact_us
   end
   match  '/about_us'   => "home#about", as: :about_us
   match "home/:id/activate_user" => "home#activate_user", :as => "activate_user"
