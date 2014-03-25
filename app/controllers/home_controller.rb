@@ -13,4 +13,19 @@ class HomeController < ApplicationController
   def about
   end
 
+  def contact
+  end
+
+  def events
+  end
+
+  def host_event
+  end
+
+  def attend_event
+  end
+
+  def sponsor_event
+  end
+
 end
