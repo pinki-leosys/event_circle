@@ -17,15 +17,13 @@ EventCircle::Application.routes.draw do
          get '/users/password/new' => 'devise/passwords#new', as: :new_user_password
          get '/users/password/edit' => 'devise/passwords#edit', as: :edit_user_password
          put '/users/password' => 'devise/passwords#update'
-
+         get  '/about_us_dashbord'     => "users/dash_board#about_us_dashbord", as: :about_us_dashbord
+         get  '/ec'     => "users/dash_board#the_ec", as: :ec
+         get  '/user_contact' => "users/dash_board#user_contact", as: :user_contact
   end
-  match  '/about_us'     => "home#about", as: :about_us
-  match  '/about_us_dashbord'     => "events#about_us_dashbord", as: :about_us_dashbord
-  match  '/ec'     => "events#the_ec", as: :ec
-  match  '/user_contact' => "events#user_contact", as: :user_contact
-  match  '/events'       => "home#events", as: :events
-  match  '/contact_us'   => "home#contact", as: :contact_us
+  match  '/about_us'   => "home#about", as: :about_us
   match "home/:id/activate_user" => "home#activate_user", :as => "activate_user"
+    
   resources :events, only: :show do
     member do
       get 'register'

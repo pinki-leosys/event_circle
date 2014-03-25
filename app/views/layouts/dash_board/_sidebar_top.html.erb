@@ -1,0 +1,25 @@
+<%= render partial: "layouts/dash_board/header"%>
+
+	<section>
+	<div class="container-admin">
+	<div class="row">
+		<div class="col-custom-md-3">
+			<div class="left-nav">
+				<ul class="menu-ul">
+				<div class="test <%= 'selected' if params[:action] == 'index'%>"><li><%= link_to "Dashboard", root_path, style:"margin:-14px"%></li></div>
+				<div class="test <%= 'selected' if params[:action] == 'the_ec'%>">
+				  <li><a href="/ec"> The EC</a></li>
+			    </div>
+			    <div class="test <%= 'selected' if params[:action] == 'about_us_dashbord'%>">
+				  <li><a href='/about_us_dashbord'>About</a></li>
+				</div>
+				<div class="test <%= 'selected' if params[:action] == 'user_contact'%> ">
+				  <li><a href="/user_contact">Contact</a></li>
+		    	</div>
+				</ul>
+			</div>
+		</div>
+		
+		  
+
+			

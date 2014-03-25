@@ -106,12 +106,4 @@ class EventsController < ApplicationController
     end
   end
 
-  def user_contact
-  end
-
-  def about_us_dashbord
-  end
-
-  def the_ec
-  end
 end

@@ -56,5 +56,16 @@ class Users::DashBoardController < Devise::SessionsController
 			redirect_to root_path, :alert => "Problem in become a Guest please try later"
 		end
 	end
+
+    def user_contact
+
+    end
+
+    def about_us_dashbord
+
+    end
+
+    def the_ec
+    end
 	
 end

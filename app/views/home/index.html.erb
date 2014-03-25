@@ -1,27 +1,6 @@
-<%= render partial: "layouts/dash_board/header"%>
+<%= render partial: "layouts/dash_board/sidebar_top"%>
 
-	<section>
-	<div class="container-admin">
-	<div class="row">
-		<div class="col-custom-md-3">
-			<div class="left-nav">
-				<ul>
-				<div class="selected">
-				  <li><%= link_to "Dashboard", root_path, style:"margin:-14px;color:#aadbd0" %></li>
-				</div>
-				<div>
-				  <li><%= link_to "The EC", ec_path%></li>
-				</div>
-				<div>
-				  <li><%= link_to "About", about_us_dashbord_path %></li>
-				</div>
-				<div>
-				  <li><%= link_to "Contact", user_contact_path %></li>
-			    </div>
-				</ul>
-			</div>
-		</div>
-		<div class="col-custom-md-21">
+<div class="col-custom-md-21">
 			<div class="content-section">
 			<h2 class="title">Dashboard
 				<% if current_user.has_role?(:guest)||current_user.has_role?(:host) %>
@@ -33,72 +12,9 @@
 				  <% end %>
 				<% end %>
 			</h2>
-		     <% if @role=="guest"%>
-			<%= render partial: "layouts/dash_board/events_for_guest" %>
-			<% else %>
-			  <%= render partial: "layouts/dash_board/events_for_host" %>
-			  <% end %>
-
-			<div class="clearfix"></div>
-			</div> <!-- Content-section closing -->
-		</div> <!-- Col-custom-21 closing -->
-	</div><!-- Main Row closing -->	
-    </div><!-- Container Admin closing -->	
-	</section>
-	
-<style>
-
-.fixed{
-    width:45%;
-
-}
-
-.expand{
-    width: 80%;
-        
-}
-
-</style>
-
-<script>
-$(document).ready(function(){
-var a = 1;
-$(".header1").click(function(){
-	
-	if(false==$(this).hasClass('expand')){
-
-		$(".table-dummy").show();
-	    $(".table-main").hide();
-	    $(".dataTables_wrapper").hide();
-		$(this).children(".table-dummy").hide();
-		$(this).children(".table-main").show();
-		div = $(this).children('.dataTables_wrapper');
-
-		$(div).show().children(".table-main").show();
-
-$(".header1").addClass("fixed")
-$(".header1").removeClass("expand")
-$(this).addClass( "expand");
-
-$(this).children(".table-main").dataTable({
-    sPaginationType: "full_numbers",
-    bJQueryUI: true,
-    bProcessing: true,
-    bServerSide: true,
-    sAjaxSource: $(this).children(".table-main").data('source')
-  });
-
-	}
-		
-});
-});
-</script>
-
-<script>
-$("ul.test li a").click(function(){
-
-	$(".test").removeClass("selected");
-	$(this).addClass("selected")
-})
-
-</script>
+   <% if @role=="guest"%>
+	 <%= render partial: "layouts/dash_board/events_for_guest" %>
+	<% else %>
+	  <%= render partial: "layouts/dash_board/events_for_host" %>
+	<% end %>
+<%= render partial: "layouts/dash_board/sidebar_bottom"%>
