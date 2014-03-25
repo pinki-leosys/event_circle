@@ -9,10 +9,18 @@
     <div class="col-custom-md-3">
       <div class="left-nav">
         <ul>
-        <div class="selected"><li  ><%= link_to "Dashboard", root_path, style:"margin:-14px" %></li></div>
-        <li><a href="#">The EC</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <div class="selected test">
+          <li><%= link_to "Dashboard", root_path, style:"margin:-14px" %></li>
+        </div>
+        <div class="test">
+          <li><%= link_to "The EC", ec_path %></li>
+        </div>
+        <div class="test">
+          <li><%= link_to "About", about_us_dashbord_path %></li>
+        </div>
+        <div class="test">
+          <li><%= link_to "Contact", user_contact_path %></li>
+          </div>
         </ul>
       </div>
     </div>
