@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
   default to: Proc.new { User.pluck(:email) },
-          from: 'jayashrit@leotechnosoft.net'
+          from: 'mailer@event-circle.com'
 
   def event_invitation(user)
     @user = user
@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
 
   def admin_user_pending_mail(user)
     @user = user
-    mail(:to => 'jayashrit@leotechnosoft.net', :subject => 'A new user was signed up!!111')
+    mail(:to => 'mailer@event-circle.com', :subject => 'A new user was signed up!!111')
   end
 
   def new_user(user)
