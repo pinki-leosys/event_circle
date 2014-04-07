@@ -1,5 +1,7 @@
 EventCircle::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :users,:skip => [:sessions, :passwords], controllers: { sessions: "users/dash_board", passwords: "users/passwords",:registrations =>'users/registrations' }
 
    devise_scope :user do
@@ -22,14 +24,14 @@ EventCircle::Application.routes.draw do
          get  '/user_contact' => "users/dash_board#user_contact", as: :contact_us
   end
   match  '/about_us'   => "home#about", as: :about_us
-  match  '/events'       => "home#events", as: :events
+ # match  '/events'       => "home#events", as: :events
   match  '/contact_us'   => "home#contact", as: :contact_us
   match  '/host_event'     => "home#host_event", as: :host_event
   match  '/attend_event'     => "home#attend_event", as: :attend_event
   match  '/sponsor_event'     => "home#sponsor_event", as: :sponsor_event
   match "home/:id/activate_user" => "home#activate_user", :as => "activate_user"
     
-  resources :events, only: :show do
+  resources :events, :except => :index do
     member do
       get 'register'
       get 'publish'

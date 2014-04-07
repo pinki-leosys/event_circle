@@ -1,0 +1,142 @@
+
+
+<%= render partial: "layouts/dash_board/sidebar_top"%>
+
+<div class="col-custom-md-21">
+      <div class="content-section">
+      <h2 class="title">Dashboard
+      </h2>
+                 <div class="box-head">
+                  <tr><td colspan="4"> <strong>Create <span style="color:#e06d21;">Event</span></strong>
+  <div class="some"> </td></tr>
+                  
+              </div>
+     </div>
+
+
+  <div class="some">
+<div class="col-md-12 martop1  form-horizontal">  
+  <%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="control-group" style="margin-left:-105px" >
+     <label class="control-label" for="event_title">Title:</label>
+    <div class="controls" >
+      <%= f.text_field :title, class: "form-control"%>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.cktext_area :description %>
+  </div>
+</div>
+  <% @event.build_address %>
+  <%= f.fields_for :address do |form| %>
+
+<div class=" col-md-12 martop1  form-horizontal">
+
+   <div class="control-group">
+     <label class="control-label" for="event_address_street_address">Street address:</label>
+    <div class="controls" >
+      <input id="event_address_address" class="form-control" type="text" name="event[address_attributes][address]" >
+    </div>
+  </div>
+   <div class="control-group">
+     <label class="control-label" for="event_address_zipcode">Zip Code:</label>
+    <div class="controls" >
+      <input id="event_address_zipcode" class="form-control" type="text" name="event[address_attributes][zipcode]" >
+    </div>
+  </div>
+  <div class="control-group">
+     <label class="control-label" for="event_address_city">City:</label>
+    <div class="controls" >
+      <input id="event_address_city" class="form-control" type="text" name="event[address_attributes][city]" >
+    </div>
+  </div>
+       <div class="control-group">
+          <label class="control-label" for="event_address_state">State:</label>
+           <div class="controls" >
+             <input id="event_address_state" class="form-control" type="text" name="event[address_attributes][state]" >
+           </div>
+         </div>
+           <% end %>
+
+
+          <div class="control-group">
+                   <label class="control-label" for="event_state_date">Event Start's at:</label>
+                <div class='input-group date controls' id='datetimepicker1'>
+                   <input type='text' class="form-control" name="event[event_start_date]" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+          </div>
+         <div class="control-group">
+                   <label class="control-label" for="event_end_date">Event End's at:</label>
+                <div class='input-group date controls' id='datetimepicker2'>
+                    <input type='text' class="form-control" name="event[event_end_date]" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+          </div>
+
+  <div class="control-group" style= "margin-top:60px">
+    <%= f.submit class: "btn-sm new" %>
+  </div>
+
+   <div class="control-group">
+    <div class="controls" >
+      <input id="event_published" class="form-control" type="hidden" name="event[published]" value=true >
+    </div>
+    <%= f.submit "Or Save as Draft", class: "btn btn-primary pull-right" %>
+  </div>
+</div>
+<% end %>
+</div><!-- form horizontal-->
+
+ 
+<%= render partial: "layouts/dash_board/sidebar_bottom"%>
+
+<style>
+.registration-box{
+width:100%;
+min-height:355px;
+background:#fff;
+border: 2px solid #ededf3;
+}
+.registration-box-content{
+padding:10px;
+}
+
+.form-horizontal .control-group{
+margin-bottom:12px;
+}
+
+.form-horizontal .control-label {
+    float: left;
+    padding-top: 5px;
+    text-align: right;
+    width: 135px;
+}
+
+.form-horizontal .controls {
+    margin-left: 145px;
+}
+
+
+</style>
+
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+                $('#datetimepicker2').datetimepicker();                
+            });
+        </script>

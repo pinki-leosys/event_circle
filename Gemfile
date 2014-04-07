@@ -4,6 +4,9 @@ gem 'rails', '3.2.17'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'ckeditor', '4.0.4'
+gem 'carrierwave'
+gem 'mini_magick'
 
 gem 'mysql2', '0.3.15'
 gem 'rolify','3.4.0'
@@ -14,6 +17,8 @@ gem "therubyracer",'0.12.1'
 gem 'devise','3.2.3'
 gem 'will_paginate','3.0.5'
 gem "recaptcha", :require => "recaptcha/rails"
+gem 'momentjs-rails', '~> 2.5.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

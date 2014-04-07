@@ -13,7 +13,8 @@
               </thead>
               <tbody>
                 <tr><td colspan="2"><strong>Description:</strong></td></tr>
-                <tr><td colspan="2">  <%= @event.description %></td></tr>
+ 
+                <tr><td colspan="2">  <%= raw(@event.description) %></td></tr>
                 <tr><td><strong>Start Date:</strong><span>  <%= @event.event_start_date.strftime("%b %d,%Y") %>
 </span></td>
                                 <td><strong>End Date:</strong><span>  <%= @event.event_end_date.strftime("%b %d,%Y") %>
@@ -24,7 +25,7 @@
                 <tr><td colspan="2">  <%= @event.venue %>
 </td></tr>
                 <tr><td colspan="2"><strong>Host Name:</strong></td></tr>
-                <tr><td colspan="2">  <%= @event.user.uname %> <%= @event.user.last_name %>
+                <tr><td colspan="2">  <%#= @event.user.uname %> <%#= @event.user.last_name %>
 </td></tr>
 
 <tr>
@@ -37,8 +38,25 @@
              </table>
           </div>
       </tr>
-          
+
+  
         </div> <!-- Row closing -->   
         <div class="clearfix"></div>
 
      <%= render partial: "layouts/dash_board/sidebar_bottom"%>
+
+
+   <script>
+$('p').filter(function() {
+        return $.trim($(this).text()) === '' && $(this).children(':visible').length == 0
+    }).remove()
+
+</script>
+     <style>
+      td p img {
+        display:none;
+      }
+      td p object{
+        display:none;
+      }
+     </style>

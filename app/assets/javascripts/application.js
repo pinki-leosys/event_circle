@@ -15,4 +15,7 @@
 //= require dataTables/jquery.dataTables
 //= require jquery_ujs
 //= require bootstrap
+//= require moment
+//= require bootstrap-datetimepicker
+//= require ckeditor/init
 //= require_tree .
