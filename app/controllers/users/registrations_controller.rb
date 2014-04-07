@@ -14,6 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       respond_to do |format|
         if resource.save
           resource.add_role params[:role][:role_id]
+          resource.add_role :guest if params[:role][:role_id] != "guest"
           @address.user = resource
           @address.save
           UserMailer.admin_user_pending_mail(resource).deliver if params[:role][:role_id]=="host"

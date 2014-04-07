@@ -1,8 +1,8 @@
-	<div class="some">
+	<div class="row">
 				<div class="header1 fixed" style ="float:left;margin:8px">
 						<table class="table table-striped box-border table-dummy">
 						   <thead class="box-head">
-								  <tr><td colspan="3"><strong>Upcoming Hosted <span style="color:#e06d21;">Events</span></strong></td></tr>
+								  <tr><td colspan="3"><strong>Hosted <span style="color:#e06d21;">Events</span></strong></td></tr>
 								  
 							</thead>
 						
@@ -12,20 +12,19 @@
 									<td><strong>Venue</strong></td>
 									<td><strong>Start Date</strong></td>
 								</tr>
-								<% @current_host_events.to_enum.with_index(1) do |event,i |%>
+								<% @events_hosted.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
 									<td><%= event.venue %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
 								</tr>
-								<% break if i==3 %>
 								<% end %>
 						  </tbody>
 						 </table>
 
 				
 
-<table id="events_registered" class="table table-striped box-border table-main display" data-source="/current_host_events.json" style="display:none">
+<table id="events_registered" class="table table-striped box-border table-main display" data-source="/events_hosted.json" style="display:none">
   <thead>
     <tr>
       <th>Title</th>
@@ -46,7 +45,7 @@
 						<table class="table table-striped box-border table-dummy">
 						   <thead class="box-head">
 							  <tr>
-								<tr><td colspan="3"><strong>Hosted <span style="color:#e06d21;">Events</span></strong></td></tr>
+								<tr><td colspan="3"><strong>Current <span style="color:#e06d21;">Events</span></strong></td></tr>
 							  </tr>
 						   </thead>
 						   <tbody>
@@ -55,19 +54,18 @@
 									<td><strong>Venue</strong></td>
 									<td><strong>Start Date</strong></td>
 								</tr>
-								<% @events_hosted.to_enum.with_index(1) do |event,i |%>
+								<% @host_current_events.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
 									<td><%= event.venue %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
 								</tr>
-								<% break if i==3 %>
 								<% end %>
 						  </tbody>
 						 </table>
 
 
-						<table id="events_running" class="table table-striped box-border table-main display" data-source="/events_hosted.json" style="display:none">
+						<table id="events_running" class="table table-striped box-border table-main display" data-source="/host_current_events.json" style="display:none">
  									 <thead>
    										 <tr>
     									  <th>Title</th>
@@ -83,4 +81,87 @@
 
 
 					</div>
+
 				</div> <!-- Row closing -->		
+
+				<div class="row">
+					<div class="header1 fixed" style ="float:left;margin:8px">
+						<table class="table table-striped box-border table-dummy">
+						   <thead class="box-head">
+							  <tr>
+								<tr><td colspan="3"><strong>Upcoming <span style="color:#e06d21;">Events</span></strong></td></tr>
+							  </tr>
+						   </thead>
+						   <tbody>
+							<tr>
+									<td><strong>Title</strong></td>
+									<td><strong>Venue</strong></td>
+									<td><strong>Start Date</strong></td>
+								</tr>
+								<% @upcoming_events.each do |event|%>
+								<tr>
+									<td><%= event.title %></td>
+									<td><%= event.venue %></td>
+									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
+								</tr>
+								<% end %>
+						  </tbody>
+						 </table>
+
+
+						<table id="events_running" class="table table-striped box-border table-main display" data-source="/upcoming_events.json" style="display:none">
+ 									 <thead>
+   										 <tr>
+    									  <th>Title</th>
+      										<th>Venue</th>
+      										<th>Start Date</th>
+      										<th>End Date</th>
+      										<th></th>
+    										</tr>
+  										</thead>
+ 									 <tbody>
+  									</tbody>
+						</table>
+
+
+					</div>
+<div class="header1 fixed" style ="float:left;margin:8px">
+						<table class="table table-striped box-border table-dummy">
+						   <thead class="box-head">
+							  <tr>
+								<tr><td colspan="3"><strong>Saved <span style="color:#e06d21;">Events</span></strong></td></tr>
+							  </tr>
+						   </thead>
+						   <tbody>
+							<tr>
+									<td><strong>Title</strong></td>
+									<td><strong>Venue</strong></td>
+									<td><strong>Start Date</strong></td>
+								</tr>
+								<% @saved_events.each do |event|%>
+								<tr>
+									<td><%= event.title %></td>
+									<td><%= event.venue %></td>
+									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
+								</tr>
+								<% end %>
+						  </tbody>
+						 </table>
+
+
+						<table id="events_running" class="table table-striped box-border table-main display" data-source="/saved_events.json" style="display:none">
+ 									 <thead>
+   										 <tr>
+    									  <th>Title</th>
+      										<th>Venue</th>
+      										<th>Start Date</th>
+      										<th>End Date</th>
+      										<th></th>
+    										</tr>
+  										</thead>
+ 									 <tbody>
+  									</tbody>
+  						</table>
+
+					</div>					
+				</div>

@@ -3,16 +3,13 @@
 <div class="col-custom-md-21">
 			<div class="content-section">
 			<h2 class="title">Dashboard
-				<% if current_user.has_role?(:guest)||current_user.has_role?(:host) %>
+				<% if current_user.has_role?(:guest) %>
 				  <% if !current_user.has_role?(:host) %>
 				    <%= link_to(" Become A Host", host_path, class: "btn btn-mini btn-primary",  style: 'float:right; margin-right:30px') %>
 				  <% end %>
-				  <% if !current_user.has_role?(:guest) %>
-				    <%= link_to(" Become A Guest",guest_path, class: "btn btn-mini btn-primary",  style: 'float:right; margin-right:30px') %>
-				  <% end %>
 				<% end %>
 			</h2>
-   <% if @role=="guest"%>
+   <% if session[:role]=="guest"%>
 	 <%= render partial: "layouts/dash_board/events_for_guest" %>
 	<% else %>
 	  <%= render partial: "layouts/dash_board/events_for_host" %>

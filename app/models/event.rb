@@ -10,7 +10,6 @@ class Event < ActiveRecord::Base
   has_many :pictures, class_name: "Ckeditor::Picture"
 
     after_save { |record| 
-    	p "oyyyyyyyyyyyyyyyy"
     	Ckeditor::AttachmentFile.update_all({:event_id => record.id}, {:event_id => nil, :assetable_id => record.user.id}) 
     	Ckeditor::Picture.update_all({:event_id => record.id}, {:event_id => nil, :assetable_id => record.user.id})
     }

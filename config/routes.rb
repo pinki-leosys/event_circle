@@ -9,10 +9,15 @@ EventCircle::Application.routes.draw do
          post '/dash_board' => 'users/dash_board#create', :as => :user_session
          get '/sign_out' => 'devise/sessions#destroy', :as => :destroy_user_session
 	       get '/user' => "users/registrations#new", :as => :sign_up
-         get '/events_attended' => 'users/dash_board#events_attended', :as => :events_registered
-         get '/events_hosted' => 'users/dash_board#events_hosted', :as => :events_published
-         get '/current_host_events' => 'users/dash_board#current_host_events', :as => :events_for_publish
+         #for guest 
+         get '/events_attended' => 'users/dash_board#events_attended', :as => :events_attended
          get '/current_events' => 'users/dash_board#current_events', :as => :current_events
+         get '/events_registered' => 'users/dash_board#events_attended'
+         #for host
+         get '/events_hosted' => 'users/dash_board#events_hosted', :as => :events_published
+         get '/host_current_events' => 'users/dash_board#host_current_events', :as => :events_for_publish
+         get '/saved_events' => 'users/dash_board#saved_events', :as => :events_for_publish
+         get '/upcoming_events' => 'users/dash_board#upcoming_events', :as => :events_for_publish         
          get '/host' => 'users/dash_board#become_host', :as => :host
          get '/guest' => 'users/dash_board#become_guest', :as => :guest
          post '/users/password' => 'users/passwords#create', as: :user_password
@@ -20,7 +25,8 @@ EventCircle::Application.routes.draw do
          get '/users/password/edit' => 'devise/passwords#edit', as: :edit_user_password
          put '/users/password' => 'devise/passwords#update'
          get  '/about_us_dashbord'     => "users/dash_board#about_us_dashbord", as: :about_us_dashbord
-         get  '/ec'     => "users/dash_board#the_ec", as: :ec
+         get  '/host_dashboard'     => "users/dash_board#host_dashboard", as: :ec
+         get  '/guest_dashboard'     => "users/dash_board#guest_dashboard", as: :ec
          get  '/user_contact' => "users/dash_board#user_contact", as: :contact_us
   end
   match  '/about_us'   => "home#about", as: :about_us

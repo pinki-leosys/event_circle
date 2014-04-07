@@ -54,11 +54,18 @@ private
     if params[:action] == "events_attended"
       events = @user.registered_events.where("event_start_date < ?", Time.now).order("#{sort_column} #{sort_direction}")
     elsif params[:action] == "current_events"
-      events = Event.where("event_start_date > ?", Time.now).order("#{sort_column} #{sort_direction}")
+      events = Event.where("event_start_date > ? AND published = ?", Time.now, true)
+    elsif  params[:action] == "events_registered"
+      events = @user.registered_events.where("event_start_date >= ?", Time.now).order("#{sort_column} #{sort_direction}")
     elsif params[:action] == "events_hosted"
-      events = @user.events.where("event_start_date < ?", Time.now)
-    else 
-      events = @user.events.where("event_start_date > ?", Time.now)
+      events = @user.events.where("published = ?", true)
+    elsif  params[:action] == "upcoming_events"
+        events = @user.events.where("event_start_date > ? AND published = ?", Time.now,true).order("#{sort_column} #{sort_direction}")
+    elsif  params[:action] == "saved_events"
+      events = @user.events.where(published: false)
+    elsif  params[:action] == "host_current_events"
+        events = @user.events.where("event_start_date < ? AND published = ?", Time.now,true).order("#{sort_column} #{sort_direction}")
+    else
       #params[:action] == "current_host_events"
     end
       events
