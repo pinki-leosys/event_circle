@@ -1,0 +1,33 @@
+<%= render partial: "layouts/header"%>
+<div class="clearfix"></div>
+<div class="banner-back">
+  <div class="container">
+	<div class="row">
+	  <div class="col-md-12">
+		<div class="about-box">
+		  <div class="about-box-head">
+			<span class="title-2">Upcoming  <span class="highlight-1"> Events</span></span>
+		  </div>
+		  <div class="about-box-content">
+			<p class="about-box-content">
+      		<% @events.order("id DESC").each do |event| %>        
+              <span class="title-2"><span class="highlight-1">
+              	<%= event.title %></span></span><br/>
+              <b>Location: </b>  <%= event.venue %> &nbsp;&nbsp;&nbsp;&nbsp; 
+              <b>Start Date: </b>  <%= event.event_start_date %> &nbsp;&nbsp;&nbsp;&nbsp; 
+              <b> End Date: </b>  <%= event.event_end_date %> <br/>
+              <b> Description: </b>  <%= event.description %> &nbsp;&nbsp;&nbsp;
+              <%= link_to "Read More", read_more_path(event) %><br/><br/><br/>
+            <% end %>
+      		<div style="text-align:center;">
+      	      <%= will_paginate @events %>
+      	    </div>
+			</p>
+   		  </div>
+		</div>
+      </div>
+	</div>
+  </div>
+</div> 	
+	<%= render partial: "layouts/content"%>	
+	<%= render partial: "layouts/footer"%>

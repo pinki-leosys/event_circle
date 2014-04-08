@@ -1,0 +1,44 @@
+
+<%= render partial: "layouts/header"%>
+		
+<div class="clearfix"></div>
+	<div class="banner-back">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+				  <div class="about-box">
+					<div class="about-box-head">
+					  <span class="title-2"><%= @event.title %>-  <span class="highlight-1"><%= @event.venue %></span></span>
+						</div>
+					<div class="about-box-content">
+					<p class="about-box-content">
+								
+					<span class="title-2"> 
+					  <span class="highlight-1"> Description: </span>
+					</span> <br/><br/>
+					<%= @event.description %><br/><br/>
+					<span class="title-2"> 
+					  <span class="highlight-1"> Start Date: </span>
+					</span>  
+					<%= @event.event_start_date%>&nbsp;&nbsp;&nbsp;&nbsp;
+					<span class="title-2"> 
+					  <span class="highlight-1"> End Date: </span>
+				    </span>  <%= @event.event_end_date%> <br/>
+				  <div class="control-group">
+        	     <button class="btn-sm new" type="submit" tabindex="13">Login</button> or 
+        	     <button class="btn-sm new" type="submit" tabindex="13">Register</button> to Attend
+        	</div>
+						</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+	
+	<%= render partial: "layouts/content"%>
+
+	
+	<%= render partial: "layouts/footer"%>
+

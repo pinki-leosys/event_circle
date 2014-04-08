@@ -30,11 +30,16 @@ EventCircle::Application.routes.draw do
          get  '/user_contact' => "users/dash_board#user_contact", as: :contact_us
   end
   match  '/about_us'   => "home#about", as: :about_us
- # match  '/events'       => "home#events", as: :events
-  match  '/contact_us'   => "home#contact", as: :contact_us
+  match  '/search'   => "home#search", as: :search
+  match  '/user_events'       => "home#user_events", as: :user_events
+ # match  '/contact_us'   => "home#contact", as: :contact_us
+  match  '/contact_us'   => "home#create", as: :contact
+  match  '/contact_us_message'   => "home#contact_us_message", as: :contact_us_message
   match  '/host_event'     => "home#host_event", as: :host_event
   match  '/attend_event'     => "home#attend_event", as: :attend_event
   match  '/sponsor_event'     => "home#sponsor_event", as: :sponsor_event
+  match "home/:id/read_more" => "home#read_more", :as => "read_more"  
+  match  '/contact_us'   => "home#contact", as: :contact_us
   match "home/:id/activate_user" => "home#activate_user", :as => "activate_user"
     
   resources :events, :except => :index do

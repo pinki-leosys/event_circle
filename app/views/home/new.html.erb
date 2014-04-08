@@ -1,0 +1,66 @@
+<%= render partial: "layouts/header"%>  
+<!-- <script src="js/jquery.validate.min.js"></script> -->
+ 
+<div class="clearfix"></div>
+  <div class="banner-back">
+  <div class="container">
+    <div class="row">
+    <div class="col-md-12">
+      <div class="about-box">
+      <div class="about-box-head">
+        <span class="title-2">Contact <span class="highlight-1">Us</span></span>
+      </div>
+      <!-- <div class="about-box-content"> -->
+       <form accept-charset="UTF-8" action="/contact_us" method="post"  id="contact-form">
+       <div class="field_with_errors" ></div>
+            <div class="col-md-4 martop3  form-horizontal">
+              <div class="control-group">
+                <label class="control-label" for="inputpagetitle">Name :</label>
+              <div class="controls">
+                <input id="contact1[name]"  type="text" name="contact1[name]">
+             </div>
+           </div>
+          <div class="control-group">
+            <label class="control-label" for="inputlogo">E-mail :</label>
+            <div class="controls">
+              <input id="contact1[email]"  type="text" name="contact1[email]">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="inputlogo">Message :</label>
+            <div class="controls">
+              <!-- input id="contact1[message]" class="form-control-1" type="textarea" name="contact1[message]"/> -->
+              <textarea cols="80" rows="4" name="contact1[message]">
+              </textarea>
+            </div>
+
+          </div>
+          <div class="control-group">
+            <div class="signup text-center form-inline">
+              <%= recaptcha_tags %>    
+            </div>
+
+        </div>
+         <%#end%>
+        <div class="col-md-4 martop3  form-horizontal">   
+          <div class="control-group">
+           <button class="btn-sm new" type="submit" tabindex="13">Submit</button>
+          </div>
+        </div>
+        </div>
+      <!-- </form> -->
+    
+
+                
+        </p>
+
+      <!-- </div> -->
+      </div>
+    </div>
+    </div>
+  </div>
+  </div> 
+  <%= render partial: "layouts/content"%>
+
+  
+  <%= render partial: "layouts/footer"%>
