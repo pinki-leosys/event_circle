@@ -41,6 +41,10 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
+    if (params[:commit] == "Publish")
+       @event.published=true
+       @event.published_at =Time.now
+     end
    # @event.user_id=current_user.id
     @event.event_start_date=DateTime.strptime(params[:event][:event_start_date],'%m/%d/%Y %I:%M %p')
     @event.event_end_date=DateTime.strptime(params[:event][:event_end_date],'%m/%d/%Y %I:%M %p')

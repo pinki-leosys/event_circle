@@ -9,20 +9,21 @@
 			<span class="title-2">Upcoming  <span class="highlight-1"> Events</span></span>
 		  </div>
 		  <div class="about-box-content">
-			<p class="about-box-content">
+			<div class="about-box-content">
       		<% @events.order("id DESC").each do |event| %>        
               <span class="title-2"><span class="highlight-1">
               	<%= event.title %></span></span><br/>
-              <b>Location: </b>  <%= event.venue %> &nbsp;&nbsp;&nbsp;&nbsp; 
-              <b>Start Date: </b>  <%= event.event_start_date %> &nbsp;&nbsp;&nbsp;&nbsp; 
-              <b> End Date: </b>  <%= event.event_end_date %> <br/>
-              <b> Description: </b>  <%= event.description %> &nbsp;&nbsp;&nbsp;
-              <%= link_to "Read More", read_more_path(event) %><br/><br/><br/>
+               <div> <b>Location: </b>  <%= "#{event.address.city} #{event.address.state}" if event.address  %> </div>
+              <div> <b>Start Date: </b>  <%= event.event_start_date %> </div>
+              <div><b> End Date: </b>  <%= event.event_end_date %></div> 
+              <div><b> Description: </b>  <%= raw(event.description) %></div> 
+              <div><%= link_to "Read More", read_more_path(event) %></div>
             <% end %>
+                  </div>
+
       		<div style="text-align:center;">
       	      <%= will_paginate @events %>
       	    </div>
-			</p>
    		  </div>
 		</div>
       </div>
@@ -31,3 +32,14 @@
 </div> 	
 	<%= render partial: "layouts/content"%>	
 	<%= render partial: "layouts/footer"%>
+
+   <script>
+   $(document).ready(function(){
+      $('p img').parent().hide();
+      $('p object').parent().hide();
+   });
+
+</script>
+<style>
+p { display : inline; }
+</style>
