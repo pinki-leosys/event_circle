@@ -14,4 +14,12 @@ class Event < ActiveRecord::Base
     	Ckeditor::Picture.update_all({:event_id => record.id}, {:event_id => nil, :assetable_id => record.user.id})
     }
 
+  def self.search(search)  
+    if search  
+      where('title LIKE ?', "%#{search}%")  
+    else  
+      scoped  
+    end  
+  end
+  
 end

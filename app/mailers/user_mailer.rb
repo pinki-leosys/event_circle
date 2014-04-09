@@ -28,4 +28,9 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail(:to => user.email, :subject => 'A new user has signed up!!111')
   end
+
+  def admin_contact_mail(user)
+    @user = user
+    mail(:to => 'mailer@event-circle.com', :subject => 'Contact form from user')
+  end
 end

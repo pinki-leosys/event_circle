@@ -9,35 +9,40 @@
             <div class="about-box-head">
               <span class="title-2">Guest <span class="highlight-1">Registration</span></span>
             </div>
-          <form method="post" action="/users" accept-charset="UTF-8">
+          <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
             <div class="col-md-4 martop3  form-horizontal">
               <div class="control-group">
                 <label class="control-label" for="inputpagetitle">First Name :</label>
               <div class="controls">
-                <input id="user[first_name]" class="form-control" type="text" name="user[first_name]">
+                <input id="user[first_name]" class="form-control" type="text" name="user[first_name]" tabindex="1">
              </div>
            </div>
           <div class="control-group">
            <label class="control-label" for="inputlogo">Password :</label>
            <div class="controls">
-            <input id="user[password]" class="form-control" type="password" name="user[password]">
+            <input id="user[password]" class="form-control" type="password" name="user[password]" tabindex="4">
           </div>
        </div>
+  <% if @user %>          
+  <% @user.build_address %>
+  <%end%>
+    <%= f.fields_for :address do |form| %>
+
        <div class="control-group">
         <label class="control-label" for="inputlogo">Street Address :</label>
-<div class="controls">
-<input id="address[address]" class="form-control" type="text" name="address[address]">
-</div>
-</div>
-<div class="control-group">
-<label class="control-label" for="inputlogo">Zip Code :</label>
-<div class="controls">
-<input id="address[zipcode]" class="form-control" type="text" name="address[zipcode]">
-</div>
-</div>
+      <div class="controls">
+        <input id="user_address_address" class="form-control" type="text" name="user[address_attributes][address]" tabindex="7">
+      </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputlogo">Zip Code :</label>
+        <div class="controls">
+        <input id="user_address_zipcode" class="form-control" type="text" name="user[address_attributes][zipcode]" tabindex="10">
+      </div>
+      </div>
 
 <div class="clearfix"> </div>
-            <div class="signup text-center form-inline">
+            <div class="signup text-center form-inline" tabindex="12">
               <%= recaptcha_tags %>     
             </div>
 </div>
@@ -45,30 +50,30 @@
             <div class="control-group">
               <label class="control-label" for="inputpagetitle">Last Name :</label>
               <div class="controls">
-                <input type="text" name="user[last_name]" id="user[last_name]" class="form-control">
+                <input type="text" name="user[last_name]" id="user[last_name]" class="form-control" tabindex="2">
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="inputlogo">Verify Password :</label>
                 <div class="controls">
-                  <input type="password" name="user[password_confirmation]" id="user[password_confirmation]" class="form-control">
+                  <input type="password" name="user[password_confirmation]" id="user[password_confirmation]" class="form-control" tabindex="5">
                 </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="inputlogo">City :</label>
               <div class="controls">
-                <input type="text" name="address[city]" id="address[city]" class="form-control">
+                <input type="text" name="user[address_attributes][city]" id="user_address_city" class="form-control" tabindex="8">
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="inputlogo">Phone No :</label>
               <div class="controls">
-                <input type="text" name="address[phone_no]" id="address[phone_no]" class="form-control">
+                <input type="text" name="user[address_attributes][phone_no]" id="address[phone_no]" class="form-control" tabindex="11">
               </div>
             </div>
             <br/>
             <br/>
-            <button class="btn-sm new" type="submit">Submit</button>
+            <button class="btn-sm new" type="submit" tabindex="13">Submit</button>
 
 </div>
 <div class="col-md-4 martop3  form-horizontal">
@@ -80,24 +85,38 @@
             <div class="control-group">
               <label class="control-label" for="inputlogo">Email :</label>
               <div class="controls">
-                <input type="text" name="user[email]" id="user[email]" class="form-control">
+                <input type="text" name="user[email]" id="user[email]" class="form-control" tabindex="3">
               </div>
-            </div>
-   
+            </div>   
+
                 <div class="control-group">
                   <label for="inputlogo" class="control-label">Role:</label>
                   <div class="controls">
-                    <select class="form-control" name="role[role_id]">
+                    <% if params[:role]=="host"%>
+                     <select class="form-control-1" name="role[role_id]" tabindex="6">                  
+                      <option value="host">Host</option>
+                      <option value="guest">Guest</option>
+                      <option value="">Select</option>
+                     </select>
+                     <% elsif params[:role]=="guest" %>
+                    <select class="form-control-1" name="role[role_id]" tabindex="6">                  
+                      <option value="guest">Guest</option>
+                      <option value="host">Host</option>
+                      <option value="">Select</option>
+                     </select>
+                     <% else %>
+                    <select class="form-control-1" name="role[role_id]" tabindex="6">
                       <option value="">Select</option>
                       <option value="host">Host</option>
                       <option value="guest">Guest</option>
                     </select>
+                    <%end%>
                   </div>
                 </div>
                 <div class="control-group">
                   <label for="inputlogo" class="control-label">State :</label>
                   <div class="controls">
-                    <select class="form-control" name="address[state]">
+                    <select class="form-control" name="user[address_attributes][state]" tabindex="9">
                       <option value="">Select</option>
                       <option value="Alabama">Alabama</option>
                       <option value="Alaska">Alaska</option>
@@ -169,7 +188,9 @@
 
           </div>
           </div>
-        </form>
+
+          <%end%>
+        <%end%>
 
           
 
