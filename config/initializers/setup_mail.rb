@@ -1,12 +1,13 @@
 ActionMailer::Base.smtp_settings = {
-  :address              => "smtp.1and1.com",
+  :address              => "smtpout.secureserver.net",
   :port                 => 25,
-  :domain               => "1and1.com",
-  :user_name            => "jayashrit@leotechnosoft.net",
-  :password             => "jayashri@6534",
+  :domain               => "event-circle.com",
+  :user_name            => "mailer@event-circle.com",
+  :password             => "CircleMailer1",
   :authentication       => "plain",
   :enable_starttls_auto => false,  
   :openssl_verify_mode => "none"
 }
 
 ActionMailer::Base.raise_delivery_errors = true
+
