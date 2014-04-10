@@ -14,5 +14,6 @@
  *= require dataTables/src/demo_table_jui
  *= require bootstrap
  *= require bootstrap-datetimepicker
+ *= require fancybox
  *= require home/mainpage/main-index
  */

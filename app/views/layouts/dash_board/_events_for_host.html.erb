@@ -16,7 +16,7 @@
 								<% @events_hosted.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= event.venue %></td>
+									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
 									<td><%= event.registered_users.count %></td>
 								</tr>
@@ -60,7 +60,7 @@
 								<% @host_current_events.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= event.venue %></td>
+									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
 									<td><%= event.registered_users.count %></td>
 								</tr>
@@ -107,7 +107,7 @@
 								<% @upcoming_events.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= event.venue %></td>
+									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
 									<td><%= event.registered_users.count %></td>
 								</tr>
@@ -150,7 +150,7 @@
 								<% @saved_events.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= event.venue %></td>
+									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
 									<td><%= event.registered_users.count %></td>
 								</tr>
