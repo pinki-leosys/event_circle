@@ -22,9 +22,9 @@
                                 </tr>
                 <tr><td><strong>Start Time</strong><span> <%= @event.event_start_date.strftime("%I:%M%p") %></span></td><td><strong>End Time</strong><span> <%= @event.event_end_date.strftime("%I:%M%p") %></span></td></tr>
                 <tr><td colspan="2"><strong>Location:</strong></td></tr>
-                <tr><td><%= "#{event.address.city} #{event.address.state}" if @event.address %></td></tr>
+                <tr><td><%= "#{@event.address.city} #{@event.address.state}" if @event.address %></td></tr>
                 <tr><td colspan="2"><strong>Host Name:</strong></td></tr>
-                <tr><td colspan="2">  <%#= @event.user.uname %> <%#= @event.user.last_name %>
+                <tr><td colspan="2"> <%= "#{@event.user.uname} #{ @event.user.last_name}" if @event.user %>
 </td></tr>
 
 <tr>
