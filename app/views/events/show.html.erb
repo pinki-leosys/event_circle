@@ -22,7 +22,7 @@
                                 </tr>
                 <tr><td><strong>Start Time</strong><span> <%= @event.event_start_date.strftime("%I:%M%p") %></span></td><td><strong>End Time</strong><span> <%= @event.event_end_date.strftime("%I:%M%p") %></span></td></tr>
                 <tr><td colspan="2"><strong>Location:</strong></td></tr>
-                <tr><td colspan="2">  <%= "#{@event.address.city} #{@event.addess.state}" if event.address %>
+                <tr><td colspan="2">  <%= @event.venue %>
 </td></tr>
                 <tr><td colspan="2"><strong>Host Name:</strong></td></tr>
                 <tr><td colspan="2">  <%#= @event.user.uname %> <%#= @event.user.last_name %>
@@ -45,13 +45,18 @@
 
      <%= render partial: "layouts/dash_board/sidebar_bottom"%>
 
- <script>
-   $(document).ready(function(){
-      $('p img').parent().hide();
-      $('p object').parent().hide();
-   });
+
+   <script>
+$('p').filter(function() {
+        return $.trim($(this).text()) === '' && $(this).children(':visible').length == 0
+    }).remove()
 
 </script>
-<style>
-p { display : inline; }
-</style>
+     <style>
+      td p img {
+        display:none;
+      }
+      td p object{
+        display:none;
+      }
+     </style>

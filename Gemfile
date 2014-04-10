@@ -14,6 +14,7 @@ gem 'cancan','1.6.10'
 gem "jquery-rails", "~> 3.1.0"
 gem "therubyracer",'0.12.1'
 #gem "twitter-bootstrap-rails",'2.2.8'
+gem 'fancybox-rails'
 gem 'devise','3.2.3'
 gem 'will_paginate','3.0.5'
 gem "recaptcha", :require => "recaptcha/rails"
