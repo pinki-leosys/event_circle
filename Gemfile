@@ -17,6 +17,7 @@ gem "therubyracer",'0.12.1'
 gem 'fancybox-rails'
 gem 'devise','3.2.3'
 gem 'will_paginate','3.0.5'
+gem 'will_paginate-bootstrap'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'momentjs-rails', '~> 2.5.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'

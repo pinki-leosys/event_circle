@@ -11,7 +11,7 @@
     
             
             <div class="clearfix"></div>
-                          <% @events.order("id DESC").each do |event| %>        
+                          <% @events.each do |event| %>        
 
             
             <form class="form-inline" role="form">
@@ -52,11 +52,15 @@
             <div class="col-md-11">
             <%= event.description %> <%= link_to "Read More", read_more_path(event) %><p></p>
             </div>
-                        <% end %>
 
-           <div style="text-align:center;">
-              <%= will_paginate @events %>
-            </div>  
+            <% end %>
+            <div style="text-align:center;">
+              <%= will_paginate @events,:page_links => true, renderer: BootstrapPagination::Rails %>
+            </div>
+       
+
+            <div class="clearfix"></div>
+
             </form>
 
           </div>
