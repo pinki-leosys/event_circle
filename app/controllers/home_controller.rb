@@ -4,13 +4,13 @@ class HomeController < ApplicationController
   def index
     @role = session[:role]
     if (@role == "guest")
-      @events_attended = current_user.registered_events.where("event_start_date < ? AND event_end_date < ?", Time.now, Time.now ).limit(3)
-      @current_events = Event.where("event_start_date <= ? AND event_end_date >= ? AND published = ?", Time.now, Time.now, true).limit(3)
-      @events_registered = current_user.registered_events.where("event_start_date >= ?", Time.now).limit(3)
+      @events_attended = current_user.registered_events.where("event_start_date < ? AND event_end_date < ?", Time.zone.now,Time.zone.now).limit(3)
+      @current_events = Event.where("event_start_date <= ? AND event_end_date > ? AND published = ?", Time.zone.now,Time.zone.now, true).limit(3)
+      @events_registered = current_user.registered_events.where("event_start_date > ?", Time.zone.now).limit(3)
     else
-      @events_hosted = current_user.events.where(" event_start_date < ? AND event_end_date < ? AND published = ?", Time.now,Time.now, true).limit(3)
-      @host_current_events = current_user.events.where("event_start_date <= ? AND event_end_date >= ? AND published = ?", Time.now,Time.now,true).limit(3)
-      @upcoming_events = current_user.events.where("event_start_date > ? AND published = ?", Time.now,true).limit(3)
+      @events_hosted = current_user.events.where("event_end_date < ? AND event_start_date < ? AND published = ?", Time.zone.now,Time.zone.now, true).limit(3)
+      @host_current_events = current_user.events.where("event_start_date <= ? AND event_end_date > ? AND published = ?",  Time.zone.now,Time.zone.now,true).limit(3)
+      @upcoming_events = current_user.events.where("event_start_date > ? AND published = ?", Time.zone.now,true).limit(3)
       @saved_events = current_user.events.where(published: false).limit(3)
     end
 

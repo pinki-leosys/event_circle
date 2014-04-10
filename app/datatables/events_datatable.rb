@@ -23,7 +23,7 @@ private
         h(event.title),
         h(event.event_start_date.strftime("%b %d,%Y")),
         h(event.event_start_date.strftime("%I:%M%p")),
-        h( params[:action]== "saved_events" ? event.address.address : event.registered_users.count ),
+        h(event.registered_users.count),
         link_to("SHOW", event)
       ]
     end
@@ -50,26 +50,24 @@ private
       events
   end
 
-  def get_events   
+  def get_events
     if params[:action] == "events_attended"
-      events = @user.registered_events.where("event_start_date < ? AND event_end_date < ?", Time.now, Time.now ).includes(:address).order("#{sort_column} #{sort_direction}")
+      events = @user.registered_events.where("event_start_date < ? AND event_end_date < ?", Time.zone.now,Time.zone.now).order("#{sort_column} #{sort_direction}")
     elsif params[:action] == "current_events"
-      events = Event.where("event_start_date <= ? AND event_end_date >= ? AND published = ?", Time.now, Time.now, true).includes(:address)
+      events = Event.where("event_start_date <= ? AND event_end_date > ? AND published = ?", Time.zone.now,Time.zone.now, true)
     elsif  params[:action] == "events_registered"
-      events = @user.registered_events.where("event_start_date >= ?", Time.now).includes(:address).order("#{sort_column} #{sort_direction}")
+      events = @user.registered_events.where("event_start_date > ?", Time.zone.now).order("#{sort_column} #{sort_direction}")
     elsif params[:action] == "events_hosted"
-      events = @user.events.where(" event_start_date < ? AND event_end_date < ? AND published = ?", Time.now,Time.now, true).includes(:address)
+      events = @user.events.where("event_end_date < ? AND event_start_date < ? AND published = ?", Time.zone.now,Time.zone.now, true)
     elsif  params[:action] == "upcoming_events"
-        events = @user.events.where("event_start_date > ? AND published = ?", Time.now,true).includes(:address).order("#{sort_column} #{sort_direction}")
+        events = @user.events.where("event_start_date > ? AND published = ?", Time.zone.now,true).order("#{sort_column} #{sort_direction}")
     elsif  params[:action] == "saved_events"
-      events = @user.events.where(published: false).includes(:address)
+      events = @user.events.where(published: false)
     elsif  params[:action] == "host_current_events"
-        events = @user.events.where("event_start_date <= ? AND event_end_date >= ? AND published = ?", Time.now,Time.now,true).includes(:address).order("#{sort_column} #{sort_direction}")
-        events
+        events = @user.events.where("event_start_date <= ? AND event_end_date > ? AND published = ?",  Time.zone.now,Time.zone.now,true).order("#{sort_column} #{sort_direction}")
     else
       #params[:action] == "current_host_events"
     end
-      events
   end
 
   def page
@@ -81,7 +79,7 @@ private
   end
 
   def sort_column
-    columns = %w[event_start_date]
+    columns = %w[event_start_date published_at]
     columns[params[:iSortCol_0].to_i]
   end
 

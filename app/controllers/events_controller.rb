@@ -4,7 +4,6 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!, only: :index
   def index
     @events = Event.where(published:true)
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: ::EventsDatatable.new(view_context) }
@@ -15,6 +14,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
+    session[:event_id]= params[:id]
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
@@ -25,6 +25,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
+    session[:event_id]=nil
     @event.build_address
     respond_to do |format|
       format.html # new.html.erb
@@ -35,16 +36,13 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    session[:event_id]= params[:id]
   end
 
   # POST /events
   # POST /events.json
   def create
     @event = Event.new(params[:event])
-    if (params[:commit] == "Publish")
-       @event.published=true
-       @event.published_at =Time.now
-     end
    # @event.user_id=current_user.id
     @event.event_start_date=DateTime.strptime(params[:event][:event_start_date],'%m/%d/%Y %I:%M %p')
     @event.event_end_date=DateTime.strptime(params[:event][:event_end_date],'%m/%d/%Y %I:%M %p')
@@ -112,6 +110,10 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
+  end
+  def images
+        @event = Event.find(params[:id])
+        @images= @event.pictures
   end
 
 end

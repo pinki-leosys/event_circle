@@ -11,14 +11,14 @@
 									<td><strong>Title</strong></td>
 									<td><strong>Venue</strong></td>
 									<td><strong>Start Date</strong></td>
-									<td><strong>Registered Users</strong></td>									
+									<td><strong>Registered Users</strong></td>
 								</tr>
 								<% @events_attended.each do |event| %>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
+									<td><%= event.venue %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
-									<td><%= event.registered_users.count %></td>								
+									<td><%= event.registered_users.count %></td>
 								</tr>
 								<% end %>
 						  </tbody>
@@ -26,8 +26,7 @@
 
 				
 
-
-						<table id="events_running" class="table table-striped box-border table-main display" data-source="/events_attended.json" style="display:none">
+<table id="events_registered" class="table table-striped box-border table-main display" data-source="/events_attended.json" style="display:none">
  									 <thead>
    										 <tr>
     									  <th>Title</th>
@@ -39,8 +38,7 @@
   										</thead>
  									 <tbody>
   									</tbody>
-
-                         </table>
+						</table>
 
 
 
@@ -52,19 +50,19 @@
 								<tr><td colspan="4"><strong>Current <span style="color:#e06d21;">Events</span></strong></td></tr>
 							  </tr>
 						   </thead>
-						   <tbody>
+							<tbody>
 							<tr>
 									<td><strong>Title</strong></td>
 									<td><strong>Venue</strong></td>
 									<td><strong>Start Date</strong></td>
-									<td><strong>Registered Users</strong></td>									
+									<td><strong>Registered Users</strong></td>
 								</tr>
 								<% @current_events.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
+									<td><%= event.venue %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
-									<td><%= event.registered_users.count %></td>								
+									<td><%= event.registered_users.count %></td>
 								</tr>
 								<% end %>
 						  </tbody>
@@ -96,20 +94,19 @@
 								  <tr><td colspan="4"><strong>Events <span style="color:#e06d21;">Registered</span></strong></td></tr>
 								  
 							</thead>
-						
 							<tbody>
 							<tr>
 									<td><strong>Title</strong></td>
 									<td><strong>Venue</strong></td>
 									<td><strong>Start Date</strong></td>
-									<td><strong>Registered Users</strong></td>									
+									<td><strong>Registered Users</strong></td>
 								</tr>
 								<% @events_registered.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
+									<td><%= event.venue %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
-									<td><%= event.registered_users.count %></td>								
+									<td><%= event.registered_users.count %></td>
 								</tr>
 								<% end %>
 						  </tbody>
@@ -117,7 +114,7 @@
 
 				
 
-						<table id="events_running" class="table table-striped box-border table-main display" data-source="/events_registered.json" style="display:none">
+<table id="events_registered" class="table table-striped box-border table-main display" data-source="/events_registered.json" style="display:none">
  									 <thead>
    										 <tr>
     									  <th>Title</th>
@@ -131,6 +128,5 @@
   									</tbody>
 						</table>
 
-
-					</div>
-				</div> <!-- Row closing -->		
+	</div>
+</div><!-- row closing -->

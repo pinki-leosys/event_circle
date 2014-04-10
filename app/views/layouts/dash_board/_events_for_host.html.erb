@@ -12,15 +12,13 @@
 									<td><strong>Venue</strong></td>
 									<td><strong>Start Date</strong></td>
 									<td><strong>Registered Users</strong></td>
-
 								</tr>
 								<% @events_hosted.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
+									<td><%= event.venue %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
 									<td><%= event.registered_users.count %></td>
-
 								</tr>
 								<% end %>
 						  </tbody>
@@ -28,7 +26,7 @@
 
 				
 
-						<table id="events_running" class="table table-striped box-border table-main display" data-source="/events_hosted.json" style="display:none">
+<table id="events_registered" class="table table-striped box-border table-main display" data-source="/events_hosted.json" style="display:none">
  									 <thead>
    										 <tr>
     									  <th>Title</th>
@@ -62,9 +60,9 @@
 								<% @host_current_events.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
+									<td><%= event.venue %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
-									<td><%= event.registered_users.count %></td>							
+									<td><%= event.registered_users.count %></td>
 								</tr>
 								<% end %>
 						  </tbody>
@@ -84,6 +82,7 @@
  									 <tbody>
   									</tbody>
 						</table>
+
 
 
 					</div>
@@ -108,7 +107,7 @@
 								<% @upcoming_events.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
+									<td><%= event.venue %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
 									<td><%= event.registered_users.count %></td>
 								</tr>
@@ -132,6 +131,7 @@
 						</table>
 
 
+
 					</div>
 <div class="header1 fixed" style ="float:left;margin:8px">
 						<table class="table table-striped box-border table-dummy">
@@ -150,9 +150,9 @@
 								<% @saved_events.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
+									<td><%= event.venue %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
-									<td><%= event.registered_users.count %></td>								
+									<td><%= event.registered_users.count %></td>
 								</tr>
 								<% end %>
 						  </tbody>
@@ -160,18 +160,18 @@
 
 
 						<table id="events_running" class="table table-striped box-border table-main display" data-source="/saved_events.json" style="display:none">
- 									  <thead>
+ 									 <thead>
    										 <tr>
     									  <th>Title</th>
       										<th>Start Date</th>
       										<th>Start Time</th>
-      										<th>Venue</th>
+      										<th>Registered Users</th>
       										<th></th>
     										</tr>
   										</thead>
  									 <tbody>
   									</tbody>
-  						</table>
+						</table>
 
 					</div>					
 				</div>

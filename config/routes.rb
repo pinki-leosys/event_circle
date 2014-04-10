@@ -42,10 +42,11 @@ EventCircle::Application.routes.draw do
   match  '/contact_us'   => "home#contact", as: :contact_us
   match "home/:id/activate_user" => "home#activate_user", :as => "activate_user"
     
-  resources :events, :except => :index do
+ resources :events, :except => :index do
     member do
       get 'register'
       get 'publish'
+      get 'images'
     end
   end
   root :to => 'home#index'

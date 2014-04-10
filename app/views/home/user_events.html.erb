@@ -1,45 +1,69 @@
 <%= render partial: "layouts/header"%>
 <div class="clearfix"></div>
-<div class="banner-back">
-  <div class="container">
-	<div class="row">
-	  <div class="col-md-12">
-		<div class="about-box">
-		  <div class="about-box-head">
-			<span class="title-2">Upcoming  <span class="highlight-1"> Events</span></span>
-		  </div>
-		  <div class="about-box-content">
-			<div class="about-box-content">
-      		<% @events.order("id DESC").each do |event| %>        
-              <span class="title-2"><span class="highlight-1">
-              	<%= event.title %></span></span><br/>
-               <div> <b>Location: </b>  <%= "#{event.address.city} #{event.address.state}" if event.address  %> </div>
-              <div> <b>Start Date: </b>  <%= event.event_start_date %> </div>
-              <div><b> End Date: </b>  <%= event.event_end_date %></div> 
-              <div><b> Description: </b>  <%= raw(event.description) %></div> 
-              <div><%= link_to "Read More", read_more_path(event) %></div>
-            <% end %>
-                  </div>
+  <div class="banner-back">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="about-box">
+            <div class="about-box-head">
+              <span class="title-2">Upcoming <span class="highlight-1">Events</span></span>
+            </div>
+    
+            
+            <div class="clearfix"></div>
+                          <% @events.order("id DESC").each do |event| %>        
 
-      		<div style="text-align:center;">
-      	      <%= will_paginate @events %>
-      	    </div>
-   		  </div>
-		</div>
+            
+            <form class="form-inline" role="form">
+            <div class="col-md-12" style="background:#f1f4f9;">
+            <div class="signup pull-left">
+            
+              <div class="form-group">
+             <span class="highlight-1"><strong><%= event.title %></strong></span>
+             
+              </div>
+              
+          
+            </div>
+            </div>
+            
+            <div style="padding:30px 0 0;">
+            
+            <div class="col-md-6">
+            <strong>Location : </strong><%= "#{event.address.city} #{event.address.state}" if event.address %>
+            </div>
+            
+            <div class="col-md-3">
+            <strong>Start Date : </strong><%= event.event_start_date.strftime("%b %d,%Y") %>
+            </div>
+            
+            <div class="col-md-3">
+            <strong>End Date : </strong><%= event.event_end_date.strftime("%b %d,%Y")%>
+            </div>
+            </div>
+            
+            
+            <div class="clearfix"></div>
+            
+            <div class="col-md-1">
+            <strong>Description:</strong>
+            </div>
+            
+            <div class="col-md-11">
+            <%= event.description %> <%= link_to "Read More", read_more_path(event) %><p></p>
+            </div>
+                        <% end %>
+
+           <div style="text-align:center;">
+              <%= will_paginate @events %>
+            </div>  
+            </form>
+
+          </div>
+        </div>
       </div>
-	</div>
-  </div>
-</div> 	
+    </div>
+  </div> 
+
 	<%= render partial: "layouts/content"%>	
 	<%= render partial: "layouts/footer"%>
-
-   <script>
-   $(document).ready(function(){
-      $('p img').parent().hide();
-      $('p object').parent().hide();
-   });
-
-</script>
-<style>
-p { display : inline; }
-</style>

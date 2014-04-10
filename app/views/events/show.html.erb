@@ -38,13 +38,17 @@
              </table>
           </div>
       </tr>
-
   
         </div> <!-- Row closing -->   
         <div class="clearfix"></div>
 
-     <%= render partial: "layouts/dash_board/sidebar_bottom"%>
+      <div style="height:130px;background-color:black; padding-bottom:20px">
+         <%= link_to image_tag("image.jpeg",height: "120", weight: "120"), images_event_path %>
+      </div>
 
+
+
+     <%= render partial: "layouts/dash_board/sidebar_bottom"%>
 
    <script>
 $('p').filter(function() {
