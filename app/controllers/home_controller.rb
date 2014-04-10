@@ -49,7 +49,7 @@ class HomeController < ApplicationController
   end
 
   def user_events
-    @events = Event.where(published:true).paginate(:page => params[:page], :per_page => 8)
+    @events = Event.where("published = ? AND event_start_date >= ?", true, Time.zone.now).paginate(:page => params[:page], :per_page => 8)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: ::EventsDatatable.new(view_context) }

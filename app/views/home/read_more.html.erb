@@ -26,7 +26,8 @@
 				    </span>  <%= @event.event_end_date%> <br/>
 				  <div class="control-group">
         	     <button class="btn-sm new" type="submit" tabindex="13">Login</button> or 
-        	     <button class="btn-sm new" type="submit" tabindex="13">Register</button> to Attend
+        	     <%= link_to "Register", sign_up_path, class: "btn-sm new" %>
+        	      to Attend
         	</div>
 						</p>
 

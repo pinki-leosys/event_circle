@@ -14,13 +14,13 @@
               <div class="control-group">
                 <label class="control-label" for="inputpagetitle">First Name :</label>
               <div class="controls">
-                <input id="user[first_name]" class="form-control" type="text" name="user[first_name]" tabindex="1">
+                <input id="user[first_name]" class="form-control input-sm" type="text" name="user[first_name]" tabindex="1">
              </div>
            </div>
           <div class="control-group">
            <label class="control-label" for="inputlogo">Password :</label>
            <div class="controls">
-            <input id="user[password]" class="form-control" type="password" name="user[password]" tabindex="4">
+            <input id="user[password]" class="form-control input-sm" type="password" name="user[password]" tabindex="4">
           </div>
        </div>
   <% if @user %>          
@@ -31,13 +31,13 @@
        <div class="control-group">
         <label class="control-label" for="inputlogo">Street Address :</label>
       <div class="controls">
-        <input id="user_address_address" class="form-control" type="text" name="user[address_attributes][address]" tabindex="7">
+        <input id="user_address_address" class="form-control input-sm" type="text" name="user[address_attributes][address]" tabindex="7">
       </div>
       </div>
       <div class="control-group">
         <label class="control-label" for="inputlogo">Zip Code :</label>
         <div class="controls">
-        <input id="user_address_zipcode" class="form-control" type="text" name="user[address_attributes][zipcode]" tabindex="10">
+        <input id="user_address_zipcode" class="form-control input-sm" type="text" name="user[address_attributes][zipcode]" tabindex="10">
       </div>
       </div>
 
@@ -50,25 +50,25 @@
             <div class="control-group">
               <label class="control-label" for="inputpagetitle">Last Name :</label>
               <div class="controls">
-                <input type="text" name="user[last_name]" id="user[last_name]" class="form-control" tabindex="2">
+                <input type="text" name="user[last_name]" id="user[last_name]" class="form-control input-sm" tabindex="2">
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="inputlogo">Verify Password :</label>
                 <div class="controls">
-                  <input type="password" name="user[password_confirmation]" id="user[password_confirmation]" class="form-control" tabindex="5">
+                  <input type="password" name="user[password_confirmation]" id="user[password_confirmation]" class="form-control input-sm" tabindex="5">
                 </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="inputlogo">City :</label>
               <div class="controls">
-                <input type="text" name="user[address_attributes][city]" id="user_address_city" class="form-control" tabindex="8">
+                <input type="text" name="user[address_attributes][city]" id="user_address_city" class="form-control input-sm" tabindex="8">
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="inputlogo">Phone No :</label>
               <div class="controls">
-                <input type="text" name="user[address_attributes][phone_no]" id="address[phone_no]" class="form-control" tabindex="11">
+                <input type="text" name="user[address_attributes][phone_no]" id="address[phone_no]" class="form-control input-sm" tabindex="11">
               </div>
             </div>
             <br/>
@@ -85,7 +85,7 @@
             <div class="control-group">
               <label class="control-label" for="inputlogo">Email :</label>
               <div class="controls">
-                <input type="text" name="user[email]" id="user[email]" class="form-control" tabindex="3">
+                <input type="text" name="user[email]" id="user[email]" class="form-control input-sm" tabindex="3">
               </div>
             </div>   
 
@@ -93,19 +93,19 @@
                   <label for="inputlogo" class="control-label">Role:</label>
                   <div class="controls">
                     <% if params[:role]=="host"%>
-                     <select class="form-control-1" name="role[role_id]" tabindex="6">                  
+                     <select class="form-control input-sm" name="role[role_id]" tabindex="6">                  
                       <option value="host">Host</option>
                       <option value="guest">Guest</option>
                       <option value="">Select</option>
                      </select>
                      <% elsif params[:role]=="guest" %>
-                    <select class="form-control-1" name="role[role_id]" tabindex="6">                  
+                    <select class="form-control input-sm" name="role[role_id]" tabindex="6">                  
                       <option value="guest">Guest</option>
                       <option value="host">Host</option>
                       <option value="">Select</option>
                      </select>
                      <% else %>
-                    <select class="form-control-1" name="role[role_id]" tabindex="6">
+                    <select class="form-control input-sm" name="role[role_id]" tabindex="6">
                       <option value="">Select</option>
                       <option value="host">Host</option>
                       <option value="guest">Guest</option>

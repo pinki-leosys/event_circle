@@ -13,6 +13,7 @@ EventCircle::Application.routes.draw do
          get '/events_attended' => 'users/dash_board#events_attended', :as => :events_attended
          get '/current_events' => 'users/dash_board#current_events', :as => :current_events
          get '/events_registered' => 'users/dash_board#events_attended'
+         get '/find_events' => 'users/dash_board#find_events', :as => :find_events
          #for host
          get '/events_hosted' => 'users/dash_board#events_hosted', :as => :events_published
          get '/host_current_events' => 'users/dash_board#host_current_events', :as => :events_for_publish

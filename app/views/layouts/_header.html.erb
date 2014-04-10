@@ -1,10 +1,19 @@
-
 <head>
+<%= stylesheet_link_tag "home/mainpage/main-index" %>
 
-    <%= stylesheet_link_tag "home/mainpage/main-index" %>
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".fancybox").fancybox({
+        autoDimensions: false,
+        height: 300,
+        width: 400  
+    }); 
+}); 
+</script>
 
-	<% if @user %>
-	
+
+  <% if @user %>
+  
   <% @user.errors.full_messages.each do |msg,name| %>
   <div class="alert alert-<%= name.to_s == 'notice' ? "success" : "danger" %>">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  
@@ -16,54 +25,80 @@
 
 </head>
 <body>
-	<header>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-5">
-				<h1 class="tagline">Event Planning. Organizing. and Execution</h1>
-				<img class="logo img-responsive" src="/assets/logo.jpg" alt="Logo"></img>
-				</div>
-				
-				
-				<div class="col-md-7">
-					<div class="signup martop2">
-						<form action="/dash_board" method="post" class="form-inline" role="form" accept-charset="UTF-8"    >
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+        <h1 class="tagline">Event Planning. Organizing. and Execution</h1>
+        <img class="logo img-responsive" src="/assets/logo.jpg" alt="Logo"></img>
+        </div>        
+        
+        <div class="col-md-7">
+          <div class="signup martop2">
+          <form action="/search" class="form-inline" method="get" accept-charset="UTF-8"    >    
+          <%#= form_tag search_path, :method => 'get' do %>  
+           
+              <div class="form-group"> 
+                <input class="form-control input-sm" id="search" name="search" type="text" />
+              </div>
+              <div class="form-group"> 
+                <%= submit_tag "Search", :name => nil, class: "btn btn-default input-sm" %>  
+              </div>
+              <div class="form-group">     
+                <%= link_to "Sign In", "#hello1", class: "fancybox btn-sm new" %>
+              </div>
+              <div class="form-group">  
+              </div>
+            </form>
+        <%# end %>  
+        </div>
 
-<div>
-								<input name="utf8" type="hidden" value="&#x2713;" />
-								<input name="authenticity_token" type="hidden" value="MD9N38/Jr8438i4QZv+ED5xUe8KMdtqWfZ2iAadZ5Ck=" />
-							</div>
+        <nav class="main-nav">
+            <ul class="nav-pills">
+              <li><a href="/home">THE EC</a></li>
+              <li><%= link_to "ABOUT",about_us_path %></li>
+        <li><a href="/users/sign_up">REGISTER</a></li>
+              <li><%= link_to "CONTACT",contact_path %></li>
+              <li><%= link_to "EVENTS",user_events_path %></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    
+  </header>
+<div style="display:none;">
+  <div id="hello1">
+      <%#= form_for(:user, :url => user_session_path) do |f| %>
+       <form accept-charset="UTF-8"  action="/dash_board" method="post">
+        <div class="control-label">
+        <input name="utf8" type="hidden" value="&#x2713;" />
+        <input name="authenticity_token" type="hidden" value="MD9N38/Jr8438i4QZv+ED5xUe8KMdtqWfZ2iAadZ5Ck=" />
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="inputpagetitle">Login: </label>&nbsp;&nbsp;&nbsp;&nbsp;
+          <label class="control-label" for="inputpagetitle"><span class="highlight-1">I am a: </span></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label class="control-label" for="inputpagetitle">Guest </label>
+                <input type="radio" name="role" value="guest"> &nbsp;&nbsp;&nbsp;&nbsp;
+                <label class="control-label" for="inputpagetitle">Host </label>
+        <input type="radio" name="role" value="host">
+        </div>  
+        <div class="form-group">
+          <label class="control-label" for="inputpagetitle">Email: </label>
+                <input type="email" name= 'user[email]' class="form-control input-sm" placeholder="Enter email" style="height:30px" >
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="inputpagetitle">Password: </label>
+        <input type="password" name='user[password]' class="form-control input-sm" placeholder="Password" style="height:30px">
+        </div>
+        <button type="submit" class="btn btn-default input-sm">Sign in</button>
+        <%= link_to "Forgot Password", new_user_password_path %>
+        </form>
+        <%#end%>
+    </div>
+</div>
+     <!--  </div> -->
+          
+          <!-- <div class="clearfix"></div> -->
 
-						  <div class="form-group">
-                                                     <input type="email" name= 'user[email]'class="form-control input-sm" placeholder="Enter email" style="height:30px" >
-						  </div>
-						  <div class="form-group">
-							<input type="password" name='user[password]' class="form-control input-sm" placeholder="Password" style="height:30px">
-						  </div>
-						<select class="form-control input-sm" name ="role">
-						  <option value="">Select</option>
-						  <option value="guest">Guest</option>
-						  <option value="host">Host</option>	
-					          <option value="admin">Admin</option>
-						</select>
-						  <button type="submit" class="btn btn-default input-sm">Sign in</button>
-						  						<%= link_to "Forgot Password", new_user_password_path %>
-
-						</form>
-					</div>
-					
-					<!-- <div class="clearfix"></div> -->
-					<nav class="main-nav">
-						<ul class="nav-pills">
-							<li><a href="/home" class="selected">THE EC</a></li>
-							<li><%= link_to "ABOUT",about_us_path %></li>
-				<li><a href="/users/sign_up">REGISTER</a></li>
-							<li><%= link_to "CONTACT",contact_us_path %></li>
-							<li><%= link_to "EVENTS",user_events_path %></li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</header>
-	
+</body>
