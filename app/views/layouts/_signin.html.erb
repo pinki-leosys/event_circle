@@ -16,14 +16,15 @@
         </div>  
         <div class="form-group">
           <label class="control-label" for="inputpagetitle">Email: </label>
-                <input type="email" name= 'user[email]' class="form-control input-sm" placeholder="Enter email" style="height:30px" >
+                <input type="email" name= 'user[email]' class="form-control input-sm" placeholder="Enter email" style="height:30px;width:70%;" >
         </div>
         <div class="form-group">
           <label class="control-label" for="inputpagetitle">Password: </label>
-        <input type="password" name='user[password]' class="form-control input-sm" placeholder="Password" style="height:30px">
+        <input type="password" name='user[password]' class="form-control input-sm" placeholder="Password" style="height:30px;width:70%;">
         </div>
-        <button type="submit" class="btn btn-default input-sm">Sign in</button>
-        <%= link_to "Forgot Password", new_user_password_path %>
+        <button type="submit" class="btn btn-sm new">Sign in</button>
+        <%= link_to "Register", sign_up_path, class: "btn btn-default input-sm" %>
+        <%= link_to "Forgot Password", new_user_password_path, class: "btn btn-default input-sm" %>
         </form>
         <%#end%>
     </div>
@@ -35,7 +36,10 @@ $('.test').attr('id', 'hello1');
   $(".fancybox").fancybox({
         autoDimensions: false,
         height: 300,
-        width: 400  
+        width: 400,
+      onCleanup   : function() {
+        return window.location.reload();
+      }    
     }); 
 }); 
 </script>

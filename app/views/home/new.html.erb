@@ -10,45 +10,78 @@
       <div class="about-box-head">
         <span class="title-2">Contact <span class="highlight-1">Us</span></span>
       </div>
-      <!-- <div class="about-box-content"> -->
-       <form accept-charset="UTF-8" action="/contact_us" method="post"  id="contact-form">
-       <div class="field_with_errors" ></div>
-            <div class="col-md-4 martop3  form-horizontal">
+     
+            <form accept-charset="UTF-8" action="/contact_us" method="post"  id="contact-form">
+            <div class="col-md-4 martop3 form-horizontal">
+              <!-- <form class="form-horizontal"> -->
+                <div class="control-group">
+                <label for="inputpagetitle" class="control-label">Name :</label>
+                <div class="controls">
+                <input type="text" class="form-control input-sm" id="" name="contact1[name]">
+                </div>
+                </div>
+              
+
+                
+              <!--  <div class="control-group">
+                <div class="controls">
+                <img src="../img/captcha.png">
+                </div>
+                </div> -->
+                
+              
+          
+              <!-- </form> -->
+            </div>
+      <div class="col-md-3 martop3 form-horizontal">
+              
+                <div class="control-group">
+                <label for="inputpagetitle" class="control-label">Email :</label>
+                <div class="controls">
+                <input type="text" class="form-control input-sm" id="" name="contact1[name]">
+                </div>
+                </div>
+
+            </div>
+          
+            <div class="clearfix"></div>
+            
+            
+            <div class="col-md-11 martop3 form-horizontal">
               <div class="control-group">
-                <label class="control-label" for="inputpagetitle">Name :</label>
-              <div class="controls">
-                <input id="contact1[name]"  type="text" name="contact1[name]">
-             </div>
-           </div>
-          <div class="control-group">
-            <label class="control-label" for="inputlogo">E-mail :</label>
-            <div class="controls">
-              <input id="contact1[email]"  type="text" name="contact1[email]">
+                <label for="inputlogo" class="control-label">Message :</label>
+                <div class="controls">
+                <textarea rows="4" class="col-md-12 form-control input-sm" name="contact1[message]"> </textarea>
+                </div>
+                </div>
             </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="inputlogo">Message :</label>
-            <div class="controls">
-              <!-- input id="contact1[message]" class="form-control-1" type="textarea" name="contact1[message]"/> -->
-              <textarea cols="80" rows="4" name="contact1[message]">
-              </textarea>
-            </div>
-
-          </div>
-          <div class="control-group">
-            <div class="signup text-center form-inline">
+                
+           <!--  </form> -->
+            
+            <div class="clearfix"></div>
+            <div style="align:center;">
+            <div class="col-md-12 martop1" style="background:#f1f4f9;align:center;">
+            <div class="signup pull-left form-inline">
+            <!-- <form class="form-inline" role="form"> -->
+              <div class="form-group">
+              
               <%= recaptcha_tags %>    
+              
+              </div>
+             
+            
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+          </div>
+          
+          </div>
             </div>
-
-        </div>
-         <%#end%>
-        <div class="col-md-4 martop3  form-horizontal">   
-          <div class="control-group">
-           <button class="btn-sm new" type="submit" tabindex="13">Submit</button>
           </div>
         </div>
-        </div>
-      <!-- </form> -->
+      </div>
+    </div>
+  </div> 
+       
     
 
                 
