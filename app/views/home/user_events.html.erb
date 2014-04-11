@@ -50,7 +50,7 @@
             </div>
             
             <div class="col-md-11">
-            <%= event.description %> <%= link_to "Read More", read_more_path(event) %><p></p>
+            <%= raw(event.description) %> <%= link_to "Read More", read_more_path(event) %><p></p>
             </div>
 
             <% end %>
@@ -71,3 +71,19 @@
 
 	<%= render partial: "layouts/content"%>	
 	<%= render partial: "layouts/footer"%>
+
+  <script>
+   $(document).ready(function(){
+   $('p img').parent().hide();
+   $('p object').parent().hide();
+
+   });
+
+
+</script>
+
+<style>
+
+p { display : inline; }
+
+</style>

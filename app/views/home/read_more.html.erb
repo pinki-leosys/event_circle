@@ -7,29 +7,40 @@
 			<div class="row">
 				<div class="col-md-12">
 				  <div class="about-box">
-					<div class="about-box-head">
-					  <span class="title-2"><%= @event.title %>-  <span class="highlight-1"><%= @event.venue %></span></span>
-						</div>
 					<div class="about-box-content">
-					<p class="about-box-content">
-								
-					<span class="title-2"> 
-					  <span class="highlight-1"> Description: </span>
-					</span> <br/><br/>
-					<%= @event.description %><br/><br/>
-					<span class="title-2"> 
-					  <span class="highlight-1"> Start Date: </span>
-					</span>  
-					<%= @event.event_start_date%>&nbsp;&nbsp;&nbsp;&nbsp;
-					<span class="title-2"> 
-					  <span class="highlight-1"> End Date: </span>
-				    </span>  <%= @event.event_end_date%> <br/>
-				  <div class="control-group">
-        	     <button class="btn-sm new" type="submit" tabindex="13">Login</button> or 
-        	     <%= link_to "Register", sign_up_path, class: "btn-sm new" %>
-        	      to Attend
-        	</div>
-						</p>
+						      <div class="row">
+          <div class="col-md-16 col-md-offset-1">
+            <table class="table table-striped box-border">
+              <thead class="box-head" >
+                  <tr><td colspan="2"><p><strong><%= @event.title %></strong></p></tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="2"><strong>Description:</strong></td></tr>
+ 
+                <tr><td colspan="2">  <%= raw(@event.description) %></td></tr>
+                <tr><td><strong>Start Date:</strong><span>  <%= @event.event_start_date.strftime("%b %d,%Y") %>
+</span></td>
+                                <td><strong>End Date:</strong><span>  <%= @event.event_end_date.strftime("%b %d,%Y") %>
+</span>
+                                </tr>
+                <tr><td><strong>Start Time</strong><span> <%= @event.event_start_date.strftime("%I:%M%p") %></span></td>
+                	<td><strong>End Time</strong><span> <%= @event.event_end_date.strftime("%I:%M%p") %></span></td></tr>
+                <tr><td><strong>Location:</strong><span>
+                <%= "#{@event.address.city} #{@event.address.state}" if @event.address %></td>
+                   <td colspan="2"><strong>Host Name:</strong><span>
+                <%= "#{@event.user.uname} #{ @event.user.last_name}" if @event.user %></span>
+</td></tr>
+
+             </tbody>
+             </table>
+          </div>
+        </div>
+<div style="padding-left:40px" >      
+        <%= link_to 'Login',"#hello1",class: "disabled btn-sm new fancybox "%> OR  <%= link_to "Register", sign_up_path, class: "btn-sm new" %>
+       </div>       
+  
+
+					
 
 						</div>
 					</div>
@@ -37,7 +48,8 @@
 			</div>
 		</div>
 	</div> 
-	
+	    <%= render partial: "layouts/signin"%>
+
 	<%= render partial: "layouts/content"%>
 
 	

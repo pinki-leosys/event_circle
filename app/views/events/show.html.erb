@@ -5,47 +5,154 @@
     <div class="col-custom-md-21">
       <div class="content-section">
       <h2 class="title">Dashboard</h2>
-      <div class="row">
-          <div class="col-md-16 col-md-offset-1">
+              <div class="row">
+          <div class="col-md-22 col-md-offset-1" style="padding-left:17px;">
             <table class="table table-striped box-border">
-              <thead class="box-head" >
-                  <tr><td colspan="2"><p><strong><%= @event.title %></strong></p></tr>
+              <thead class="box-head">
+                  <tr>
+                  <td colspan="3"><strong><%= @event.title %></strong></td>
+                  </tr>
               </thead>
+            
               <tbody>
-                <tr><td colspan="2"><strong>Description:</strong></td></tr>
- 
-                <tr><td colspan="2">  <%= raw(@event.description) %></td></tr>
-                <tr><td><strong>Start Date:</strong><span>  <%= @event.event_start_date.strftime("%b %d,%Y") %>
-</span></td>
-                                <td><strong>End Date:</strong><span>  <%= @event.event_end_date.strftime("%b %d,%Y") %>
-</span>
-                                </tr>
-                <tr><td><strong>Start Time</strong><span> <%= @event.event_start_date.strftime("%I:%M%p") %></span></td><td><strong>End Time</strong><span> <%= @event.event_end_date.strftime("%I:%M%p") %></span></td></tr>
-                <tr><td colspan="2"><strong>Location:</strong></td></tr>
-                <tr><td><%= "#{@event.address.city} #{@event.address.state}" if @event.address %></td></tr>
-                <tr><td colspan="2"><strong>Host Name:</strong></td></tr>
-                <tr><td colspan="2"> <%= "#{@event.user.uname} #{ @event.user.last_name}" if @event.user %>
-</td></tr>
-
-<tr>
-       <% if current_user.is_registered?(@event) %>
-         <td colspan="2"><%= link_to 'Registered','#',class: "disabled btn-sm new "%></td>
-      <% else %>
-         <td colspan="2"><%= link_to 'Register', register_event_path(@event), class: "btn-sm new"%></td>
-      <% end %>
+              <tr>
+                  <td><strong>Description</strong></td>
+                  <td><strong></strong></td>
+                  <td><strong></strong></td>
+                </tr>
+                <tr>
+                  <td><%= raw(@event.description) %></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                <td>
+                <table>
+                  <tr>
+                  <td><strong>Start Date:&nbsp;</strong></td>
+                  <td><%= @event.event_start_date.strftime("%b %d,%Y") %></td>
+                  <td class="col-md-6">&nbsp;</td>
+                  <td><strong>End Date:&nbsp;</strong></td>
+                  <td> <%= @event.event_end_date.strftime("%b %d,%Y") %></td>
+                  </tr>
+                </table>
+                </td>
+                <td>
+            
+                </td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>
+                  <table>
+                    <tr>
+                    <td><strong>Start Time:&nbsp;</strong></td>
+                    <td> <%= @event.event_start_date.strftime("%I:%M%p") %></td>
+                    <td class="col-md-6">&nbsp;</td>
+                    <td><strong>End Time:&nbsp;</strong></td>
+                    <td><%= @event.event_end_date.strftime("%I:%M%p") %></td>
+                    </tr>
+                    <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tr>
+                  </table>
+                </td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                <td><strong>Location : &nbsp;</strong></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                
+                <tr>
+                <td><%= "#{@event.address.city} #{@event.address.state}" if @event.address %></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                
+                <tr>
+                  <td>
+                  <table>
+                  <tr>
+                  <td><strong>Host Name:&nbsp;</strong></td>
+                  <td><%= "#{@event.user.uname} #{ @event.user.last_name}" if @event.user %></td>
+                  </tr>
+                  </table>
+                  </td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                 <% if can? :update, @event %>
+                <tr>
+                <td>  <%= link_to "Edit", edit_event_path(@event), class: "btn-sm new" %></td>
+                <td></td>
+                <td></td>
+                </tr>
+                        
+               
+                 <% else %>
+                       <% if current_user.is_registered?(@event) %>
+                 <tr>
+                <td>  <%= link_to 'Registered','#',class: "disabled btn-sm new "%></td>
+                <td></td>
+                <td></td>
+                </tr>
+                     <% else %>
+                <tr>
+                <td>  <%= link_to 'Register', register_event_path(@event), class: "btn-sm new"%></td>
+                <td></td>
+                <td></td>
+                </tr>
+                     <% end %>
+               <% end %>            
               </tbody>
              </table>
           </div>
-      </tr>
-  
+          
+      
         </div> <!-- Row closing -->   
-        <div class="clearfix"></div>
+        
+        <div class="row">
+          <div class="col-md-22 col-md-offset-1" style="padding-left:17px;">
+            <table class="table table-striped box-border">
+              <thead class="box-head">
+                  <tr><td><strong style="color:#c16429;">Event Media</strong></td></tr>
+              </thead>
+              <tbody>
+                <tr><td>
+                <button type=" " class="btn btn-default">Upload Pictures</button>
+                <button type=" " class="btn btn-default">Upload Video</button>
+                <button type=" " class="btn btn-default">Upload Audio</button>
+                </td></tr>
+                <tr><td><strong>Existing Media</strong></td></tr>
+                <tr>
+                  
 
-      <div style="height:130px;background-color:black; padding-bottom:20px">
-        <a href='/assets/image.jpeg' class="fancybox"><img src="/assets/image.jpeg"></a>
-         <%= link_to image_tag("image.jpeg",height: "120", weight: "120"), class:"fancybox" %>
-      </div>
+                <td style="background:#434655; color:#c16429;">
+                  <table>
+                    <tr>
+                    <% @event.pictures.each do |image| %>
+                      <%= link_to image_tag( image.url_thumb, :height => '120', :weight => '160', class:'check'),image.url,  {:class => 'fancybox-group thumb', rel: "group1"} %>
+                    <% end %>
+                    </tr>
+                  </table>
+                </td>
+                </tr>
+                
+                <tr><td>&nbsp;</td></tr>
+              </tbody>
+             </table>
+          </div>
+          
+    
+        </div> <!-- Row closing -->   
 
+     
 
 
      <%= render partial: "layouts/dash_board/sidebar_bottom"%>
@@ -63,12 +170,21 @@ jQuery(function() {
 
    });
 
-
-
 </script>
 
 <style>
+.check{
+  padding-right:5px;
+}
 
 p { display : inline; }
 
 </style>
+<script>
+$("a.fancybox-group").fancybox({
+    'transitionIn'  : 'elastic',
+    'transitionOut' : 'elastic',
+    'speedIn'   : 600, 
+    'speedOut'    : 200, 
+    'overlayShow' : false
+  });</script>
