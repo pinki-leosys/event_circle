@@ -93,19 +93,19 @@
                   <label for="inputlogo" class="control-label">Role:</label>
                   <div class="controls">
                     <% if params[:role]=="host"%>
-                     <select class="form-control input-sm" name="role[role_id]" tabindex="6">                  
+                     <select class="form-control" name="role[role_id]" tabindex="9">                  
                       <option value="host">Host</option>
                       <option value="guest">Guest</option>
                       <option value="">Select</option>
                      </select>
                      <% elsif params[:role]=="guest" %>
-                    <select class="form-control input-sm" name="role[role_id]" tabindex="6">                  
+                    <select class="form-control" name="role[role_id]" tabindex="9">                  
                       <option value="guest">Guest</option>
                       <option value="host">Host</option>
                       <option value="">Select</option>
                      </select>
                      <% else %>
-                    <select class="form-control input-sm" name="role[role_id]" tabindex="6">
+                    <select class="form-control" name="role[role_id]" tabindex="9">
                       <option value="">Select</option>
                       <option value="host">Host</option>
                       <option value="guest">Guest</option>
