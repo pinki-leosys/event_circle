@@ -1,5 +1,7 @@
 EventCircle::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :users,:skip => [:sessions, :passwords], controllers: { sessions: "users/dash_board", passwords: "users/passwords",:registrations =>'users/registrations' }
 
    devise_scope :user do
@@ -7,10 +9,16 @@ EventCircle::Application.routes.draw do
          post '/dash_board' => 'users/dash_board#create', :as => :user_session
          get '/sign_out' => 'devise/sessions#destroy', :as => :destroy_user_session
 	       get '/user' => "users/registrations#new", :as => :sign_up
-         get '/events_attended' => 'users/dash_board#events_attended', :as => :events_registered
-         get '/events_hosted' => 'users/dash_board#events_hosted', :as => :events_published
-         get '/current_host_events' => 'users/dash_board#current_host_events', :as => :events_for_publish
+         #for guest 
+         get '/events_attended' => 'users/dash_board#events_attended', :as => :events_attended
          get '/current_events' => 'users/dash_board#current_events', :as => :current_events
+         get '/events_registered' => 'users/dash_board#events_attended'
+         get '/find_events' => 'users/dash_board#find_events', :as => :find_events
+         #for host
+         get '/events_hosted' => 'users/dash_board#events_hosted', :as => :events_published
+         get '/host_current_events' => 'users/dash_board#host_current_events', :as => :events_for_publish
+         get '/saved_events' => 'users/dash_board#saved_events', :as => :events_for_publish
+         get '/upcoming_events' => 'users/dash_board#upcoming_events', :as => :events_for_publish         
          get '/host' => 'users/dash_board#become_host', :as => :host
          get '/guest' => 'users/dash_board#become_guest', :as => :guest
          post '/users/password' => 'users/passwords#create', as: :user_password
@@ -18,21 +26,28 @@ EventCircle::Application.routes.draw do
          get '/users/password/edit' => 'devise/passwords#edit', as: :edit_user_password
          put '/users/password' => 'devise/passwords#update'
          get  '/about_us_dashbord'     => "users/dash_board#about_us_dashbord", as: :about_us_dashbord
-         get  '/ec'     => "users/dash_board#the_ec", as: :ec
+         get  '/host_dashboard'     => "users/dash_board#host_dashboard", as: :ec
+         get  '/guest_dashboard'     => "users/dash_board#guest_dashboard", as: :ec
          get  '/user_contact' => "users/dash_board#user_contact", as: :contact_us
   end
   match  '/about_us'   => "home#about", as: :about_us
-  match  '/events'       => "home#events", as: :events
-  match  '/contact_us'   => "home#contact", as: :contact_us
+  match  '/search'   => "home#search", as: :search
+  match  '/user_events'       => "home#user_events", as: :user_events
+ # match  '/contact_us'   => "home#contact", as: :contact_us
+  match  '/contact_us'   => "home#create", as: :contact
+  match  '/contact_us_message'   => "home#contact_us_message", as: :contact_us_message
   match  '/host_event'     => "home#host_event", as: :host_event
   match  '/attend_event'     => "home#attend_event", as: :attend_event
   match  '/sponsor_event'     => "home#sponsor_event", as: :sponsor_event
+  match "home/:id/read_more" => "home#read_more", :as => "read_more"  
+  match  '/contact_us'   => "home#contact", as: :contact_us
   match "home/:id/activate_user" => "home#activate_user", :as => "activate_user"
     
-  resources :events, only: :show do
+ resources :events, :except => :index do
     member do
       get 'register'
       get 'publish'
+      get 'images'
     end
   end
   root :to => 'home#index'

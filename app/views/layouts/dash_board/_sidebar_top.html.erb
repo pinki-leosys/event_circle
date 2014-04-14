@@ -6,15 +6,28 @@
 		<div class="col-custom-md-3">
 			<div class="left-nav">
 				<ul class="menu-ul">
-				<div class="test <%= 'selected' if params[:action] == 'index'%>"><li><%= link_to "Dashboard", root_path, style:"margin:-14px"%></li></div>
-				<div class="test <%= 'selected' if params[:action] == 'the_ec'%>">
-				  <li><a href="/ec"> The EC</a></li>
-			    </div>
-			    <div class="test <%= 'selected' if params[:action] == 'about_us_dashbord'%>">
-				  <li><a href='/about_us_dashbord'>About</a></li>
-				</div>
+				<div class="test <%= 'selected' if params[:action] == 'index'%>"><li><%= link_to "Dashboard", root_path, style:"font-size:18px;"%></li></div>
+
+
+				<% if session[:role]=="guest"%>
+			      <% if current_user.has_role? :host%>
+                  <div class="test <%= 'selected' if params[:action] == 'the_ec'%>">
+				    <li><a href="/host_dashboard"> HOST EVENT</a></li>
+			      </div>
+			      <% end %>
+			      <div class="test <%= 'selected' if params[:action] == 'about_us_dashbord'%>">
+				    <li><a href='/find_events'>FIND EVENT</a></li>
+				  </div>	         
+				 <% else %>
+                  <div class="test <%= 'selected' if params[:action] == 'the_ec'%>">
+				    <li><a href="/guest_dashboard"> ATTEND EVENT</a></li>
+			      </div>
+			      <div class="test <%= 'selected' if params[:action] == 'new'%>">
+				    <li><a href='/events/new'> CREATE EVENT</a></li>
+				  </div>
+             	<% end %>
 				<div class="test <%= 'selected' if params[:action] == 'user_contact'%> ">
-				  <li><a href="/user_contact">Contact</a></li>
+				  <li><a href="/user_contact">CONTACT</a></li>
 		    	</div>
 				</ul>
 			</div>

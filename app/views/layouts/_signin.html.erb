@@ -1,0 +1,45 @@
+<div style="display:none;">
+  <div id="hello1" class="test">
+      <%#= form_for(:user, :url => user_session_path) do |f| %>
+       <form accept-charset="UTF-8"  action="/dash_board" method="post" class='test'>
+        <div class="control-label">
+        <input name="utf8" type="hidden" value="&#x2713;" />
+        <input name="authenticity_token" type="hidden" value="MD9N38/Jr8438i4QZv+ED5xUe8KMdtqWfZ2iAadZ5Ck=" />
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="inputpagetitle">Login: </label>&nbsp;&nbsp;&nbsp;&nbsp;
+          <label class="control-label" for="inputpagetitle"><span class="highlight-1">I am a: </span></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <label class="control-label" for="inputpagetitle">Guest </label>
+                <input type="radio" name="role" value="guest"> &nbsp;&nbsp;&nbsp;&nbsp;
+                <label class="control-label" for="inputpagetitle">Host </label>
+        <input type="radio" name="role" value="host">
+        </div>  
+        <div class="form-group">
+          <label class="control-label" for="inputpagetitle">Email: </label>
+                <input type="email" name= 'user[email]' class="form-control input-sm" placeholder="Enter email" style="height:30px;width:70%;" >
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="inputpagetitle">Password: </label>
+        <input type="password" name='user[password]' class="form-control input-sm" placeholder="Password" style="height:30px;width:70%;">
+        </div>
+        <button type="submit" class="btn btn-sm new">Sign in</button>
+        <%= link_to "Register", sign_up_path, class: "btn btn-default input-sm" %>
+        <%= link_to "Forgot Password", new_user_password_path, class: "btn btn-default input-sm" %>
+        </form>
+        <%#end%>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+$('.test').attr('id', 'hello1');
+  $(".fancybox").fancybox({
+        autoDimensions: false,
+        height: 300,
+        width: 400,
+      onCleanup   : function() {
+        return window.location.reload();
+      }    
+    }); 
+}); 
+</script>

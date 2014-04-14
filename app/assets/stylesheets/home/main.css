@@ -38,7 +38,8 @@ padding:20px 0 0 0;
 padding:20px 0 20px 20px;
 list-style:none;
 color:#84d4f0;
-font-size:20px;
+font-size:14px;
+font-weight: bold;
 border-bottom:3px solid #00879f;
 margin-right:12px;
 }
@@ -75,7 +76,7 @@ min-height:700px;
 }
 .content-section{
 background:#fff;
-padding:1px 0 0 5px;
+padding:1px 0 0 20px;
 /* border-top:10px solid #9fa3b9; */
 }
 table thead:hover {
@@ -84,7 +85,7 @@ table thead:hover {
 .title{
 font-size: 26px;
 font-weight: bold;
-padding: 3px 0 0 41px;
+/* padding: 3px 0 0 41px;*/
 text-transform: uppercase;
 }
 .box-border{

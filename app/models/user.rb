@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :confirmable
 
-   has_one :address, as: :addressable
+  has_one :address, as: :addressable
+    accepts_nested_attributes_for :address
+  attr_accessible :address_attributes, :address 
    #has_many :companies
    has_many :events
   has_and_belongs_to_many :registered_events, :class_name => 'Event', :join_table => :events_users, :association_foreign_key => :event_id,:uniq =>true

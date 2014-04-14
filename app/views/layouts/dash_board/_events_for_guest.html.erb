@@ -1,8 +1,8 @@
-	<div class="some">
+	<div class="row">
 				<div class="header1 fixed" style ="float:left;margin:8px">
 						<table class="table table-striped box-border table-dummy">
 						   <thead class="box-head">
-								  <tr><td colspan="3"><strong>Events <span style="color:#e06d21;">Attended</span></strong></td></tr>
+								  <tr><td colspan="4"><strong>Events <span style="color:#e06d21;">Attended</span></strong></td></tr>
 								  
 							</thead>
 						
@@ -11,14 +11,15 @@
 									<td><strong>Title</strong></td>
 									<td><strong>Venue</strong></td>
 									<td><strong>Start Date</strong></td>
+									<td><strong>Registered Users</strong></td>
 								</tr>
-								<% @events_attended.to_enum.with_index(1) do |event,i |%>
+								<% @events_attended.each do |event| %>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= event.venue %></td>
+									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
 									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
+									<td><%= event.registered_users.count %></td>
 								</tr>
-								<% break if i==3 %>
 								<% end %>
 						  </tbody>
 						 </table>
@@ -26,18 +27,18 @@
 				
 
 <table id="events_registered" class="table table-striped box-border table-main display" data-source="/events_attended.json" style="display:none">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Venue</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+ 									 <thead>
+   										 <tr>
+    									  <th>Title</th>
+      										<th>Start Date</th>
+      										<th>Start Time</th>
+      										<th>Registered Users</th>
+      										<th></th>
+    										</tr>
+  										</thead>
+ 									 <tbody>
+  									</tbody>
+						</table>
 
 
 
@@ -46,22 +47,23 @@
 						<table class="table table-striped box-border table-dummy">
 						   <thead class="box-head">
 							  <tr>
-								<tr><td colspan="3"><strong>Current &amp; Upcoming <span style="color:#e06d21;">Events</span></strong></td></tr>
+								<tr><td colspan="4"><strong>Current <span style="color:#e06d21;">Events</span></strong></td></tr>
 							  </tr>
 						   </thead>
-						   <tbody>
+							<tbody>
 							<tr>
 									<td><strong>Title</strong></td>
 									<td><strong>Venue</strong></td>
 									<td><strong>Start Date</strong></td>
+									<td><strong>Registered Users</strong></td>
 								</tr>
-								<% @current_events.to_enum.with_index(1) do |event,i |%>
+								<% @current_events.each do |event|%>
 								<tr>
 									<td><%= event.title %></td>
-									<td><%= event.venue %></td>
-									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
+                                    <td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>								
+                                    <td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
+									<td><%= event.registered_users.count %></td>
 								</tr>
-								<% break if i==3 %>
 								<% end %>
 						  </tbody>
 						 </table>
@@ -71,9 +73,9 @@
  									 <thead>
    										 <tr>
     									  <th>Title</th>
-      										<th>Venue</th>
       										<th>Start Date</th>
-      										<th>End Date</th>
+      										<th>Start Time</th>
+      										<th>Registered Users</th>
       										<th></th>
     										</tr>
   										</thead>
@@ -84,3 +86,47 @@
 
 					</div>
 				</div> <!-- Row closing -->		
+
+				<div class="row">
+				<div class="header1 fixed" style ="float:left;margin:8px">
+						<table class="table table-striped box-border table-dummy">
+						   <thead class="box-head">
+								  <tr><td colspan="4"><strong>Events <span style="color:#e06d21;">Registered</span></strong></td></tr>
+								  
+							</thead>
+							<tbody>
+							<tr>
+									<td><strong>Title</strong></td>
+									<td><strong>Venue</strong></td>
+									<td><strong>Start Date</strong></td>
+									<td><strong>Registered Users</strong></td>
+								</tr>
+								<% @events_registered.each do |event|%>
+								<tr>
+									<td><%= event.title %></td>
+									<td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
+									<td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
+									<td><%= event.registered_users.count %></td>
+								</tr>
+								<% end %>
+						  </tbody>
+						 </table>
+
+				
+
+<table id="events_registered" class="table table-striped box-border table-main display" data-source="/events_registered.json" style="display:none">
+ 									 <thead>
+   										 <tr>
+    									  <th>Title</th>
+      										<th>Start Date</th>
+      										<th>Start Time</th>
+      										<th>Registered Users</th>
+      										<th></th>
+    										</tr>
+  										</thead>
+ 									 <tbody>
+  									</tbody>
+						</table>
+
+	</div>
+</div><!-- row closing -->
