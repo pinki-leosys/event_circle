@@ -19,4 +19,3 @@
 //= require bootstrap-datetimepicker
 //= require ckeditor/init
 //= require fancybox
-//= require_tree .
