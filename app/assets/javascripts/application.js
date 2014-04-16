@@ -18,3 +18,4 @@
 //= require twitter/bootstrap
 //= require bootstrap-datetimepicker
 //= require ckeditor/init
+//= require fancybox
