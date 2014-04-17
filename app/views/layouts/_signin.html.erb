@@ -16,13 +16,13 @@
         </div>  
         <div class="form-group">
           <label class="control-label" for="inputpagetitle">Email: </label>
-                <input type="email" name= 'user[email]' class="form-control input-sm" placeholder="Enter email" style="height:30px;width:70%;" >
+                <input type="email" name= 'user[email]' id="user_email" class="form-control input-sm" placeholder="Enter email" style="height:30px;width:70%;" >
         </div>
         <div class="form-group">
           <label class="control-label" for="inputpagetitle">Password: </label>
-        <input type="password" name='user[password]' class="form-control input-sm" placeholder="Password" style="height:30px;width:70%;">
+        <input type="password" name='user[password]' id="password" class="form-control input-sm" placeholder="Password" style="height:30px;width:70%;">
         </div>
-        <button type="submit" class="btn btn-sm new">Sign in</button>
+        <button type="submit" class="btn btn-sm new" id="btnValidate">Sign in</button>
         <%= link_to "Register", sign_up_path, class: "btn btn-default input-sm" %>
         <%= link_to "Forgot Password", new_user_password_path, class: "btn btn-default input-sm" %>
         </form>
@@ -40,6 +40,26 @@ $('.test').attr('id', 'hello1');
       onCleanup   : function() {
         return window.location.reload();
       }    
-    }); 
-}); 
+    });
+    $('#btnValidate').click(function() {
+        var sEmail = $('#user_email').val();
+        var password = $('#password').val();
+        if ($.trim(sEmail).length == 0) {
+           alert('Please enter valid email address');
+            return false;
+        }
+        else if ($.trim(password).length == 0) {
+            alert('Please enter password');
+            return false;
+        }          
+        else if ($('input[name=role]:checked').length<=0) {
+            alert("Please select Role");
+            return false;
+        }   
+        else {
+            return true;
+        }
+    });
+  }); 
+
 </script>

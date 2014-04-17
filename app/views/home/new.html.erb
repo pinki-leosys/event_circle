@@ -17,7 +17,7 @@
                 <div class="control-group">
                 <label for="inputpagetitle" class="control-label">Name :</label>
                 <div class="controls">
-                <input type="text" class="form-control input-sm" id="" name="contact1[name]">
+                <input type="text" class="form-control input-sm" id="contact_name" name="contact1[name]">
                 </div>
                 </div>
               
@@ -38,7 +38,7 @@
                 <div class="control-group">
                 <label for="inputpagetitle" class="control-label">Email :</label>
                 <div class="controls">
-                <input type="text" class="form-control input-sm" id="" name="contact1[name]">
+                <input type="text" class="form-control input-sm" id="contact_email" name="contact1[name]" style="width:200%;" />
                 </div>
                 </div>
 
@@ -51,7 +51,7 @@
               <div class="control-group">
                 <label for="inputlogo" class="control-label">Message :</label>
                 <div class="controls">
-                <textarea rows="4" class="col-md-12 form-control input-sm" name="contact1[message]"> </textarea>
+                <textarea rows="4" id="contact_message" class="col-md-12 form-control input-sm" name="contact1[message]"> </textarea>
                 </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
               </div>
              
             
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button type="submit" id="contactValidate" class="btn btn-default">Submit</button>
             </form>
           </div>
           
@@ -97,3 +97,37 @@
 
   
   <%= render partial: "layouts/footer"%>
+
+  <script type="text/javascript">
+$(document).ready(function() {
+    $('#contactValidate').click(function() {
+        var name = $('#contact_name').val();
+        var email = $('#contact_email').val();
+        var message = $('#contact_message').val();
+        var regxEmail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+       if ($.trim(name).length == 0) {
+            alert('Please enter Name'); 
+            return false;
+        }
+        else if (!regxEmail.test(email))
+        {
+            alert("Enter valid Email Address");
+            return false;
+        }
+        else if($.trim(email).length == 0) {
+            alert('Please enter valid email address'); 
+            return false;
+        }
+        else if ($.trim(message).length == 0) {
+           alert('Please enter Message');
+            return false;
+        } 
+        else {
+            return true;
+        }
+    });   
+});
+
+
+</script>
