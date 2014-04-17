@@ -2,7 +2,10 @@
 <%= stylesheet_link_tag "home/mainpage/main-index" %>
 
 
+<%= stylesheet_link_tag "fancybox" %>
 
+  <%= javascript_include_tag "fancybox" %>
+  
   <% if @user %>
   
   <% @user.errors.full_messages.each do |msg,name| %>

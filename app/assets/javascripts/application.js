@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require dataTables/jquery.dataTables
+//= require jquery.ui.all
 //= require jquery_ujs
 //= require moment
 //= require twitter/bootstrap
