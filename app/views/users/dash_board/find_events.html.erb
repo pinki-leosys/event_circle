@@ -34,10 +34,10 @@
 <% @events.each do |event| %>
   <tr>
     <td><%= event.title %></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <td><%= event.description %></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <td><%= event.venue %></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <td><%= event.event_start_date %></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <td><%= event.event_end_date %></td>
+    <td><%= raw(event.description) %></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <td><%= event.event_start_date.strftime("%b %d,%Y") %></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <td><%= event.event_end_date.strftime("%b %d,%Y") %></td>
 
   </tr>
 <% end %>
@@ -51,4 +51,15 @@
 
 <%= render partial: "layouts/dash_board/sidebar_bottom"%>
 
-      
+      <style>
+      td p img {
+        display:none;
+      }
+      td p object{
+        display:none;
+      }
+
+
+
+p { display : inline; }
+</style>

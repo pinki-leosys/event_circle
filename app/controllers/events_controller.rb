@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   before_filter :authenticate_user!, except: :show
+  before_filter :remove_pictures, only: :new
   def index
     @events = Event.where(published:true)
     respond_to do |format|
@@ -13,6 +14,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @image= Event.new
     @event = Event.find(params[:id])
     session[:event_id]= params[:id]
     respond_to do |format|
@@ -119,5 +121,21 @@ class EventsController < ApplicationController
         @event = Event.find(params[:id])
         @images= @event.pictures
   end
+ def remove_pictures
+  Ckeditor::Asset.where(event_id:nil).delete_all
+ end
+ def save_image
+   #render text:params.inspect
+   @event= Event.find(session[:event_id])
+  respond_to do |format|
+      if @event.update_attributes(params[:event])
+        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
+ end
 
 end

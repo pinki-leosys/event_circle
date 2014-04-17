@@ -1,8 +1,6 @@
 
 <%= render partial: "layouts/dash_board/sidebar_top"%>
 
-<%= stylesheet_link_tag "fancybox" %>
-<%= javascript_include_tag "fancybox" %>
 
     <div class="col-custom-md-21">
       <div class="content-section">
@@ -126,13 +124,16 @@
                   <tr><td><strong style="color:#c16429;">Event Media</strong></td></tr>
               </thead>
               <tbody>
-      
+                <tr><td>
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal"> Upload Pictures</button>
+                <button type=" " class="btn btn-default">Upload Video</button>
+                <button type=" " class="btn btn-default">Upload Audio</button>
+                </td></tr>
                 <tr><td><strong>Existing Media</strong></td></tr>
                 <tr>
-                  
-
                 <td style="background:#434655; color:#c16429;">
                   <table>
+
                     <tr>
                     <% @event.pictures.each do |image| %>
                       <%= link_to image_tag( image.url_thumb, :height => '120', :weight => '160', class:'check'),image.url,  {:class => 'fancybox-group thumb', rel: "group1"} %>
@@ -150,13 +151,10 @@
     
         </div> <!-- Row closing -->   
 
-     <script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-<script type="text/javascript" src="/fancybox/jquery.easing-1.4.pack.js"></script>
-<script type="text/javascript" src="/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-<link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
-
-
      <%= render partial: "layouts/dash_board/sidebar_bottom"%>
+
+          <%= render partial: "layouts/dash_board/image_upload"%>
+
 
 
 <script>
@@ -164,15 +162,14 @@ jQuery(function() {
   $("a.fancybox").fancybox();
 });
 </script>
-<script>
-   $(document).ready(function(){
-   $('p img').parent().hide();
-   $('p object').parent().hide();
-
-   });
-
-</script>
-
+<style>
+      td p img {
+        display:none;
+      }
+      td p object{
+        display:none;
+      }
+</style>
 <style>
 .check{
   padding-right:5px;
