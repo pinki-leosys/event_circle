@@ -139,6 +139,12 @@
                       <%= link_to image_tag( image.url_thumb, :height => '120', :weight => '160', class:'check'),image.url,  {:class => 'fancybox-group thumb', rel: "group1"} %>
                     <% end %>
                     </tr>
+
+                    <tr>
+                    <% @event.attachments.each do |image| %>
+                      <embed src="<%= image.url%>" autoplay="false" > 
+                    </tr>
+                 <% end %>
                   </table>
                 </td>
                 </tr>
@@ -147,7 +153,50 @@
               </tbody>
              </table>
           </div>
-          
+       
+
+<a href="#video" data-toggle="modal" id="clickForVideo">
+  Click Me
+</a>
+
+<div class="modal fade" id="video" role="dialog" style="display:none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body modal-video">
+        
+        <video width="320" height="240" controls>
+
+  <source src="/uploads/ckeditor/attachments/48/myvideo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video> 
+        <video width="320" height="240" controls>
+
+  <sourcesrc="/uploads/ckeditor/attachments/46/HTML5_video_tutorial__Creating_a_WebM_video___lynda.com.flv" type="video/x-flv">
+  Your browser does not support the video tag.
+</video> 
+
+      </div>
+      <button type="button" class="btn modal-close" data-dismiss="modal">X</button>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+
+$(document).on("click", '#clickForVideo', function() {
+  $('#video').modal('show');
+  $(".modal-video").fitVids();
+});
+</script>
+
+
+
+
+
+
+             
     
         </div> <!-- Row closing -->   
 

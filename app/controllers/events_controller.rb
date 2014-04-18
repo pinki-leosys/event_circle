@@ -70,6 +70,13 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
+    if (params[:commit] == "Publish")
+       @event.published=true
+       @event.published_at =Time.now
+    end
+    @event.event_start_date=DateTime.strptime(params[:event][:event_start_date],'%m/%d/%Y %I:%M %p')
+    @event.event_end_date=DateTime.strptime(params[:event][:event_end_date],'%m/%d/%Y %I:%M %p')
+
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
