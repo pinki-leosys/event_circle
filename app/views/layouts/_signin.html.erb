@@ -1,5 +1,12 @@
-<div style="display:none;">
-  <div id="hello1" class="test">
+     
+<div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"style="width:75%">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+    <div id="hello1" class="test">
       <%#= form_for(:user, :url => user_session_path) do |f| %>
        <form accept-charset="UTF-8"  action="/dash_board" method="post" class='test'>
         <div class="control-label">
@@ -23,42 +30,15 @@
         <input type="password" name='user[password]' id="password" class="form-control input-sm" placeholder="Password" style="height:30px;width:70%;">
         </div>
         <button type="submit" class="btn btn-sm new" id="btnValidate">Sign in</button>
-        <%= link_to "Register", sign_up_path, class: "btn btn-default input-sm" %>
-        <%= link_to "Forgot Password", new_user_password_path, class: "btn btn-default input-sm" %>
+        <%= link_to "Register", sign_up_path, class: "btn btn-primary" %>
+        <%= link_to "Forgot Password", new_user_password_path %>
         </form>
         <%#end%>
     </div>
+
+
+           
+      </div>
+    </div>
+  </div>
 </div>
-
-<script type="text/javascript">
-$(document).ready(function() {
-  $(".fancybox").fancybox({
-        autoDimensions: false,
-        height: 300,
-        width: 400,
-      onCleanup   : function() {
-        return window.location.reload();
-      }    
-    });
-    $('#btnValidate').click(function() {
-        var sEmail = $('#user_email').val();
-        var password = $('#password').val();
-        if ($.trim(sEmail).length == 0) {
-           alert('Please enter valid email address');
-            return false;
-        }
-        else if ($.trim(password).length == 0) {
-            alert('Please enter password');
-            return false;
-        }          
-        else if ($('input[name=role]:checked').length<=0) {
-            alert("Please select Role");
-            return false;
-        }   
-        else {
-            return true;
-        }
-    });
-  }); 
-
-</script>

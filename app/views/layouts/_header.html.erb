@@ -29,21 +29,22 @@
         
         <div class="col-md-7">
           <div class="signup martop2">
-          <form action="/search" class="form-inline" method="get" accept-charset="UTF-8"    >    
-          <%#= form_tag search_path, :method => 'get' do %>  
-           
+          <form action="/search" class="form-inline" method="get" accept-charset="UTF-8">               
               <div class="form-group"> 
                 <input class="form-control input-sm" id="search" name="search" type="text" />
               </div>
               <div class="form-group"> 
                 <%= submit_tag "Search", :name => nil, class: "btn btn-default input-sm" %>  
               </div>
+
               <div class="form-group">     
-                <%= link_to "Sign In", "#hello1", class: "fancybox btn-sm new" %>
+                  <div class="btn btn-sm new showsignin"> SignIn</div>
               </div>
-              <div class="form-group">  
-              </div>
-            </form>
+          </form>
+
+
+
+                                       
         <%# end %>  
         </div>
 
@@ -59,7 +60,6 @@
         </div>
       </div>
     </div>
-    
   </header>
 
      <!--  </div> -->
@@ -68,3 +68,15 @@
 
 </body>
 <%= render partial: "layouts/signin"%>
+
+<script>
+$(document).ready(function()
+{
+$(".showsignin").click(function(){
+   $("#signinModal").modal("show");
+ });
+
+});
+
+
+</script>
