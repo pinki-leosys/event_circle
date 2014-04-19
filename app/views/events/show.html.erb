@@ -142,7 +142,7 @@
 
                     <tr>
                     <% @event.attachments.each do |image| %>
-                      <embed src="<%= image.url%>" autoplay="false" > 
+                      <embed src="<%= image.url%>" autoplay="false" id="video"> 
                     </tr>
                  <% end %>
                   </table>
@@ -157,16 +157,18 @@
 
      <%= render partial: "layouts/dash_board/sidebar_bottom"%>
 
-          <%= render partial: "layouts/dash_board/image_upload"%>
+    <%= render partial: "layouts/dash_board/image_upload"%>
 
 
 
 <script>
 jQuery(function() {
-  $("a.fancybox").fancybox();
-
 $(".uploadmedia").click(function(){
   $("#myModal").modal("show");
+});
+
+$("#video").click(function(){
+  $("#video_modal").modal("show");
 });
 
 
@@ -197,3 +199,4 @@ $("a.fancybox-group").fancybox({
     'speedOut'    : 200, 
     'overlayShow' : false
   });</script>
+
