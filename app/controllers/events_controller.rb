@@ -37,7 +37,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:id], :include => :address)
     session[:event_id]= params[:id]
   end
 
@@ -50,8 +50,8 @@ class EventsController < ApplicationController
        @event.published=true
        @event.published_at =Time.now
     end
-    @event.event_start_date=DateTime.strptime(params[:event][:event_start_date],'%m/%d/%Y %I:%M %p')
-    @event.event_end_date=DateTime.strptime(params[:event][:event_end_date],'%m/%d/%Y %I:%M %p')
+    @event.event_start_date=DateTime.strptime(params[:event][:event_starts],'%m/%d/%Y %I:%M %p')
+    @event.event_end_date=DateTime.strptime(params[:event][:event_ends],'%m/%d/%Y %I:%M %p')
 
     @event.user=current_user
     respond_to do |format|
@@ -71,11 +71,11 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if (params[:commit] == "Publish")
-       @event.published=true
-       @event.published_at =Time.now
+       params[:event][:published]=true
+       params[:event][:published_at] =Time.now
     end
-    @event.event_start_date=DateTime.strptime(params[:event][:event_start_date],'%m/%d/%Y %I:%M %p')
-    @event.event_end_date=DateTime.strptime(params[:event][:event_end_date],'%m/%d/%Y %I:%M %p')
+    params[:event][:event_start_date]=DateTime.strptime(params[:event][:event_starts],'%m/%d/%Y %I:%M %p')
+    params[:event][:event_end_date]=DateTime.strptime(params[:event][:event_ends],'%m/%d/%Y %I:%M %p')
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
@@ -144,5 +144,17 @@ class EventsController < ApplicationController
       end
     end
  end
-
+ def save_video
+   #render text:params.inspect
+   @event= Event.find(session[:event_id])
+  respond_to do |format|
+      if @event.update_attributes(params[:event])
+        format.html { redirect_to @event, notice: 'Video was uploaded successfully.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @event, alert: "only mp4'are allowed"}
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
+ end
 end

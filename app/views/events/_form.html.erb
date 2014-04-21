@@ -19,17 +19,7 @@
   <div class="some">
 <div class="col-md-12 martop1  form-horizontal">  
   <%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div class="control-group" style="margin-left:-105px" >
      <label class="control-label" for="event_title">Title:</label>
     <div class="controls" >
@@ -41,7 +31,6 @@
     <%= f.cktext_area :description %>
   </div>
 </div>
-  <% @event.build_address %>
   <%= f.fields_for :address do |form| %>
 
 <div class=" col-md-12 martop1  form-horizontal">
@@ -49,86 +38,26 @@
    <div class="control-group">
      <label class="control-label" for="event_address_street_address">Street address:</label>
     <div class="controls" >
-      <input id="event_address_address" class="form-control" type="text" name="event[address_attributes][address]" >
+      <%= form.text_field :address, class: "form-control", id: "event_address_address"%>
     </div>
   </div>
    <div class="control-group">
      <label class="control-label" for="event_address_zipcode">Zip Code:</label>
     <div class="controls" >
-      <input id="event_address_zipcode" class="form-control" type="text" name="event[address_attributes][zipcode]" >
+      <%= form.text_field :zipcode, class: "form-control", id: "event_address_zipcode"%>
     </div>
   </div>
   <div class="control-group">
-     <label class="control-label" for="event_address_city">City:</label>
+     <label class="control-label" for="address_city">City:</label>
     <div class="controls" >
-      <input id="address_city" class="form-control" type="text" name="event[address_attributes][city]" >
+           <%= form.text_field :city, class: "form-control", id: "address_city"%>
     </div>
   </div>
        <div class="control-group">
                   <label for="inputlogo" class="control-label">State :</label>
                   <div class="controls">
-                    <select class="form-control" id="address_state" name="event[address_attributes][state]" tabindex="9">
-                      <option value="">Select</option>
-                      <option value="Alabama">Alabama</option>
-                      <option value="Alaska">Alaska</option>
-                      <option value="Arizona">Arizona</option>
-                      <option value="Arkansas">Arkansas</option>
-                      <option value="California">California</option>
-                      <option value="Colorado">Colorado</option>
-                      <option value="Connecticut">Connecticut</option>
-                      <option value="Delaware">Delaware</option>
-                      <option value="Florida">Florida</option>
-                      <option value="Georgia">Georgia</option>
-                      <option value="Hawaii">Hawaii</option>
-                      <option value="Idaho">Idaho</option>
-                       <option value="Illinois">Illinois</option>
-                      <option value="Indiana">Indiana</option>
-                      <option value="Iowa">Iowa</option>
-
-                      <option value="Kansas">Kansas</option>
-                      <option value="Kentucky[C]">Kentucky[C]</option>
-                      <option value="Louisiana">Louisiana</option>
-
-                      <option value="Maine">Maine</option>
-                      <option value="Maryland">Maryland</option>
-                      <option value="Massachusetts[D]">Massachusetts[D]</option>
-
-
-                      <option value="Michigan">Michigan</option>
-                      <option value="Minnesota">Minnesota</option>
-                      <option value="Mississippi">Mississippi</option>
-
-                      <option value="Missouri">Missouri</option>
-                      <option value="Montana">Montana</option>
-                      <option value="Nebraska">Nebraska</option>
-
-                      <option value="Nevada">Nevada</option>
-                      <option value="New Hampshire">New Hampshire</option>
-                      <option value="New Jersey">New Jersey</option>
-
-                    <option value="New Mexico">New Mexico</option>
-                      <option value="New York">New York</option>
-                      <option value="North Carolina">North Carolina</option>
-
-                      <option value="North Dakota">North Dakota</option>
-                      <option value="Ohio">Ohio</option>
-                      <option value="Oklahoma">Oklahoma</option>
-                      <option value="Oregon">Oregon</option>
-                      <option value="Pennsylvania[E]">Pennsylvania[E]</option>
-                      <option value="Rhode Island[F]">Rhode Island[F]</option>
-                      <option value="South Carolina">South Carolina</option>
-                      <option value="South Dakota">South Dakota</option>
-                      <option value="Tennessee">Tennessee</option>
-                      <option value="Texas">Texas</option>
-                      <option value="Utah">Utah</option>
-                      <option value="Vermont">Vermont</option>
-                      <option value="Virginia[G]">Virginia[G]</option>
-                      <option value="Washington">Washington</option>
-                      <option value="West Virginia">West Virginia</option>
-                      <option value="Wisconsin">Wisconsin</option>
-                      <option value="Wyoming">Wyoming</option>
-                    </select>
-                  </div>
+                     <%= form.select(:state, options_for_select(us_states, @event.address ? @event.address.state : ''), {},{:class => "form-control", :id => "address_state"} )%>                
+                 </div>
                 </div>
            <% end %>
 
@@ -136,7 +65,8 @@
           <div class="control-group">
                    <label class="control-label" for="event_state_date">Event Start's at:</label>
                 <div class='input-group date controls' id='datetimepicker1'>
-                   <input type='text' class="form-control" id="event_start_date" name="event[event_start_date]" />
+                       <%= f.text_field :event_starts, class: "form-control", id: "event_start_date"%>
+
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
@@ -144,7 +74,8 @@
          <div class="control-group">
                    <label class="control-label" for="event_end_date">Event End's at:</label>
                 <div class='input-group date controls' id='datetimepicker2'>
-                    <input type='text' id="event_end_date" class="form-control" name="event[event_end_date]" />
+                         <%= f.text_field :event_ends, class: "form-control",id: "event_end_date"%>
+
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>

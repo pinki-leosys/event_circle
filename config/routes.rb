@@ -52,6 +52,8 @@ EventCircle::Application.routes.draw do
   end
   root :to => 'home#index'
     match "/images" => "events#save_image", as: :images
+    match "/videoes" => "events#save_video", as: :videos
+
   
 
   # The priority is based upon order of creation:

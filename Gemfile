@@ -7,7 +7,7 @@ gem 'rails', '3.2.17'
 gem 'ckeditor', '4.0.4'
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'streamio-ffmpeg'
 gem 'mysql2', '0.3.15'
 gem 'rolify','3.4.0'
 gem 'cancan','1.6.10'
