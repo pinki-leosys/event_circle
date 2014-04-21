@@ -135,7 +135,7 @@
                   <table>
                     <tr>
                     <% @event.pictures.each do |image| %>
-                      <%= link_to image_tag( image.url_thumb, :height => '120', :weight => '160', class:'check'),"/jwplayer.swf?file="+image.url,  {:class => 'fancybox-group thumb', rel: "group1"} %>
+                      <%= link_to image_tag( image.url_thumb, :height => '120', :weight => '160', class:'check'),image.url,  {:class => 'fancybox-group thumb', rel: "group1"} %>
                     <% end %>
                     </tr>
                     <tr>
