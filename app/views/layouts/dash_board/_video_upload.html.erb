@@ -1,0 +1,22 @@
+<div class="modal fade" id="myVideo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Upload Video</h4>
+      </div>
+      <div class="modal-body">
+           <%= form_for @image, url: videos_path, :html => {:multipart => true} do |f| %>
+                                  <% @image.attachments.build %>
+                  <%=f.fields_for :attachments do |image| %>
+                               <%= image.file_field :data%>
+                   <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value = "Upload Image">
+      </div>
+    </div>
+  </div>
+</div>
+           <% end %>
