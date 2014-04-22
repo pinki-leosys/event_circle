@@ -141,12 +141,13 @@
                     <tr>
 
                     <% @event.attachments.each do |image| %>
-                     <span>
-                      <div style="display:inline-block;position:absolute;padding-top:30px;padding-left:60px;color:black;"><h1>&#9658; </h1></div>
-                      <%= link_to image_tag("#{File.dirname(image.url)}/#{File.basename(image.url,'.*')}.jpg" , :height => '120', :weight => '160', class:'check'), image.url,  {:class => 'fancybox'} %>
-                      </span>
+                     
+                      <!-- <div  style="display:inline-block;position:absolute;padding-top:30px;padding-left:60px;color:black;"><h1>&#9658; </h1></div> -->
+                      <%= image_tag("#{File.dirname(image.url)}/#{File.basename(image.url,'.*')}.jpg" , :height => '120', :weight => '160', class:'check playuservideo', :data => { :videopath => image.url }) %>
+                      
                                  <% end %>
-                     </tr>
+    </tr>
+
                   </table>
                 </td>
                 </tr>
@@ -157,15 +158,50 @@
           </div>                 
         </div> <!-- Row closing -->   
                       
+    <div class="modal fade" id="playallmodal">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width:70%">
 
+      <div class="modal-body">
+         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        
+         
+         <div id="userchoice" ></div>
+        </p>
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
       <script>
 $(document).ready(function() {
-    $("a.fancybox").fancybox({
+    $("a.iframe").fancybox({
         width : 380, // or whatever
         height: 280,
         type: "iframe"
-    })
+    });
+
+
+    $('.playuservideo').click(function()
+    {
+      $('#playallmodal').modal('show');
+      
+      var videopath=$(this).data('videopath');
+      var videotag='<video controls>'+
+                  '<source src="'+videopath+'" type="video/mp4">'+
+                  ' <source src="'+videopath+'" type="video/ogg">'+
+                  '  <source src="'+videopath+'" type="video/webm">'+
+                  ' <object src="'+videopath+'">'+
+                  '<embed src="'+videopath+'">'+
+                   '</object> </video>';
+
+      $('#userchoice').html(videotag);
+      console.log('this image is '+$(this).id);
+      console.log('image src is '+$(this).attr('src'));
+      console.log('Description is is '+$(this).data('videopath'));
+
+    });
 })
   </script>
 
