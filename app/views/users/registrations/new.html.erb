@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'users/register'%>
 <%= render partial: "layouts/header"%>
     
 <div class="clearfix"></div>
@@ -23,9 +24,8 @@
             <input id="user_password" class="form-control input-sm" type="password" name="user[password]" tabindex="4">
           </div>
        </div>
-  <% if @user %>          
-  <% @user.build_address %>
-  <%end%>
+       <% resource.build_address if params[:action]=="new"%>
+
     <%= f.fields_for :address do |form| %>
 
        <div class="control-group">
@@ -116,75 +116,12 @@
                 <div class="control-group">
                   <label for="inputlogo" class="control-label">State :</label>
                   <div class="controls">
-                    <select class="form-control" name="user[address_attributes][state]" tabindex="9">
-                      <option value="">Select</option>
-                      <option value="Alabama">Alabama</option>
-                      <option value="Alaska">Alaska</option>
-                      <option value="Arizona">Arizona</option>
-                      <option value="Arkansas">Arkansas</option>
-                      <option value="California">California</option>
-                      <option value="Colorado">Colorado</option>
-                      <option value="Connecticut">Connecticut</option>
-                      <option value="Delaware">Delaware</option>
-                      <option value="Florida">Florida</option>
-                      <option value="Georgia">Georgia</option>
-                      <option value="Hawaii">Hawaii</option>
-                      <option value="Idaho">Idaho</option>
-                       <option value="Illinois">Illinois</option>
-                      <option value="Indiana">Indiana</option>
-                      <option value="Iowa">Iowa</option>
+                    <%= form.select(:state, options_for_select(us_states, resource.address.nil? ? '' : resource.address.state ), {},{:class => "form-control", :id => "address_state"} )%>
 
-                      <option value="Kansas">Kansas</option>
-                      <option value="Kentucky[C]">Kentucky[C]</option>
-                      <option value="Louisiana">Louisiana</option>
-
-                      <option value="Maine">Maine</option>
-                      <option value="Maryland">Maryland</option>
-                      <option value="Massachusetts[D]">Massachusetts[D]</option>
-
-
-                      <option value="Michigan">Michigan</option>
-                      <option value="Minnesota">Minnesota</option>
-                      <option value="Mississippi">Mississippi</option>
-
-                      <option value="Missouri">Missouri</option>
-                      <option value="Montana">Montana</option>
-                      <option value="Nebraska">Nebraska</option>
-
-                      <option value="Nevada">Nevada</option>
-                      <option value="New Hampshire">New Hampshire</option>
-                      <option value="New Jersey">New Jersey</option>
-
-                    <option value="New Mexico">New Mexico</option>
-                      <option value="New York">New York</option>
-                      <option value="North Carolina">North Carolina</option>
-
-                      <option value="North Dakota">North Dakota</option>
-                      <option value="Ohio">Ohio</option>
-                      <option value="Oklahoma">Oklahoma</option>
-                      <option value="Oregon">Oregon</option>
-                      <option value="Pennsylvania[E]">Pennsylvania[E]</option>
-                      <option value="Rhode Island[F]">Rhode Island[F]</option>
-                      <option value="South Carolina">South Carolina</option>
-                      <option value="South Dakota">South Dakota</option>
-                      <option value="Tennessee">Tennessee</option>
-                      <option value="Texas">Texas</option>
-                      <option value="Utah">Utah</option>
-                      <option value="Vermont">Vermont</option>
-                      <option value="Virginia[G]">Virginia[G]</option>
-                      <option value="Washington">Washington</option>
-                      <option value="West Virginia">West Virginia</option>
-                      <option value="Wisconsin">Wisconsin</option>
-                      <option value="Wyoming">Wyoming</option>
-                    </select>
                   </div>
-                </div>
-                
+                </div>                
     
             <div class="col-md-12 martop1" style="background:#f1f4f9;">
-              
-
-         
 
           </div>
           </div>
@@ -221,61 +158,3 @@ margin-bottom:12px;
     margin-left: 145px;
 }
 </style>
-
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#testValidate').click(function() {
-        var sEmail = $('#user_email1').val();
-        var password = $('#user_password').val();
-        var password_confirm = $('#password_confirmation').val();
-        var mydropdown = $('#role_dropdown').val();
-        var zip = $('#zipcode').val();
-        var zipRegex = /^\d{5}$/;   
-        var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-        var phone = $('#user_phone1').val();
-        var phoneno = /^[0-9-+]+$/;
-
-
-        if ($.trim(sEmail).length == 0) {
-            alert('Please enter valid email address'); 
-            return false;
-        }
-        else if (!pattern.test(sEmail))
-        {
-            alert("Enter valid Email Address");
-            return false;
-        }
-        else if ($.trim(password).length == 0) {
-            alert('Please enter password'); 
-            return false;
-        }
-        else if ($.trim(password_confirm).length == 0) {
-           alert('Please enter verify password');
-            return false;
-        } 
-        else if (password != password_confirm ) {
-            alert('Password does not match with verify password');
-            return false;
-        }
-        else if (mydropdown.length == 0 || $(mydropdown).val() == "")
-        {
-            alert("Please select Role");
-            return false;
-        }
-        else if (!zipRegex.test(zip))
-        {
-            alert("Enter valid zipcode");
-            return false;
-        }
-         else if (!phoneno.test(phone)){ 
-            alert("Enter valid Phone number");
-            return false;
-        }
-        else {
-            return true;
-        }
-    });   
-});
-
-
-</script>
