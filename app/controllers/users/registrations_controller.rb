@@ -3,6 +3,8 @@ require 'open-uri'
 class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
+    super
+    resource.build_address
   end
 
   def create
