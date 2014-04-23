@@ -21,18 +21,7 @@
                 <input type="text" class="form-control input-sm" id="contact_name" name="contact1[name]">
                 </div>
                 </div>
-              
 
-                
-              <!--  <div class="control-group">
-                <div class="controls">
-                <img src="../img/captcha.png">
-                </div>
-                </div> -->
-                
-              
-          
-              <!-- </form> -->
             </div>
       <div class="col-md-3 martop3 form-horizontal">
               
@@ -65,13 +54,11 @@
             <div class="signup pull-left form-inline">
             <!-- <form class="form-inline" role="form"> -->
               <div class="form-group">
+              <%= recaptcha_tags :display => {:theme => 'clean' } %>
               
-              <%= recaptcha_tags %>    
-              
-              </div>
+              </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              
-            
-              <button type="submit" id="contactValidate" class="btn btn-default">Submit</button>
+              <button type="submit" id="contactValidate" class="btn btn-sm new">Submit</button>
             </form>
           </div>
           
@@ -98,3 +85,11 @@
 
   
   <%= render partial: "layouts/footer"%>
+
+
+<style>
+#recaptcha_privacy{
+  display:none;
+}
+
+</style>

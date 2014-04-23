@@ -17,7 +17,7 @@
 						  <div class="form-group">
                                  <input type="email" name= 'user[email]'class="form-control" placeholder="Enter email" style= "width:300px">
 						  </div>
-  <%= recaptcha_tags %>
+               <%= recaptcha_tags :display => {:theme => 'clean' } %>              
   <%= f.submit "Submit", class: "btn-sm new" %>
 
 </div>
@@ -35,3 +35,9 @@
 
 	<%= render partial: "layouts/footer"%>
 
+<style>
+#recaptcha_privacy{
+  display:none;
+}
+
+</style>
