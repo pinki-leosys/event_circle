@@ -1,4 +1,5 @@
 <head>
+<%= javascript_include_tag 'users/search'%>
 <%= stylesheet_link_tag "home/mainpage/main-index" %>
   
   <% if @user %>
@@ -29,7 +30,7 @@
                 <input class="form-control input-sm" id="search" name="search" type="text" />
               </div>
               <div class="form-group"> 
-                <%= submit_tag "Search", :name => nil, class: "btn btn-default input-sm" %>  
+                <%= submit_tag "Search", :name => nil, :id=>"validate-search", class: "btn btn-default input-sm" %>  
               </div>
 
               <div class="form-group">     
@@ -67,7 +68,6 @@ $(document).ready(function()
 $(".showsignin").click(function(){
    $("#signinModal").modal("show");
  });
-
 });
 
 

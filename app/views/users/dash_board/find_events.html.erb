@@ -1,5 +1,5 @@
 
-
+<%= javascript_include_tag 'users/search'%>
 <%= render partial: "layouts/dash_board/sidebar_top"%>
 
 <div class="col-custom-md-21">
@@ -14,7 +14,7 @@
             <p>  <label class="control-label" for="inputpagetitle">SEARCH EVENTS: </label>
                
               <input class="control-label" id="search" name="search" type="text" />
-              <%= submit_tag "Search", :name => nil, :class=>"btn-sm new" %> 
+              <%= submit_tag "Search", :name => nil, :id =>"validate-search" ,:class=>"btn-sm new" %> 
             </p>  
         <%# end %> 
         </form> 
@@ -43,7 +43,7 @@
     <div style="text-align:center;">
                 <%= will_paginate @events,:page_links => true, renderer: BootstrapPagination::Rails %>
     </div>
-<% end %>
+ <% end %>
 
 
 <br />

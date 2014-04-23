@@ -19,8 +19,8 @@ class Event < ActiveRecord::Base
     }
 
   def self.search(search)  
-    if search  
-      self.joins("LEFT OUTER JOIN addresses ON  events.id=addresses.addressable_id").where('published = ? AND title LIKE ? or address LIKE ? or city LIKE ? or state LIKE ?', true, "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+    if search
+      self.joins("LEFT OUTER JOIN addresses ON  events.id=addresses.addressable_id").where('published = ? AND event_start_date > ? AND title LIKE ? or address LIKE ? or city LIKE ? or state LIKE ?', true, Time.zone.now, "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
     end  
   end
 

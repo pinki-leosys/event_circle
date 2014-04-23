@@ -2,7 +2,7 @@ CKEDITOR.config.toolbar=  [
 //    { name: 'document', items : [ 'NewPage','Preview' ] },
     { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
     { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','Scayt' ] },
-    { name: 'insert', items : [ 'Image','Iframe','Flash','Table','HorizontalRule','Smiley','SpecialChar' ] },
+    { name: 'insert', items : [ 'Image','Iframe','Table','HorizontalRule','Smiley','SpecialChar' ] },
     { name: 'document',	   items: [ 'mode', 'document' ]},
     { name: 'styles', items : [ 'Styles','Format' ] },
     { name: 'basicstyles', items : [ 'Bold','Italic','Strike','-','RemoveFormat' ] },
