@@ -42,8 +42,7 @@
       </div>
 
 <div class="clearfix"> </div>
-            <div class="signup text-center form-inline" tabindex="12">
-              <%= recaptcha_tags %>     
+           <div class="signup text-center form-inline" style="width:350px;" tabindex="12">             <%= recaptcha_tags :display => {:theme => 'clean' } %>              
             </div>
 </div>
 <div class="col-md-4 martop3  form-horizontal">                 
@@ -73,7 +72,7 @@
             </div>
             <br/>
             <br/>
-            <button class="btn-sm new" type="submit" id="testValidate" tabindex="13">Submit</button>
+            <button id="testValidate" class="btn-sm new" style="margin-left:80px;" type="submit" tabindex="13">Submit</button>
 
 </div>
 <div class="col-md-4 martop3  form-horizontal">
@@ -157,4 +156,16 @@ margin-bottom:12px;
 .form-horizontal .controls {
     margin-left: 145px;
 }
+</style>
+<style>
+#recaptcha_privacy{
+  display:none;
+}
+
+#recaptcha_area{
+
+background-color:initial;
+
+}
+
 </style>
