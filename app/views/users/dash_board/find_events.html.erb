@@ -3,7 +3,7 @@
 <%= render partial: "layouts/dash_board/sidebar_top"%>
 
 <div class="col-custom-md-21">
-      <div class="content-section" style="height:600px">
+      <div class="content-section">
       <h2 class="title">DASHBOARD
       </h2>
       <div class="about-box-head">
@@ -31,8 +31,9 @@
 <% if @events%>
 <% @events.each do |event| %>
   <tr>
-    <td><%= event.title %></td>
-    <td><%= raw(event.description) %></td>
+    <td><%= truncate(event.title, :length => 60).html_safe%></td>
+    <% desc = Sanitize.clean(event.description) %>
+    <td><%= truncate((desc), :length => 200)%></td>
     <td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
     <td><%= event.event_start_date.strftime("%b %d,%Y") %></td>
     <td><%= event.event_end_date.strftime("%b %d,%Y") %></td>

@@ -19,6 +19,7 @@ gem 'will_paginate-bootstrap'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'momentjs-rails', '~> 2.5.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'
+gem 'sanitize'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
