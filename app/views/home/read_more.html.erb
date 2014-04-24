@@ -35,12 +35,11 @@
              </table>
           </div>
         </div>
-<div style="padding-left:40px" >      
-        <%= link_to 'Login',"#hello1",class: "disabled btn-sm new fancybox "%> OR  <%= link_to "Register", sign_up_path, class: "btn-sm new" %>
-       </div>       
-  
-
-					
+<div style="padding-left:80px;" >      
+        <%#= link_to 'Login',"#hello1",class: "disabled btn-sm new fancybox "%>
+        <div class="btn btn-sm new showsignin"> SignIn</div> OR  <%= link_to "Register", sign_up_path, class: "btn-sm new" %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%=link_to_function "Back to events", "history.back()"%>
+       </div> 
 
 						</div>
 					</div>
@@ -55,3 +54,12 @@
 	
 	<%= render partial: "layouts/footer"%>
 
+<script>
+$(document).ready(function()
+{
+$(".showsignin").click(function(){
+   $("#signinModal").modal("show");
+ });
+
+});
+</script>

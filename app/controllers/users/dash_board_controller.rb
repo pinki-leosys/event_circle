@@ -93,7 +93,7 @@ class Users::DashBoardController < Devise::SessionsController
     	redirect_to root_path, notice: "you Successfully changed to guest dashboard"
     end
 	
-	def find_events
-	  @events = Event.search(params[:search]).paginate(:per_page => 5, :page => params[:page]) if params[:search]
+	def find_events	  
+	  @events = Event.search(params[:search]).paginate(:per_page => 8, :page => params[:page]) if params[:search]
 	end	
 end

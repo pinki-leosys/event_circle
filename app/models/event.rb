@@ -1,11 +1,11 @@
 class Event < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :register, class_name: "Event"
-    has_one :address, as: :addressable
+    has_one :address, as: :addressable, :dependent => :destroy
 	has_and_belongs_to_many :registered_users, :class_name => 'User', :join_table => :events_users, :association_foreign_key => :user_id,:uniq =>true
     attr_accessible :title, :description, :venue, :published, :published_at, :event_start_date, :event_end_date, :user_id
-  has_many :attachments, class_name: "Ckeditor::AttachmentFile"
-  has_many :pictures, class_name: "Ckeditor::Picture"
+  has_many :attachments, class_name: "Ckeditor::AttachmentFile" , :dependent => :destroy
+  has_many :pictures, class_name: "Ckeditor::Picture", :dependent => :destroy 
   accepts_nested_attributes_for :pictures
     accepts_nested_attributes_for :address
       accepts_nested_attributes_for :attachments
@@ -20,7 +20,7 @@ class Event < ActiveRecord::Base
 
   def self.search(search)  
     if search  
-      where('published = ? AND title LIKE ?', true, "%#{search}%")  
+      self.joins("LEFT OUTER JOIN addresses ON  events.id=addresses.addressable_id").where('published = ? AND title LIKE ? or address LIKE ? or city LIKE ? or state LIKE ?', true, "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
     end  
   end
 

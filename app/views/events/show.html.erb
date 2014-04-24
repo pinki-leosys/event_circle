@@ -124,11 +124,13 @@
                   <tr><td><strong style="color:#c16429;">Event Media</strong></td></tr>
               </thead>
               <tbody>
+                 <% if can? :update, @event %>
                 <tr><td>
               <button class="btn btn-default uploadmedia"> Upload Pictures</button>
                 <button class="btn btn-default uploadvideo">Upload Video</button>
                 <button class="btn btn-default">Upload Audio</button>
                 </td></tr>
+                <%end%>
                 <tr><td><strong>Existing Media</strong></td></tr>
                 <tr>
                 <td style="background:#434655; color:#c16429;">
@@ -181,14 +183,7 @@
 
     <%= render partial: "layouts/dash_board/video_upload"%>
 
-<style>
-      td p img {
-        display:none;
-      }
-      td p object{
-        display:none;
-      }
-</style>
+
 <style>
 .check{
   padding-right:5px;
