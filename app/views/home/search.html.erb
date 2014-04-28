@@ -24,7 +24,7 @@
 
 <% @events.each do |event| %>
   <tr>
-    <td><%= event.title %></td>
+    <td><%= truncate(event.title, :length => 60).html_safe %></td>
     <% desc = Sanitize.clean(event.description) %>
     <td><%= truncate((desc), :length => 200)%></td>
     <td><%= "#{event.address.city} #{event.address.state}" if event.address %></td>
