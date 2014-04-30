@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('.playuservideo').click(function() {
       $('#playallmodal').modal('show');      
       var videopath=$(this).data('videopath');
-      var videotag='<video controls>'+
+      var videotag='<video width="100%" height="70%"  controls>'+
                   '<source src="'+videopath+'" type="video/mp4">'+
                   ' <source src="'+videopath+'" type="video/ogg">'+
                   '  <source src="'+videopath+'" type="video/webm">'+
