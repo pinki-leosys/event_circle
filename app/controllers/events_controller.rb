@@ -50,8 +50,11 @@ class EventsController < ApplicationController
        @event.published=true
        @event.published_at =Time.now
     end
-    @event.event_start_date=DateTime.strptime(params[:event][:event_starts],'%m/%d/%Y %I:%M %p')
-    @event.event_end_date=DateTime.strptime(params[:event][:event_ends],'%m/%d/%Y %I:%M %p')
+
+    @event.event_start_date=Time.strptime(params[:event][:event_starts], '%m/%d/%Y %I:%M %p')
+#start_time = start_time.in_time_zone(current_user.time_zone).to_time # I let users pick their time zone.
+ #@event.event_start_date = (start_time-offset.hours).utc
+    @event.event_end_date=Time.strptime(params[:event][:event_ends],'%m/%d/%Y %I:%M %p')
 
     @event.user=current_user
     respond_to do |format|
@@ -74,8 +77,8 @@ class EventsController < ApplicationController
        params[:event][:published]=true
        params[:event][:published_at] =Time.now
     end
-    params[:event][:event_start_date]=DateTime.strptime(params[:event][:event_starts],'%m/%d/%Y %I:%M %p')
-    params[:event][:event_end_date]=DateTime.strptime(params[:event][:event_ends],'%m/%d/%Y %I:%M %p')
+    params[:event][:event_start_date]=Time.strptime(params[:event][:event_starts],'%m/%d/%Y %I:%M %p')
+    params[:event][:event_end_date]=Time.strptime(params[:event][:event_ends],'%m/%d/%Y %I:%M %p')
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
