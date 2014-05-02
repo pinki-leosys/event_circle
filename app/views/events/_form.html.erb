@@ -1,6 +1,11 @@
     <%= javascript_include_tag "events/new-event" %>
-    <%= javascript_include_tag "bootstrap.min" %>
-    <%= javascript_include_tag "bootstrap-datepicker.min" %>
+    <%= javascript_include_tag "datetime-picker/bootstrap.min" %>
+    <%= javascript_include_tag "datetime-picker/moment" %>
+    <%= javascript_include_tag "datetime-picker/bootstrap-datetimepicker" %>
+    <%= stylesheet_link_tag "datetime-picker/bootstrap-datetimepicker" %>
+    <%= stylesheet_link_tag "datetime-picker/bootstrap.min" %>
+
+
 
 <%= render partial: "layouts/dash_board/sidebar_top"%>
 
@@ -64,7 +69,7 @@
 
           <div class="control-group">
                    <label class="control-label" for="event_state_date">Event Start's at:</label>
-                <div class='input-group date controls' id='datetimepicker1'>
+                <div class='input-group date controls' id='datetimepicker1' data-date-format="DD/MM/YYYY hh:mm A">
                        <%= f.text_field :event_starts, class: "form-control", id: "event_start_date"%>
 
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
@@ -73,7 +78,7 @@
           </div>
          <div class="control-group">
                    <label class="control-label" for="event_end_date">Event End's at:</label>
-                <div class='input-group date controls' id='datetimepicker2'>
+                <div class='input-group date controls' id='datetimepicker2' data-date-format="DD/MM/YYYY hh:mm A">
                          <%= f.text_field :event_ends, class: "form-control",id: "event_end_date"%>
 
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
@@ -120,7 +125,6 @@ margin-bottom:12px;
 .form-horizontal .controls {
     margin-left: 145px;
 }
-
 
 </style>
 

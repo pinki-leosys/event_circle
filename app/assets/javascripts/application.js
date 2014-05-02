@@ -14,7 +14,5 @@
 //= require dataTables/jquery.dataTables
 //= require fancybox
 //= require jquery_ujs
-//= require moment
 //= require twitter/bootstrap
-//= require bootstrap-datetimepicker
 //= require ckeditor/init
