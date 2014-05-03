@@ -1,6 +1,5 @@
 $(document).ready(function() {
   $(".eventvalidate").click(function() {
-        var today = new Date();
         var title = $('#event_title').val();
         var description = CKEDITOR.instances.event_description.updateElement();
         var desc = $('#event_description').val();
@@ -8,10 +7,11 @@ $(document).ready(function() {
         var zipcode = $('#event_address_zipcode').val();
         var state = $('#address_state').val();
         var city = $('#address_city').val();
-        var zipRegex = /^\d{5}$/; 
-        var startDate = new Date($('#event_start_date').val());
-        var endDate = new Date($('#event_end_date').val());
-
+        var zipRegex = /^\d{5}$/;
+        var startDate = $('#event_start_date').val();
+        var endDate = $('#event_end_date').val();
+        var today = new Date();
+        var tdate = today.getDate() + "/" + (today.getMonth() +1) + "/" + today.getFullYear();
 
         if ($.trim(title).length == 0) {
             alert('Please enter Title'); 
@@ -39,11 +39,11 @@ $(document).ready(function() {
             alert("Please select State");
             return false;
         }
-         else if (startDate < today){ 
-              alert('Start date must be today or later');
-              return false;
-            }
-        else if (endDate == "Invalid Date" || startDate == "Invalid Date"){ 
+        else if (Date.parse(startDate) < Date.parse(tdate)) {
+          alert('Start date must be today or later');
+          return false;
+          }
+        else if (endDate == "" || startDate == ""){ 
               alert('Enter Start date and End date');
               return false;
             }
@@ -52,17 +52,10 @@ $(document).ready(function() {
                $("event_end_date").val('');
                alert("Start date should not be greater than end date");
                return false;
-           }
-           else if (Date.parse(startDate) < today){ 
-              alert('End date must be today or later');
-              return false;
-            }     
-       }
-       
+           }  
+       }       
     });
- 
-});
-
+ });
  $(function () {
                 $('#datetimepicker1').datetimepicker();
                 $('#datetimepicker2').datetimepicker();                
