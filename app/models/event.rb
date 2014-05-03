@@ -25,14 +25,14 @@ class Event < ActiveRecord::Base
   end
 
   def event_starts
-    event_start_date.nil? ? event_start_date : event_start_date.strftime('%m/%d/%Y %I:%M %p')
+    event_start_date.nil? ? event_start_date : event_start_date.strftime('%d/%m/%Y %I:%M %p')
   end
   def event_starts=(date)
     self.event_start_date=date
   end
 
   def event_ends
-    event_end_date.nil? ? event_end_date : event_end_date.strftime('%m/%d/%Y %I:%M %p')
+    event_end_date.nil? ? event_end_date : event_end_date.strftime('%d/%m/%Y %I:%M %p')
   end
   def event_ends=(date)
     self.event_end_date=date
