@@ -1,6 +1,8 @@
 <%= javascript_include_tag 'events/event-show'%>
 <%= render partial: "layouts/dash_board/sidebar_top"%>
 
+<%= jwplayer_assets %>
+ <%= javascript_include_tag 'swfobject' %>
 
     <div class="col-custom-md-21">
       <div class="content-section">
@@ -138,13 +140,14 @@
                     <tr>
                     <% @event.pictures.each do |image| %>
                       <%= link_to image_tag( image.url_thumb, :height => '120', :weight => '160', class:'check'),image.url,  {:class => 'fancybox-group thumb', rel: "group1"} %>
+
                     <% end %>
                     </tr>
                     <tr>
+                      
 
                     <% @event.attachments.each do |image| %>
                      
-                      <!-- <div  style="display:inline-block;position:absolute;padding-top:30px;padding-left:60px;color:black;"><h1>&#9658; </h1></div> -->
                       <%= image_tag("#{File.dirname(image.url)}/#{File.basename(image.url,'.*')}.jpg" , :height => '120', :weight => '160', class:'check playuservideo', :data => { :videopath => image.url }) %>
                       
                                  <% end %>
@@ -160,22 +163,6 @@
           </div>                 
         </div> <!-- Row closing -->   
                       
-    <div class="modal fade" id="playallmodal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-body">
-         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        
-         
-         <div id="userchoice" ></div>
-        </p>
-      </div>
-
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
 
     <%= render partial: "layouts/dash_board/sidebar_bottom"%>
 
@@ -201,3 +188,21 @@ $("a.fancybox-group").fancybox({
     'overlayShow' : false
   });
 </script>
+
+
+
+
+<div class="modal fade" id="playallmodal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+         
+<div id='myElement'>Loading the player ...</div>
+        </p>
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

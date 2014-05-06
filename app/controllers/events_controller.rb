@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   # GET /events
   # GET /events.json
-  before_filter :authenticate_user!, except: :show
+  before_filter :authenticate_user!
   before_filter :remove_pictures, only: :new
   def index
     @events = Event.where(published:true)

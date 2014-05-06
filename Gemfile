@@ -18,6 +18,7 @@ gem 'will_paginate','3.0.5'
 gem 'will_paginate-bootstrap'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'sanitize'
+gem 'jwplayer-rails'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
