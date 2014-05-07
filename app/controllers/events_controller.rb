@@ -155,7 +155,7 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: 'Video was uploaded successfully.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to @event, alert: "only mp4'are allowed"}
+        format.html { redirect_to @event, alert: "File format not allowed."}
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
